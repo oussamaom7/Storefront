@@ -1,7 +1,16 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../../components/Navbar';
+import { SimpleSlider } from '../../components/simple slider/banner';
+
 
 export default function Landing() {
   return (
-    <div>Landing</div>
-  )
+    <div>
+      
+      <Navbar />
+      <SimpleSlider />
+      
+      
+    </div>
+  );
 }
