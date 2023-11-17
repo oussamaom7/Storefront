@@ -1,8 +1,9 @@
 /* Slider */
 .slick-slider
 {
+    width: 1180px;
     position: relative;
-
+    
     display: block;
     box-sizing: border-box;
 
@@ -100,6 +101,7 @@
 }
 .slick-initialized .slick-slide
 {
+    width: 1180px;
     display: block;
 }
 .slick-loading .slick-slide

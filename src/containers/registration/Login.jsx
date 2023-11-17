@@ -15,7 +15,7 @@ export default function Login() {
         <button className="submit-button" onClick={(e) => alert('You have successfully signed up!')}>Log in</button>
       </div>
       <div className='privacy'>
-        <a>By logging in, you agree to the Terms of Service and Privacy Policy</a>
+        <p>By logging in, you agree to the Terms of Service and Privacy Policy</p>
       </div>
   </div>
     
