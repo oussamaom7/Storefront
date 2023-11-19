@@ -2,12 +2,12 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Landing from './containers/landing/Landing';
-import Navbar from './components/Navbar';
+/* import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import ContactUs from './components/ContactUs';
 import Example from './components/test';
-import ProfileSideBar from './containers/Customers/ProfileSideBar';
+import ProfileSideBar from './containers/Customers/ProfileSideBar'; */
 import Home from './containers/Home/Home';
 
 
@@ -16,7 +16,8 @@ export default function App() {
     <div className="App">
     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/h" element={<Home />}></Route>
+          <Route path="/" element={<Landing />}></Route>
         </Routes>
    </BrowserRouter> 
   

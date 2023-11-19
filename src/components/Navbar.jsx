@@ -1,32 +1,15 @@
 import React,{ Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { /* Bars3Icon, */ BellIcon, /* XMarkIcon */ } from '@heroicons/react/24/outline'
 import SearchIcon from '@mui/icons-material/Search';
 
-<<<<<<< HEAD
-export default function navbar() {
-  return (
-  <div>
-    <nav className="navigation">
-      <ul>
-        <li><a href="/">Accueil</a></li> 
-        <li><a href="/sport">Sport</a></li>
-        <li><a href="/cinema">Cinema</a></li>
-        <li><a href="/musique">Musique</a></li>
-        <li><a href="/formation">Formation</a></li>
-      </ul>
-    </nav>
-  </div>
-  )
-=======
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
->>>>>>> origin/hajar
 }
 
 export default function Navbar() {
-  const [isLoggedIn, setLoggedIn] = useState(true)
+  const [isLoggedIn, setLoggedIn] = useState(false)
   return (
     <Disclosure as="nav" className="bg-slate-100">
       {({ open }) => (
