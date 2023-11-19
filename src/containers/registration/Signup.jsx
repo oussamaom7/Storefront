@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import axios from 'axios'; 
 import './LoginSignup.css';
 
-export default function Signup() {
-  const navigate = useNavigate();  // Initialize useNavigate
+export default function Signup() { 
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -29,7 +27,6 @@ export default function Signup() {
 
       if (response.status === 200) {
         console.log(response.data.message);
-        navigate();  // Navigate to the current route, effectively refreshing the page
       } else {
         console.error(response.data.message);
       }
