@@ -15,10 +15,8 @@ export default function Landing() {
         <div className="mb-8">
           <SimpleSlider />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
           <ProductList products={data} />
-         
-          {/* Repeat for other products if needed */}
         </div>
       </div>
       <Footer />

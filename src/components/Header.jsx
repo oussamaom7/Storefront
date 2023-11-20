@@ -1,20 +1,49 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-
-const navigation = [
-  { name: 'Cat 1', href: '#', current: false },
-  { name: 'Cat 2', href: '#', current: false },
-  { name: 'Cat 3', href: '#', current: false },
-  { name: 'Cat 4', href: '#', current: false },
-  { name: 'Cat 5', href: '#', current: false },
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+import { useCallback, useEffect, useState } from 'react';
+import { Disclosure } from '@headlessui/react';
+// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Header() {
+  const [categories, setCategories] = useState([]);
+  const [/* isLoading */, setIsLoading] = useState(false);
+  const [/* error */, setError] = useState('');
+  const [/* openError */, setOpenError] = useState(false);
+  const [authTokens, /* setAuthTokens */] = useState(null); // Initialize authTokens appropriately
+
+  const fetchCategories = useCallback(async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/v1/categories", {
+        headers: {
+          Authorization: `Bearer ${authTokens}`, // Include authTokens in the header
+        },
+      });
+      if (response.status === 200) {
+        const categoryData = response.data.map(category => ({
+          id: category._id,
+          name: category.category_name, // Adjust the key name to match your API response
+        }));
+        setCategories(categoryData); // Update categories state with fetched data
+        setIsLoading(false);
+      } else {
+        setError("Failed to fetch categories.");
+        setIsLoading(false);
+      }
+    } catch (error) {
+      setError("Error: " + error.message);
+      setIsLoading(false);
+      setOpenError(true);
+    }
+  }, [authTokens]);
+
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories, authTokens]);
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ');
+  }
+
   return (
     <>
       <div className="min-h-full">
@@ -27,85 +56,45 @@ export default function Header() {
                     <div className="flex-shrink-0"></div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
-                        {navigation.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
+                        {categories.map((category) => (
+                          <Link
+                            key={category.id}
+                            to={`/category/${category.id}`} // Assuming you have a route for individual categories
                             className={classNames(
-                              item.current
-                                ? 'bg-gray-700 text-white'
-                                : 'text-gray-500 hover:bg-blue-500 hover:text-white', // Corrected hover color here
+                              'text-gray-500 hover:bg-blue-500 hover:text-white', // Adjust hover color as needed
                               'rounded-md px-3 py-2 text-sm font-medium'
                             )}
-                            aria-current={item.current ? 'page' : undefined}
                           >
-                            {item.name}
-                          </a>
+                            {category.name}
+                          </Link>
                         ))}
                       </div>
                     </div>
                   </div>
-                  <div className="hidden md:block">
-                    <div className="ml-14 flex items-center md:ml-6">
-                      {/* Contact Us button */}
-                      <a
-                        href="#contact"
-                        className="text-gray-500 hover:bg-blue-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium" // Corrected hover color here
-                      >
-                        Contact Us
-                      </a>
-                    </div>
-                  </div>
-                  <div className="-mr-2 flex md:hidden">
-                    {/* Mobile menu button */}
-                    <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                      <span className="absolute -inset-0.5" />
-                      <span className="sr-only">Open main menu</span>
-                      {open ? (
-                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                      ) : (
-                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  {/* Contact Us link on the right side */}
+                  <div className="flex items-center">
+                    <Link
+                      to="/contact"
+                      className={classNames(
+                        'text-gray-500 hover:bg-blue-500 hover:text-white',
+                        'rounded-md px-3 py-2 text-sm font-medium'
                       )}
-                    </Disclosure.Button>
+                    >
+                      Contact Us
+                    </Link>
                   </div>
                 </div>
               </div>
-
-              <Disclosure.Panel className="md:hidden">
-                <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                  {navigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className={classNames(
-                        item.current ? 'bg-gray-900 text-white' : 'text-gray-500 hover:bg-blue-500 hover:text-white', // Corrected hover color here
-                        'block rounded-md px-3 py-2 text-base font-medium'
-                      )}
-                      aria-current={item.current ? 'page' : undefined}
-                    >
-                      {item.name}
-                    </Disclosure.Button>
-                  ))}
-                  {/* Contact Us button for mobile */}
-                  <a
-                    href="#contact"
-                    className="text-gray-500 hover:bg-blue-500 hover:text-white rounded-md px-3 py-2 text-base font-medium block" // Corrected hover color here
-                  >
-                    Contact Us
-                  </a>
-                </div>
-              </Disclosure.Panel>
             </>
           )}
         </Disclosure>
 
         <main>
-          <div id="contact" className="mx-auto max-w-7xl  sm:px-6 lg:px-8" >
+          <div id="contact" className="mx-auto max-w-7xl  sm:px-6 lg:px-8">
             {/* Your contact us content goes here */}
           </div>
         </main>
       </div>
     </>
-  )
+  );
 }

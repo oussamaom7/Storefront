@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios'; 
-import './LoginSignup.css';
+import axios from 'axios';
 
-export default function Signup() { 
-
+export default function Signup() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -34,12 +32,13 @@ export default function Signup() {
       console.error('Error:', error);
     }
   };
-  return (
-    <div className="container">
-      <form onSubmit={handleSignup}>
 
-        <div className="input">
+  return (
+    <div className="flex justify-center items-center flex-col mx-auto">
+      <form onSubmit={handleSignup}>
+        <div className="w-full mb-4">
           <input
+            className="w-full px-4 py-2 border rounded-lg"
             placeholder="Your First Name"
             type="text"
             name="firstName"
@@ -47,8 +46,9 @@ export default function Signup() {
             onChange={handleInputChange}
           />
         </div>
-        <div className="input">
+        <div className="w-full mb-4">
           <input
+            className="w-full px-4 py-2 border rounded-lg"
             placeholder="Your Last Name"
             type="text"
             name="lastName"
@@ -56,8 +56,9 @@ export default function Signup() {
             onChange={handleInputChange}
           />
         </div>
-        <div className="input">
+        <div className="w-full mb-4">
           <input
+            className="w-full px-4 py-2 border rounded-lg"
             placeholder="Your Email"
             type="email"
             name="email"
@@ -65,8 +66,9 @@ export default function Signup() {
             onChange={handleInputChange}
           />
         </div>
-        <div className="input">
+        <div className="w-full mb-4">
           <input
+            className="w-full px-4 py-2 border rounded-lg"
             placeholder="Password"
             type="password"
             name="password"
@@ -74,19 +76,18 @@ export default function Signup() {
             onChange={handleInputChange}
           />
         </div>
-        <div className="privacy">
+        <div className="text-sm mb-4">
           At least 8 characters, 1 uppercase letter, 1 number & 1 symbol
         </div>
         <div>
-          <button className="submit-button" type="submit">
+          <button style={{background:"black", color:"white"}} className=" py-3 px-16 rounded-lg" type="submit">
             Submit
           </button>
         </div>
-        <div className="privacy">
+        <div className="text-sm">
           <p>
-            By signing up, you agree you've read and accepted our Terms and
-            Conditions. Please see our Privacy Policy for information on how we
-            process your data.
+            By signing up, you agree you've read and accepted our Terms and Conditions. Please
+            see our Privacy Policy for information on how we process your data.
           </p>
         </div>
       </form>
