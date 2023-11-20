@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function Signup() {
@@ -8,6 +8,8 @@ export default function Signup() {
     email: '',
     password: '',
   });
+
+  const [responseMessage, setResponseMessage] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,18 +26,29 @@ export default function Signup() {
       const response = await axios.post('http://localhost:3000/v1/customers', formData);
 
       if (response.status === 200) {
-        console.log(response.data.message);
+        setResponseMessage(response.data.message);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+        });
       } else {
-        console.error(response.data.message);
+        setResponseMessage(response.data.message);
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
+  useEffect(() => {
+    // You can perform additional actions based on responseMessage here
+  }, [responseMessage]);
+
   return (
     <div className="flex justify-center items-center flex-col mx-auto">
       <form onSubmit={handleSignup}>
+        {/* Input fields */}
         <div className="w-full mb-4">
           <input
             className="w-full px-4 py-2 border rounded-lg"
@@ -80,10 +93,16 @@ export default function Signup() {
           At least 8 characters, 1 uppercase letter, 1 number & 1 symbol
         </div>
         <div>
-          <button style={{background:"black", color:"white"}} className=" py-3 px-16 rounded-lg" type="submit">
+          <button style={{ background: 'black', color: 'white' }} className="py-3 px-16 rounded-lg" type="submit">
             Submit
           </button>
         </div>
+        {/* Display response message */}
+        {responseMessage && (
+          <div className="mt-4 text-center">
+            <p>{responseMessage}</p>
+          </div>
+        )}
         <div className="text-sm">
           <p>
             By signing up, you agree you've read and accepted our Terms and Conditions. Please
