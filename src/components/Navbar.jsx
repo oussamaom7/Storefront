@@ -1,8 +1,9 @@
-import React,{ Fragment, useState } from 'react'
+import React,{ Fragment,useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { /* Bars3Icon, */ BellIcon, /* XMarkIcon */ } from '@heroicons/react/24/outline'
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
+import AuthContext from '../context/AuthContext'
 
 
 function classNames(...classes) {
@@ -10,7 +11,11 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const [isLoggedIn, setLoggedIn] = useState(false)
+  const authContext = useContext(AuthContext);
+  const { authTokens,logoutCustomer } = authContext;
+  const handleLogout = () => {
+    logoutCustomer(); // Call the logout function when "Sign out" is clicked
+  };
   return (
     <Disclosure as="nav" className="bg-slate-100">
       {({ open }) => (
@@ -46,7 +51,7 @@ export default function Navbar() {
                 </div>
               </div>
               {/* {log in and sign up} */}
-              {isLoggedIn? (<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              {authTokens? (<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
                   className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-black focus:outline-none"
@@ -79,35 +84,46 @@ export default function Navbar() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Your Profile
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
+                    <Menu.Item>
+  {({ active }) => (
+    <h6
+      href="#"
+      className={classNames(
+        active ? 'bg-gray-100' : '',
+        'block px-4 py-2 text-sm text-gray-700 cursor-pointer' // Added cursor-pointer class
+      )}
+    >
+      Your Profile
+    </h6>
+  )}
+</Menu.Item>
+<Menu.Item>
+  {({ active }) => (
+    <h6
+      href="#"
+      className={classNames(
+        active ? 'bg-gray-100' : '',
+        'block px-4 py-2 text-sm text-gray-700 cursor-pointer' // Added cursor-pointer class
+      )}
+    >
+      Settings
+    </h6>
+  )}
+</Menu.Item>
+<Menu.Item>
+  {({ active }) => (
+    <h6
+      onClick={handleLogout}
+      className={classNames(
+        active ? 'bg-gray-100' : '',
+        'block px-4 py-2 text-sm text-gray-700 cursor-pointer' // Added cursor-pointer class
+      )}
+    >
+      Sign out
+    </h6>
+  )}
+</Menu.Item>
+
                     </Menu.Items>
                   </Transition>
                 </Menu>
