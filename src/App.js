@@ -11,6 +11,7 @@ import ProfileSideBar from './containers/Customers/ProfileSideBar'; */
 import Home from './containers/Home/Home';
 import Registration from './containers/registration/Registration';
 import ContactUs from './components/ContactUs';
+import CustomerInfoPage from './containers/Customers/CustomerInfoPage';
 
 
 export default function App() {
