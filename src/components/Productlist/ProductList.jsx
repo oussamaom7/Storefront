@@ -1,37 +1,34 @@
 import React from 'react';
-import { Card, CardActionArea, CardContent, CardMedia, Typography, Grid } from '@mui/material';
-import "./product.css";
-
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 
 const ProductList = ({ products }) => {
   return (
-  <div className="productListContainer">
-    <Grid container spacing={2}>
-      {products.map((product) => (
-        <Grid item key={product.id} xs={12} sm={6} md={4}>
-          <Card>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image={product.image}
-                alt={product.title}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {product.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Release Date: {product.releaseDate}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
-  </div>
-  
+    <div className="container mx-auto px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <div key={product.id} className="max-w-sm rounded overflow-hidden shadow-md">
+            <Card>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={product.image}
+                  alt={product.title}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h6" component="div">
+                    {product.title}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    Release Date: {product.releaseDate}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

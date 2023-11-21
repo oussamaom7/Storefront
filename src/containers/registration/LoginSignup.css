@@ -1,79 +1,78 @@
 .container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
 }
 
 .buttons{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
 }
 
 .reg-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content:center;
-    border: solid 1px #e0e0e0;
-    border-radius: 4.5px;
-    width: 300px; 
-    padding: 20px;
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    margin: 50px auto; 
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  border: solid 1px #e0e0e0;
+  border-radius: 4.5px;
+  width: 300px; 
+  padding: 20px;
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  margin: 50px auto; 
+}
+
+.buttons {
+  margin-bottom: 10px;
+}
+
+.buttons button {
+  margin-right: 5px; 
+}
+
+.input {
+  width: 100%; 
+  padding: 10px 50px; 
+  margin-bottom: 10px; 
+  box-sizing: border-box; 
+}
+
+.submit-button {
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 14px 122px;
+  border: none;
+  font-size: 15px;
+}
+
+.privacy{
+  font-family: 'proxima-nova', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #010101;
+  margin: 7px 0 7px 0;
+}
+
+.toggle-option{
+  border: 2px solid transparent;
+  border-bottom: 2px solid #e0e0e0;
+  font-family: 'proxima-nova', sans-serif;
+  color: #616161;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 43px;
   
-  .buttons {
-    margin-bottom: 10px;
-  }
+}
 
-  .buttons button {
-    margin-right: 5px; 
-  }
+.active-button {
+  border-bottom: 2px solid black;
+  color: black;
+}
 
-  input {
-    width: 100%; 
-    padding: 10px 50px; 
-    margin-bottom: 10px; 
-    box-sizing: border-box; 
-  }
-  
-  .submit-button {
-    background-color: black;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 14px 122px;
-    border: none;
-    font-size: 15px;
-  }
-
-  .privacy{
-    font-family: 'proxima-nova', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    color: #010101;
-    margin: 7px 0 7px 0;
-  }
-
-  .toggle-option{
-    border: 2px solid transparent;
-    border-bottom: 2px solid #e0e0e0;
-    font-family: 'proxima-nova', sans-serif;
-    color: #616161;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 12px 43px;
-    
-  }
-
-  .active-button {
-    border-bottom: 2px solid black;
-    color: black;
-  }
-
-  
