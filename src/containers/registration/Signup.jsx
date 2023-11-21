@@ -21,11 +21,11 @@ export default function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post('http://localhost:3000/v1/customers', formData);
-
-      if (response.status === 200) {
+  
+      if (response.status === 201) {
         setResponseMessage(response.data.message);
         setFormData({
           firstName: '',
@@ -33,6 +33,9 @@ export default function Signup() {
           email: '',
           password: '',
         });
+  
+        // Refresh the page upon successful form submission
+        window.location.reload();
       } else {
         setResponseMessage(response.data.message);
       }
@@ -40,6 +43,7 @@ export default function Signup() {
       console.error('Error:', error);
     }
   };
+  
 
   useEffect(() => {
     // You can perform additional actions based on responseMessage here
@@ -93,7 +97,7 @@ export default function Signup() {
           At least 8 characters, 1 uppercase letter, 1 number & 1 symbol
         </div>
         <div>
-          <button style={{ background: 'black', color: 'white' }} className="py-3 px-16 rounded-lg" type="submit">
+          <button style={{ background: 'black', color: 'white' }} className=" w-full py-3 px-16 rounded-lg" type="submit">
             Submit
           </button>
         </div>
