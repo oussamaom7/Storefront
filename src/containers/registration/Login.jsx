@@ -1,21 +1,54 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import AuthContext from '../../context/AuthContext'; 
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { loginCustomer, errMsg } = useContext(AuthContext);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await loginCustomer({ email, password });
+    } catch (error) {
+      // Handle login errors if needed
+      console.error('Login error:', error);
+    }
+  };
+
   return (
     <div className='flex justify-center items-center flex-col mx-auto'>
-      <div className="w-full mb-4">
-        <input className="w-full px-4 py-2 border rounded-lg" placeholder='Email Address' type="email" />
-      </div>
-      <div className="w-full mb-4">
-        <input className="w-full px-4 py-2 border rounded-lg" placeholder='Password' type="password" />
-      </div>
-      <div className='text-sm mb-4'><a href="#" className="text-blue-500">Forgot Password?</a></div>
-      <div>
-        <button className="bg-black text-white text-base py-3 px-16 rounded-lg" onClick={(e) => alert('You have successfully signed up!')}>Log in</button>
-      </div>
-      <div className='text-sm'>
-        <p>By logging in, you agree to the Terms of Service and Privacy Policy</p>
-      </div>
+      <form onSubmit={handleLogin}>
+        <div className="w-full mb-4">
+          <input
+            className="w-full px-4 py-2 border rounded-lg"
+            placeholder='Email Address'
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="w-full mb-4">
+          <input
+            className="w-full px-4 py-2 border rounded-lg"
+            placeholder='Password'
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className='text-sm mb-4'><a href="#" className="text-blue-500">Forgot Password?</a></div>
+        {errMsg && <div className='text-red-500 mb-4'>{errMsg}</div>}
+        <div>
+          <button className="bg-black w-full text-white text-base py-3 px-16 rounded-lg">
+            Log in
+          </button>
+        </div>
+        <div className='text-sm'>
+          <p>By logging in, you agree to the Terms of Service and Privacy Policy</p>
+        </div>
+      </form>
     </div>
   )
 }
