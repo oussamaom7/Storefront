@@ -1,7 +1,8 @@
 import React,{ Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { /* Bars3Icon, */ BellIcon, /* XMarkIcon */ } from '@heroicons/react/24/outline'
 import SearchIcon from '@mui/icons-material/Search';
+import { Link } from 'react-router-dom';
 
 
 function classNames(...classes) {
@@ -9,7 +10,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const [isLoggedIn, setLoggedIn] = useState(true)
+  const [isLoggedIn, setLoggedIn] = useState(false)
   return (
     <Disclosure as="nav" className="bg-slate-100">
       {({ open }) => (
@@ -101,7 +102,6 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out
@@ -113,8 +113,8 @@ export default function Navbar() {
                 </Menu>
               </div>):
               (<div className='items-center justify-between '>
-                <button className="bg-blue-500 rounded-full hover:bg-blue-700 h-10 text-white font-bold py-2 px-4 rounded mr-2">
-                LOG IN </button>
+             <Link to="/login">  <button className="bg-blue-500 rounded-full hover:bg-blue-700 h-10 text-white font-bold py-2 px-4 rounded mr-2">
+                LOG IN </button></Link> 
                 <button className="bg-transparent rounded-full hover:bg-blue-500 h-10 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                 SIGN UP </button>
               </div>)}
