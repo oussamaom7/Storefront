@@ -12,7 +12,7 @@ const ProductList = ({ products }) => {
                 <CardMedia
                   component="img"
                   height="200"
-                  image={product.image}
+                  image={product.product_image}
                   alt={product.title}
                 />
                 <CardContent>
