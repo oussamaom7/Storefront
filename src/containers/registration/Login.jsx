@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../context/AuthContext'; 
 import axios from 'axios'
-import { Navigate } from 'react-router-dom';
+
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -21,12 +21,6 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const isAccountValidated = await checkAccountValidation(email);
-
-    if (!isAccountValidated) {
-      setErrmsg('Account is not validate validated. Please validate your account.');
-      return; // Prevent further execution of the login process
-    }
     try {
       await loginCustomer({ email, password });
     } catch (error) {
