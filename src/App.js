@@ -6,6 +6,9 @@ import Home from './containers/Home/Home';
 import Registration from './containers/registration/Registration';
 import ContactUs from './components/ContactUs';
 import CategoriePage from './containers/categorie/categoriePage';
+import CustomerInfoPage from './containers/Customers/CustomerInfoPage';
+import OrdersPage from './containers/Customers/OrdersPage';
+
 import Login from './containers/registration/Login';
 import Card from './components/MovieCards/card';
 import Ticket from './components/MovieCards/ticket';
@@ -25,9 +28,17 @@ export default function App() {
           <Route path="/" element={<Landing />}></Route>
           <Route path="/login" element={<Registration />}></Route>
           <Route path="/contact" element={<ContactUs />}></Route>
+
+          <Route path="/category/:id" element={<CategoriePage />}></Route>
+          <Route path="/CustomerProfile" element={<CustomerInfoPage />}></Route>
+          <Route path="/orders" element={<OrdersPage />}></Route>
+
+    
+
           <Route path="/v1/customers/validate/:id" element={<Login />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
         </Routes>
+
 
   
    </div>

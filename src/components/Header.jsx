@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Header() {
+
  const [categories, setCategories] = useState([]);
  const [isLoading, setIsLoading] = useState(false);
  const [error, setError] = useState('');
@@ -11,6 +12,7 @@ export default function Header() {
  const [authTokens, setAuthTokens] = useState(null);
 
  const fetchCategories = useCallback(async () => {
+
     setIsLoading(true);
     try {
       const response = await axios.get("http://localhost:3000/v1/categories", {
@@ -44,6 +46,7 @@ export default function Header() {
     return classes.filter(Boolean).join(' ');
  }
 
+
  const handleLinkClick = (categoryId) => {
     setCategories(prevCategories => {
       return prevCategories.map(category => ({
@@ -66,6 +69,7 @@ export default function Header() {
                       to="/"
                       className={classNames(
                         'text-color1 hover:text-color2',
+
                         'rounded-md px-3 py-2 text-sm font-medium'
                       )}
                     >
@@ -76,21 +80,27 @@ export default function Header() {
                         key={category.id}
                         to={`/category/${category.id}`}
                         className={classNames(
+
                           category.active ? 'text-color2' : 'text-color1 hover:text-color2',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         onClick={() => handleLinkClick(category.id)}
+
                       >
                         {category.name}
                       </Link>
                     ))}
+
                  </div>
                 </div>
               </div>
+
             </div>
           </div>
         )}
       </Disclosure>
     </div>
+
  );
 }
+
