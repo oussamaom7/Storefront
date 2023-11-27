@@ -1,0 +1,19 @@
+.product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Optional: Align items in the center horizontally */
+  }
+  
+  .pic {
+    margin-right: 20px; 
+
+  }
+  
+  .product-info {
+    flex: 1; 
+    position: absolut;
+    width: 320px;
+    height: 270px;
+
+}
+  
