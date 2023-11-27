@@ -1,9 +1,10 @@
-import React,{ Fragment,useContext } from 'react'
+import React,{ Fragment,useContext, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { /* Bars3Icon, */ BellIcon, /* XMarkIcon */ } from '@heroicons/react/24/outline'
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext'
+import ShoppingPanel from './shoppingPanel';
 
 
 function classNames(...classes) {
@@ -16,11 +17,16 @@ export default function Navbar() {
   const handleLogout = () => {
     logoutCustomer(); // Call the logout function when "Sign out" is clicked
   };
+  const [showShoppingPanel, setShowShoppingPanel] = useState(false);
+
+  const toggleShoppingPanel = () => {
+    setShowShoppingPanel(!showShoppingPanel);
+  };
   return (
-    <Disclosure as="nav" className="bg-slate-100">
+    <Disclosure as="nav" className="bg-color0">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 relative flex h-16 items-center justify-between">
+          <div className="mx-auto max-w-6xl px-2 sm:px-6 lg:px-8 relative flex h-16 items-center justify-between">
             {/* {logo} */}
               <div className="flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
@@ -36,35 +42,34 @@ export default function Navbar() {
               </div>
               {/* {search bar} */}
                <div className="hidden sm:flex sm:ml-6 ">
-                <div className="relative mx-auto text-gray-600">
+                <div className="relative mx-auto text-color1">
                   <input
-                    className="border-2 border-gray-300 bg-white h-10 w-96 px-5 pr-16 rounded-full text-sm focus:outline-none"
+                    className="border-2 border-color2 bg-color0 h-10 w-96 px-5 pr-16 rounded-full text-c1 text-sm focus:outline-none"
                     type="search"
                     name="search"
                     placeholder="Search"
                   />
                   <button type="submit" className="absolute right-2 mt-2 ">
                     {/* You can use a search icon here */}
-                    <SearchIcon style={{ fill: '#d1d5db' }}/>
+                    <SearchIcon style={{ fill: '#ACA7CB' }}/>
                     
                   </button>
                 </div>
               </div>
-              {/* {log in and sign up} */}
               {authTokens? (<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-black focus:outline-none"
+                  className="relative rounded-full bg-color0 p-1 text-c1 hover:text-color1 focus:outline-none"
+                  onClick={toggleShoppingPanel}
                 >
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-
-                {/* Profile dropdown */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </button> 
+                {showShoppingPanel && <ShoppingPanel onClose={toggleShoppingPanel} />}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none">
+                    <Menu.Button className="relative flex rounded-full bg-color1 text-sm focus:outline-none">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <img
@@ -83,18 +88,19 @@ export default function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-color0 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <Menu.Item>
   {({ active }) => (
-    <h6
+ <Link to="/CustomerProfile">   <h6
       href="#"
       className={classNames(
-        active ? 'bg-gray-100' : '',
-        'block px-4 py-2 text-sm text-gray-700 cursor-pointer' // Added cursor-pointer class
+        active ? 'bg-color2' : '',
+        'block px-4 py-1 text-sm text-color1 cursor-pointer' // Added cursor-pointer class
       )}
     >
       Your Profile
-    </h6>
+    </h6></Link>
   )}
 </Menu.Item>
 <Menu.Item>
@@ -102,8 +108,8 @@ export default function Navbar() {
     <h6
       href="#"
       className={classNames(
-        active ? 'bg-gray-100' : '',
-        'block px-4 py-2 text-sm text-gray-700 cursor-pointer' // Added cursor-pointer class
+        active ? 'bg-color2' : '',
+        'block px-4 py-1 text-sm text-color1 cursor-pointer' // Added cursor-pointer class
       )}
     >
       Settings
@@ -115,8 +121,10 @@ export default function Navbar() {
     <h6
       onClick={handleLogout}
       className={classNames(
-        active ? 'bg-gray-100' : '',
-        'block px-4 py-2 text-sm text-gray-700 cursor-pointer' // Added cursor-pointer class
+
+        active ? 'bg-color2' : '',
+        'block px-4 py-1 text-sm text-color1 cursor-pointer' // Added cursor-pointer class
+
       )}
     >
       Sign out
@@ -129,9 +137,9 @@ export default function Navbar() {
                 </Menu>
               </div>):
               (<div className='items-center justify-between '>
-             <Link to="/login">  <button className="bg-blue-500 rounded-full hover:bg-blue-700 h-10 text-white font-bold py-2 px-4 rounded mr-2">
+             <Link to="/login">  <button className='text-c1 rounded-full px-5 py-2 mr-2 text-sm font-medium bg-color2 hover:text-white'>
                 LOG IN </button></Link> 
-                <button className="bg-transparent rounded-full hover:bg-blue-500 h-10 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                <button className= 'text-c1 rounded-full px-5 py-2 text-sm font-medium bg-color2 hover:text-white'>
                 SIGN UP </button>
               </div>)}
 
