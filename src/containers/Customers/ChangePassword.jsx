@@ -1,7 +1,14 @@
 import React from "react";
+import ProfileSideBar from "./ProfileSideBar";
 
 export default function ChangePassword () {
     return(
+        <>
+        <div className="flex justify-between">
+        <div>
+        <ProfileSideBar/>
+        </div>
+       <div>
         <div className="mx-auto my-8 max-w-xl sm:mt-20">
         <div className="mx-auto mt-20 mb-8 max-w-2xl  text-center">
             <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">Change password</h2>
@@ -60,5 +67,7 @@ export default function ChangePassword () {
                 </button>
             </div>
     </div>
+    </div>
+    <div></div></div></>
     )
 }
