@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react'
+import React, { /* useState */ useRef } from 'react'
 import emailjs from '@emailjs/browser';
 // import { ChevronDownIcon } from '@heroicons/react/20/solid'
 // import { Switch } from '@headlessui/react'
@@ -12,10 +12,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ContactUs() {
     
-    const [agreed, setAgreed] = useState(false)
-    const handleToggle = () => {
-        setAgreed(!agreed);
-      };
+    // const [agreed, setAgreed] = useState(false)
+    // const handleToggle = () => {
+    //     setAgreed(!agreed);
+    //   };
 
       const form = useRef();
 
@@ -66,9 +66,9 @@ export default function ContactUs() {
                     <div>
                         <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
                             First name {''}
-                            <a  className="font-semibold text-red-600">
+                            <h6  className="font-semibold text-red-600">
                                 *
-                            </a>
+                            </h6>
                         </label>
                         <div className="mt-2.5">
                             <input 
@@ -84,9 +84,9 @@ export default function ContactUs() {
                     <div>
                         <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
                             Last name {''}
-                            <a  className="font-semibold text-red-600">
+                            <h6  className="font-semibold text-red-600">
                                 *
-                            </a>
+                            </h6>
                         </label>
                         <div className="mt-2.5">
                             <input 
@@ -102,9 +102,9 @@ export default function ContactUs() {
                     <div className="sm:col-span-2">
                         <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
                             Email {''}
-                            <a  className="font-semibold text-red-600">
+                            <h6  className="font-semibold text-red-600">
                                 *
-                            </a>
+                            </h6>
                         </label>
                         <div className="mt-2.5">
                             <input
@@ -154,9 +154,9 @@ export default function ContactUs() {
                     <div className="sm:col-span-2">
                         <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
                             Message {''}
-                            <a  className="font-semibold text-red-600">
+                            <h6  className="font-semibold text-red-600">
                                 *
-                            </a>
+                            </h6>
                         </label>
                         <div className="mt-2.5">
                             <textarea

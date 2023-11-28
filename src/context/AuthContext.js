@@ -57,12 +57,16 @@ export const AuthProvider = ({ children }) => {
       if (response.status === 200) {
         const data = response.data;
 
+
         const { access_token, refresh_token, customer, firstName, lastName } = data;
+
       
         const decodedUser = jwtDecode(access_token);
 
         setAuthTokens({ access_token, refresh_token });
+
         setCustomer({ ...decodedUser, customer, firstName, lastName });
+
         localStorage.setItem('authTokens', JSON.stringify({ access_token, refresh_token }));
 
         navigate('/');
