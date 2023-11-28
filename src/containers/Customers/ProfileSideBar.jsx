@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { PiPackageBold } from "react-icons/pi";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import PasswordIcon from '@mui/icons-material/Password';
-import { TbLogout2 } from "react-icons/tb";
+
+// import { TbLogout2 } from "react-icons/tb";
+
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import { Typography } from "@mui/material";
+import AuthContext from "../../context/AuthContext";
 
 export default function ProfileSideBar () {
+  const authContext = useContext(AuthContext);
+  const { customer } = authContext;
   const menus = [
-    { name: "Personal informations", link: "/", icon: AiOutlineUser, current:true, margin: true },
-    { name :"Change password" , link: "/", icon:PasswordIcon },
-    { name: "Orders", link: "/", icon: PiPackageBold },
+
+    { name: "Personal informations", link: "/CustomerProfile", icon: AiOutlineUser, current:true, margin: true },
+    { name :"Change password" , link: "/changePassword", icon:PasswordIcon },
+    { name: "Orders", link: "/orders", icon: PiPackageBold },
+
     { name: "Favorites", link: "/", icon: AiOutlineHeart },
     
 
@@ -51,7 +58,7 @@ export default function ProfileSideBar () {
             sx={{ fontSize: open ? 17 : 0, transition: "0.25s" }}
           >
             {" "}
-            Customer Name{" "}
+            {customer.firstName}
           </Typography>{" "}
           {menus?.map((menu, i) => (
             <Link

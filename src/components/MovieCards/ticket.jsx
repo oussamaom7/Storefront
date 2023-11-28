@@ -1,15 +1,22 @@
 import React from 'react';
 import QRCode from 'qrcode.react';
 
+import LogoTicket from '../../assets/LogoTicket.png'
+
+
 function Ticket() {
   return (
 <div class="px-4 py-2 text-gray-800">
   <div class="hidden xl:flex flex-row justify-between shadow-md border rounded-md">
     <div
-      class="flex flex-col items-center justify-between w-1/4 px-4 py-2 bg-white border-r-2 border-gray-500 border-dashed rounded-l-md"
+
+      class="flex flex-col items-center justify-between w-1/4 px-4 py-2 bg-color2 border-r-2 border-gray-500 border-dashed rounded-l-md"
     >
       <div class="flex-col">
-          <QRCode value="Your ticket information here" size={180} />
+      <div style={{ backgroundColor: "#ACA7CB", padding: "10px", borderRadius: "8px" }}>
+    <QRCode value="Your ticket information here" size={160} />
+  </div>
+
         <p class="my-2 text-xs italic font-light text-gray-500">
           Scan here to check in!
         </p>
@@ -22,8 +29,11 @@ function Ticket() {
       <div class="text-left">
         <p class="pb-2 text-xs italic">Powered By</p>
         <img
-          src="https://ad-venture.org.uk/wp-content/uploads/2017/05/logo-placeholder.png"
-          alt="h"
+
+          src={LogoTicket}
+          alt=""
+          style={{height: "100px"}}
+
         />
       </div>
     </div>
@@ -139,8 +149,10 @@ function Ticket() {
      <p class="self-start font-bold text-gray-500">Powered By</p>
      <img
      class="mx-auto my-2"
-          src="https://ad-venture.org.uk/wp-content/uploads/2017/05/logo-placeholder.png"
-          alt="h"
+
+          src={LogoTicket}
+          alt=""
+
         />
    </div>
   </div>

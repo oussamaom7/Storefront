@@ -2,9 +2,13 @@ import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 
+import ProfileSideBar from './ProfileSideBar';
+import {Link} from 'react-router-dom'
+
 
 const style = {
-  height: 400, width: '60%'
+  height: 400, width: '100%'
+
 }
 
 const columns = [
@@ -61,8 +65,11 @@ export default function OrdersPage() {
             <div className="" onClick={() => {}}>
               <button className='bg-blue-500 text-white py-1 px-3 rounded-full'>Details</button>
             </div>
-            <div className="" onClick={() => {}}>
-              <button className='bg-blue-500 text-white py-1 px-3 rounded-full'>Download ticket</button>
+
+      <div className="" onClick={() => {}}>
+      <Link to="/tick"> 
+              <button className='bg-blue-500 text-white py-1 px-3 rounded-full'>Download ticket</button></Link> 
+
             </div>
           </div>
         );
@@ -70,6 +77,14 @@ export default function OrdersPage() {
     },
   ];
   return (
+
+    <>
+    <div className="flex justify-between">
+    <div>
+    <ProfileSideBar/>
+    </div>
+   <div>
+
     <div className="flex flex-col justify-center items-center">
        <div className="mx-auto my-8 max-w-2xl  text-center pt-20">
                 <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">My orders</h2>
@@ -90,6 +105,10 @@ export default function OrdersPage() {
       />
     </Box>
     </div>
+
+    </div>
+    <div></div></div></>
+
    
   )
 }
