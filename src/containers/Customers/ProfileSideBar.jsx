@@ -3,7 +3,9 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import { PiPackageBold } from "react-icons/pi";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import PasswordIcon from '@mui/icons-material/Password';
+
 // import { TbLogout2 } from "react-icons/tb";
+
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import { Typography } from "@mui/material";
@@ -13,9 +15,11 @@ export default function ProfileSideBar () {
   const authContext = useContext(AuthContext);
   const { customer } = authContext;
   const menus = [
+
     { name: "Personal informations", link: "/CustomerProfile", icon: AiOutlineUser, current:true, margin: true },
     { name :"Change password" , link: "/changePassword", icon:PasswordIcon },
     { name: "Orders", link: "/orders", icon: PiPackageBold },
+
     { name: "Favorites", link: "/", icon: AiOutlineHeart },
     
 

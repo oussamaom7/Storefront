@@ -11,7 +11,9 @@ const MovieCard = ({ product }) => {
     return (
         <Card
             sx={{
+
                 maxWidth: 380,
+
             }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}

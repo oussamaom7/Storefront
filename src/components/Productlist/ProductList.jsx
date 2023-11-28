@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 // import { Card, CardActionArea, CardContent, CardMedia, Typography, Button } from '@mui/material';
+
 
 
 const ProductList = ({ products }) => {
@@ -13,6 +15,8 @@ const ProductList = ({ products }) => {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {products.map((product) => (
+
+
 
           <div key={product.id} className="relative mb-4 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-md">
             <h6 href="#">
