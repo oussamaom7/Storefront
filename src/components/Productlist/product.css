@@ -1,3 +1,7 @@
 .productListContainer {
     margin: 40px 20px;
   }
+
+  .mr-auto{
+    margin-left: auto;
+  }
