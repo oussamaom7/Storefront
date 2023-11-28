@@ -16,11 +16,12 @@ import PaymentForm from './components/paymentsPage';
 import ProductPage from './components/Productlist/productPage';
 import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
+import ShoppingCartProvider from './context/ShoppingCartContext';
 
 export default function App() {
   return (
     <div className="App">
-   
+   <ShoppingCartProvider>
         <Routes>
         <Route path="/card" element={<Card />}></Route>
         <Route path="/payement" element={<PaymentForm />}></Route>
@@ -31,19 +32,14 @@ export default function App() {
           <Route path="/login" element={<Registration />}></Route>
           <Route path="/contact" element={<ContactUs />}></Route>
           <Route path="/shipping" element={<ShoppingPanel />}></Route>
-
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/CustomerProfile" element={<CustomerInfoPage />}></Route>
           <Route path="/orders" element={<OrdersPage />}></Route>
           <Route path="/changePassword" element={<ChangePassword />}></Route>
-    
-
           <Route path="/v1/customers/validate/:id" element={<Login />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
         </Routes>
-
-
-  
+        </ShoppingCartProvider>
    </div>
   );
 }

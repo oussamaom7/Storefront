@@ -5,8 +5,12 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../Footer';
 
+
 export default function ProductPage() {
+
   const { id } = useParams();
+
+
   const [productsData, setProductsData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -119,7 +123,7 @@ export default function ProductPage() {
                 </div>
 
                 <button type="button" className="add-to-cart-btn h-14 px-6 py-2 font-semibold rounded-xl bg-color2 hover:bg-color1 text-color1 hover:text-color0">
-                  Add to Cart
+                  Add to Cart 
                 </button>
               </div>
             </div>
