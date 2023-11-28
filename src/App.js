@@ -8,12 +8,13 @@ import ContactUs from './components/ContactUs';
 import CategoriePage from './containers/categorie/categoriePage';
 import CustomerInfoPage from './containers/Customers/CustomerInfoPage';
 import OrdersPage from './containers/Customers/OrdersPage';
+import ChangePassword from './containers/Customers/ChangePassword';
 
 export default function App() {
   return (
     <div className="App">
    
-        <Routes>
+        {/* <Routes>
           <Route path="/h" element={<Home />}></Route>
           <Route path="/" element={<Landing />}></Route>
           <Route path="/login" element={<Registration />}></Route>
@@ -21,7 +22,9 @@ export default function App() {
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/CustomerProfile" element={<CustomerInfoPage />}></Route>
           <Route path="/orders" element={<OrdersPage />}></Route>
-        </Routes>
+          <Route path="/changePassword" element={<ChangePassword />}></Route>
+        </Routes> */}
+       <ChangePassword />
     
   
    </div>
