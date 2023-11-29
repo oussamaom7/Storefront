@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Header() {
-  const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [openError, setOpenError] = useState(false);
-  const [authTokens, setAuthTokens] = useState(null);
 
-  const fetchCategories = useCallback(async () => {
+ const [categories, setCategories] = useState([]);
+ const [isLoading, setIsLoading] = useState(false);
+ const [error, setError] = useState('');
+ const [openError, setOpenError] = useState(false);
+ const [authTokens, setAuthTokens] = useState(null);
+
+ const fetchCategories = useCallback(async () => {
+
     setIsLoading(true);
     try {
       const response = await axios.get("http://localhost:3000/v1/categories", {
@@ -34,29 +36,40 @@ export default function Header() {
       setIsLoading(false);
       setOpenError(true);
     }
-  }, [authTokens]);
+ }, [authTokens]);
 
-  useEffect(() => {
+ useEffect(() => {
     fetchCategories();
-  }, [fetchCategories, authTokens]);
+ }, [fetchCategories, authTokens]);
 
-  function classNames(...classes) {
+ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
-  }
+ }
 
-  return (
+
+ const handleLinkClick = (categoryId) => {
+    setCategories(prevCategories => {
+      return prevCategories.map(category => ({
+        ...category,
+        active: category.id === categoryId,
+      }));
+    });
+ };
+
+ return (
     <div className="min-h-full">
-      <Disclosure as="nav" className="bg-slate-400">
+      <Disclosure as="nav" className="bg-color0">
         {({ open }) => (
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
+                 <div className="ml-10 flex items-baseline space-x-4">
                     <Link
                       to="/"
                       className={classNames(
-                        'text-gray-500 hover:text-blue-500',
+                        'text-color1 hover:text-color2',
+
                         'rounded-md px-3 py-2 text-sm font-medium'
                       )}
                     >
@@ -67,31 +80,27 @@ export default function Header() {
                         key={category.id}
                         to={`/category/${category.id}`}
                         className={classNames(
-                          'text-gray-500 hover:text-blue-500',
+
+                          category.active ? 'text-color2' : 'text-color1 hover:text-color2',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
+                        onClick={() => handleLinkClick(category.id)}
+
                       >
                         {category.name}
                       </Link>
                     ))}
-                  </div>
+
+                 </div>
                 </div>
               </div>
-              <div className="flex items-center">
-                <Link
-                  to="/contact"
-                  className={classNames(
-                    'text-white rounded-md px-3 py-2 text-sm font-medium bg-blue-500',
-                    'hover:text-white hover:bg-blue-600'
-                  )}
-                >
-                  Contact Us
-                </Link>
-              </div>
+
             </div>
           </div>
         )}
       </Disclosure>
     </div>
-  );
+
+ );
 }
+

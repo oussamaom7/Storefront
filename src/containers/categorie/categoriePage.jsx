@@ -2,7 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ProductList from '../../components/Productlist/ProductList';
+<<<<<<< HEAD
 
+=======
+import Navbar from '../../components/Navbar';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer'
+import { SimpleSlider } from '../../components/simpleSlider/banner';
+>>>>>>> 265ae4ff1f839d3533a8068eb770b1ae70ba8adb
 export default function CategoriePage() {
   const [subcategories, setSubcategories] = useState([]);
   const [subcategoryProducts, setSubcategoryProducts] = useState({});
@@ -38,6 +45,7 @@ export default function CategoriePage() {
   }, [id]);
 
   return (
+<<<<<<< HEAD
     <div className="page-container">
       {subcategories.map((subcategory) => (
         <div key={subcategory._id} className="category-container">
@@ -48,5 +56,27 @@ export default function CategoriePage() {
         </div>
       ))}
     </div>
+=======
+<>
+  <Navbar />
+  <Header />
+  <div className="max-w-full">
+        <div className="mb-8">
+          <SimpleSlider />
+        </div>
+        </div>
+  <div className="flex flex-col flex-wrap justify-center gap-6 p-4">
+    {subcategories.map((subcategory) => (
+      <div key={subcategory._id} className="w-full bg-color2 p-4 rounded-lg shadow-md">
+        <h2 className="text-lg font-semibold mb-4 text-color1">{subcategory.subcategory_name}</h2>
+        <div className="bg-white rounded-lg p-4">
+          <ProductList products={subcategoryProducts[subcategory._id] || []} />
+        </div>
+      </div>
+    ))}
+  </div>
+  <Footer/>
+</>
+>>>>>>> 265ae4ff1f839d3533a8068eb770b1ae70ba8adb
   );
 }

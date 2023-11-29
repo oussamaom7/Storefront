@@ -3,9 +3,15 @@ import AuthContext from '../../context/AuthContext';
 import axios from 'axios'
 import { Navigate } from 'react-router-dom';
 
+import axios from 'axios'
+
+
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errmsg,setErrmsg] =  useState('');
+
   const [errmsg,setErrmsg] =  useState('');
 
   const { loginCustomer, errMsg } = useContext(AuthContext);
@@ -18,6 +24,10 @@ export default function Login() {
       return false; // Default to false if there's an error or customer not found
     }
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 265ae4ff1f839d3533a8068eb770b1ae70ba8adb
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -56,9 +66,17 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+<<<<<<< HEAD
         <div className='text-sm mb-4'><h6 href="#" className="text-blue-500">Forgot Password?</h6></div>
         {errMsg && <div className='text-red-500 mb-4'>{errMsg}</div>}
         {errmsg && <div className='text-red-500 mb-4'>{errmsg}</div>}
+=======
+
+        <div className='text-sm mb-4'><h6 href="#" className="text-blue-500">Forgot Password?</h6></div>
+        {errMsg && <div className='text-red-500 mb-4'>{errMsg}</div>}
+        {errmsg && <div className='text-red-500 mb-4'>{errmsg}</div>}
+
+>>>>>>> 265ae4ff1f839d3533a8068eb770b1ae70ba8adb
         <div>
           <button className="bg-black w-full text-white text-base py-3 px-16 rounded-lg">
             Log in

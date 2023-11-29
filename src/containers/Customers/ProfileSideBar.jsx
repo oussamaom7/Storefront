@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { PiPackageBold } from "react-icons/pi";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
+import PasswordIcon from '@mui/icons-material/Password';
+
 // import { TbLogout2 } from "react-icons/tb";
+
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import { Typography } from "@mui/material";
+import AuthContext from "../../context/AuthContext";
 
 export default function ProfileSideBar () {
+  const authContext = useContext(AuthContext);
+  const { customer } = authContext;
   const menus = [
-    { name: "Profile", link: "/", icon: AiOutlineUser, current:true },
-    { name: "Orders", link: "/", icon: PiPackageBold },
+
+    { name: "Personal informations", link: "/CustomerProfile", icon: AiOutlineUser, current:true, margin: true },
+    { name :"Change password" , link: "/changePassword", icon:PasswordIcon },
+    { name: "Orders", link: "/orders", icon: PiPackageBold },
+
     { name: "Favorites", link: "/", icon: AiOutlineHeart },
+    
+
     // { name: "Log out", link: "/", icon: TbLogout2 , margin: true},
   ];
   const [open, setOpen] = useState(true);
@@ -47,14 +58,14 @@ export default function ProfileSideBar () {
             sx={{ fontSize: open ? 17 : 0, transition: "0.25s" }}
           >
             {" "}
-            Customer Name{" "}
+            {customer.firstName}
           </Typography>{" "}
           {menus?.map((menu, i) => (
             <Link
               to={menu?.link}
               key={i}
               className={` ${
-                menu?.margin && "mt-72"
+                menu?.margin && "mt-6"
               } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>

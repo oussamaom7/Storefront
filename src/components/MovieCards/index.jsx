@@ -1,48 +1,85 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
-const CardInfo = styled(CardContent)(({theme}) => ({
-    '&:last-child': {
-        paddingBottom: theme.spacing(2),
-      }
-  }));
+const MovieCard = ({ product }) => {
+    const [isHovered, setIsHovered] = useState(false);
 
-const MovieCard = ({ movie }) => {
     return (
-        <Card sx={{ maxWidth: 250, position: "relative" }}>
-            <Box sx={{ position: 'relative'}}>
+        <Card
+            sx={{
+
+                maxWidth: 380,
+
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            <Box
+                sx={{
+                    position: 'relative',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}
+            >
                 <CardMedia
                     component="img"
-                    height="350"
-                    image={movie.image}
-                    alt={movie.title}/>
+                    height="200px"
+                    image={product.product_image}
+                    alt={product.product_name}
+                    // sx={{
+                    //     height: "100px",
+                    //     objectFit: "cover",
+                    // }}
+                />
+              
+                <Box
+                    className="overlayButton"
+                    sx={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: `translate(-50%, -50%) scale(${isHovered ? 1 : 0})`,
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        borderRadius: '4px',
+                        opacity: isHovered ? 1 : 0,
+                        transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: "100%",
+                        width: "100%",
+                        padding: '8px 16px',
+                    }}
+                >
+                    <Button
+                        variant="contained"
+                        sx={{
+                            backgroundColor: '#ACA7CB',
+                            '&:hover': {
+                                backgroundColor: '#474554',
+                            },
+                        }}
+                    >
+                        Acheter
+                    </Button>
+                </Box>
             </Box>
-
-            <CardInfo>
-                <Typography variant="h6" gutterBottom component="div">
-                    {movie.title}
-                </Typography>
-
-                <Typography mb={0} variant="subtitle1" gutterBottom component="div">
-                    {movie.releaseDate}
-                </Typography>
-            </CardInfo>
         </Card>
-    )
-}
+    );
+};
 
 MovieCard.propTypes = {
-    movie: PropTypes.shape({
-        image: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        releaseDate: PropTypes.string
+    product: PropTypes.shape({
+        product_image: PropTypes.string.isRequired,
+        product_name: PropTypes.string.isRequired,
+        // Add other necessary propTypes for the product object
     }).isRequired,
-}
+};
 
 export default MovieCard;
