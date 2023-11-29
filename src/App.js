@@ -18,6 +18,7 @@ import ProductPage from './components/Productlist/productPage';
 import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
 import ShoppingCartProvider from './context/ShoppingCartContext';
+import ImageUpload from './components/imageUpdate';
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
     <div className="App">
    <ShoppingCartProvider>
         <Routes>
+        <Route path="/image" element={<ImageUpload />}></Route>
         <Route path="/card" element={<Card />}></Route>
         <Route path="/payement" element={<PaymentForm />}></Route>
         <Route path="/v1/products/:id" element={<ProductPage />}></Route>

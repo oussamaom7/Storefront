@@ -2,18 +2,14 @@ import React, { useContext, useEffect, useState, useCallback } from 'react';
 import AuthContext from '../../context/AuthContext';
 import axios from 'axios';
 import ProfileSideBar from './ProfileSideBar';
-import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function CustomerInfoPage() {
     const authContext = useContext(AuthContext);
     const { authTokens } = authContext;
     const [customerProfile, setCustomerProfile] = useState({});
-    const [successMessage, setSuccessMessage] = useState(null);
-    const [openSuccess, setOpenSuccess] = useState(false);
-    const [openError, setOpenError] = useState(false);
+
 
     const [details, setDetails] = useState({
         firstName: customerProfile?.firstName || '',
@@ -55,7 +51,7 @@ export default function CustomerInfoPage() {
             }
         } catch (error) {
             setError("Error: " + error.message);
-            setOpenError(true);
+       
         }
     }, [authTokens, setCustomerProfile]);
 
@@ -79,88 +75,23 @@ export default function CustomerInfoPage() {
                     Authorization: `Bearer ${authTokens?.access_token}`,
                 },
             });
-            setSuccessMessage("Customer updated successfully");
-            setOpenSuccess(true);
-            setTimeout(() => {
-                setSuccessMessage(null);
-                setOpenSuccess(false);
-            }, 3000);
+            toast.success('Customer updated successfully');
 
             console.log('Response:', response);
         } catch (error) {
-            setError("Error: " + error.response.data.message);
-            setOpenError(true);
+            console.log(error)
+            toast.error("Error: " + error.response.data.message);
 
-            setTimeout(() => {
-                clearError();
-                setOpenError(false);
-            }, 3000);
         } finally {
             setLoading(false);
         }
     };
 
-    const clearError = () => {
-        setError(null);
-    };
+
 
     return (
         <>
             <div className="flex justify-between">
-                <Modal
-                    open={openSuccess}
-                    onClose={() => setOpenSuccess(false)}
-                    closeAfterTransition
-                >
-                    <Fade in={openSuccess}>
-                        <Box
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                height: "100vh",
-                            }}
-                        >
-                            <Alert
-                                severity="success"
-                                onClose={() => {
-                                    setSuccessMessage(null);
-                                    setOpenSuccess(false);
-                                }}
-                                sx={{ width: "80%" }}
-                            >
-                                {successMessage}
-                            </Alert>
-                        </Box>
-                    </Fade>
-                </Modal>
-                <Modal
-                    open={openError}
-                    onClose={() => setOpenError(false)}
-                    closeAfterTransition
-                >
-                    <Fade in={openError}>
-                        <Box
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                height: "100vh",
-                            }}
-                        >
-                            <Alert
-                                severity="error"
-                                onClose={() => {
-                                    clearError();
-                                    setOpenError(false);
-                                }}
-                                sx={{ width: "80%" }}
-                            >
-                                Error: {error}
-                            </Alert>
-                        </Box>
-                    </Fade>
-                </Modal>
                 <div>
                     <ProfileSideBar />
                 </div>
@@ -231,6 +162,7 @@ export default function CustomerInfoPage() {
                 </div>
                 <div></div>
             </div>
+            <ToastContainer/>
         </>
     );
 }

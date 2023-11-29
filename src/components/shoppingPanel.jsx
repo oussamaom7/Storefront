@@ -1,34 +1,16 @@
 import React, { useState } from 'react';
+import { useShoppingCart } from "../context/ShoppingCartContext";
+import { Link } from 'react-router-dom';
 
-const ShoppingPanel = ({ onClose }) => {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      name: 'Throwback Hip Bag',
-      price: 90.00,
-      image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-      color: 'Salmon',
-      quantity: 1,
-    },
-    {
-      id: 2,
-      name: 'Medium Stuff Satchel',
-      price: 32.00,
-      image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-      color: 'Blue',
-      quantity: 1,
-    },
-    // Add more items as needed
-  ]);
+const ShoppingPanel = ({ isOpen }) => {
+ 
+  const {cartItems,removeItemFromCart,closeCard,subtotal}=useShoppingCart();
 
-  const removeItem = (id) => {
-    const updatedItems = items.filter(item => item.id !== id);
-    setItems(updatedItems);
+  const handleRemoveItem = (id) => {
+    removeItemFromCart(id); // Pass the correct item ID to remove
   };
-
-  const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
-
   return (
+    <div className={`relative z-20 ${isOpen ? "block" : "hidden"}`}>
     <div className="relative z-20" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
       <div className="fixed inset-0 bg-opacity-60 bg-black transition-opacity"></div>
 
@@ -41,7 +23,7 @@ const ShoppingPanel = ({ onClose }) => {
                   <div className="flex items-start justify-between">
                     <h2 className="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
                     <div className="ml-3 flex h-7 items-center">
-                      <button type="button" className="relative -m-2 p-2 text-gray-400 hover:text-gray-500" onClick={onClose}>
+                      <button type="button" className="relative -m-2 p-2 text-gray-400 hover:text-gray-500" onClick={closeCard}>
                         <span className="absolute -inset-0.5"></span>
                         <span className="sr-only">Close panel</span>
                         <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
@@ -54,27 +36,26 @@ const ShoppingPanel = ({ onClose }) => {
                   <div className="mt-8">
                     <div className="flow-root">
                       <ul className="-my-6 divide-y divide-gray-200">
-                        {items.map(item => (
+                        {cartItems.map(item => (
                           <li className="flex py-6" key={item.id}>
                             <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                              <img src={item.image} alt={item.name} className="h-full w-full object-cover object-center" />
+                              <img src={item.product_image} alt={item.product_name} className="h-full w-full object-cover object-center" />
                             </div>
 
                             <div className="ml-4 flex flex-1 flex-col">
                               <div>
                                 <div className="flex justify-between text-base font-medium text-gray-900">
                                   <h3>
-                                    <h6 href="#">{item.name}</h6>
+                                    <h6 href="#">{item.product_name}</h6>
                                   </h3>
                                   <p className="ml-4">${item.price}</p>
                                 </div>
-                                <p className="mt-1 text-sm text-gray-500">{item.color}</p>
                               </div>
                               <div className="flex flex-1 items-end justify-between text-sm">
                                 <p className="text-gray-500">Qty {item.quantity}</p>
 
                                 <div className="flex">
-                                  <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={() => removeItem(item.id)}>Remove</button>
+                                  <button type="button" className="font-medium text-color2 hover:text-indigo-500" onClick={() => handleRemoveItem(item.id)}>Remove</button>
                                 </div>
                               </div>
                             </div>
@@ -92,12 +73,12 @@ const ShoppingPanel = ({ onClose }) => {
                   </div>
                   <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                   <div className="mt-6">
-                    <h6 href="#" className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</h6>
+                <Link to="/payement">  <h6  className="flex items-center justify-center rounded-md border border-transparent bg-color2 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700" onClick={closeCard}>Checkout</h6></Link>  
                   </div>
                   <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                     <p>
                       or
-                      <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                      <button type="button" className="font-medium text-color2 hover:text-indigo-500">
                         Continue Shopping
                         <span aria-hidden="true"> &rarr;</span>
                       </button>
@@ -109,6 +90,7 @@ const ShoppingPanel = ({ onClose }) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

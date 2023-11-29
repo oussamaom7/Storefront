@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../context/AuthContext'; 
 
-import axios from 'axios'
+// import axios from 'axios'
 
 
 
@@ -12,19 +12,20 @@ export default function Login() {
   const [errmsg,setErrmsg] =  useState('');
 
   const { loginCustomer, errMsg } = useContext(AuthContext);
-  const checkAccountValidation = async (id) => {
-    try {
-      const response = await axios.get(`http://localhost:3000/v1/customers/validate/${id}`);
-      return response.data.valid_account;
-    } catch (error) {
-      console.error('Error checking account validation:', error);
-      return false; // Default to false if there's an error or customer not found
-    }
-  };
+  // const checkAccountValidation = async (id) => {
+  //   try {
+  //     const response = await axios.get(`http://localhost:3000/v1/customers/validate/${id}`);
+  //     return response.data.valid_account;
+  //   } catch (error) {
+  //     console.error('Error checking account validation:', error);
+  //     return false; // Default to false if there's an error or customer not found
+  //   }
+  // };
 
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
       await loginCustomer({ email, password });
     } catch (error) {
