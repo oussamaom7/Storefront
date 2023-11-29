@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../context/AuthContext'; 
 
-import axios from 'axios'
+
 
 
 
@@ -9,9 +9,9 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [errmsg,setErrmsg] =  useState('');
 
   const { loginCustomer, errMsg } = useContext(AuthContext);
+<<<<<<< HEAD
   const checkAccountValidation = async (id) => {
     try {
       const response = await axios.get(`http://localhost:3000/v1/customers/validate/${id}`);
@@ -22,10 +22,22 @@ export default function Login() {
       return false; // Default to false if there's an error or customer not found
     }
   };
+=======
+  // const checkAccountValidation = async (id) => {
+  //   try {
+  //     const response = await axios.get(`http://localhost:3000/v1/customers/validate/${id}`);
+  //     return response.data.valid_account;
+  //   } catch (error) {
+  //     console.error('Error checking account validation:', error);
+  //     return false; // Default to false if there's an error or customer not found
+  //   }
+  // };
+>>>>>>> c88666192439a15415ab0b450185a34dbf80716b
 
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
       await loginCustomer({ email, password });
     } catch (error) {
@@ -56,10 +68,9 @@ export default function Login() {
           />
         </div>
 
+
         <div className='text-sm mb-4'><h6 href="#" className="text-blue-500">Forgot Password?</h6></div>
         {errMsg && <div className='text-red-500 mb-4'>{errMsg}</div>}
-        {errmsg && <div className='text-red-500 mb-4'>{errmsg}</div>}
-
         <div>
           <button className="bg-black w-full text-white text-base py-3 px-16 rounded-lg">
             Log in
