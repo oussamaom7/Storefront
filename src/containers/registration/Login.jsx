@@ -1,11 +1,7 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../context/AuthContext'; 
 
-// import axios from 'axios'
 
-
-
-import axios from 'axios'
 
 
 
@@ -25,15 +21,6 @@ export default function Login() {
   //   }
   // };
 
-  const checkAccountValidation = async (id) => {
-    try {
-      const response = await axios.get(`http://localhost:3000/v1/customers/validate/${id}`);
-      return response.data.valid_account;
-    } catch (error) {
-      console.error('Error checking account validation:', error);
-      return false; // Default to false if there's an error or customer not found
-    }
-  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -71,10 +58,6 @@ export default function Login() {
 
         <div className='text-sm mb-4'><h6 href="#" className="text-blue-500">Forgot Password?</h6></div>
         {errMsg && <div className='text-red-500 mb-4'>{errMsg}</div>}
-<<<<<<< HEAD
-=======
-        {errmsg && <div className='text-red-500 mb-4'>{errmsg}</div>}
->>>>>>> 12660f168432d842c0d35d0cea31e65fb1191f8d
         <div>
           <button className="bg-black w-full text-white text-base py-3 px-16 rounded-lg">
             Log in

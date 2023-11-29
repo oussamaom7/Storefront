@@ -1,15 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
-// import { Card, CardActionArea, CardContent, CardMedia, Typography, Button } from '@mui/material';
-
-=======
 
 // import { Card, CardActionArea, CardContent, CardMedia, Typography, Button } from '@mui/material';
 
 
->>>>>>> main
 
 const ProductList = ({ products }) => {
   const handleBuyClick = (productId) => {
@@ -20,32 +15,8 @@ const ProductList = ({ products }) => {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {products.map((product) => (
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-          <div key={product.id} className="max-w-sm rounded overflow-hidden shadow-md">
-            <Card>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={product.product_image}
-                  alt={product.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {product.title}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    Release Date: {product.releaseDate}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-=======
 
 
->>>>>>> main
 
           <div key={product.id} className="relative mb-4 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-md">
             <h6 href="#">
@@ -78,10 +49,6 @@ const ProductList = ({ products }) => {
               </div>
             </div>
 
-<<<<<<< HEAD
-=======
->>>>>>> 265ae4ff1f839d3533a8068eb770b1ae70ba8adb
->>>>>>> main
           </div>
         ))}
       </div>
@@ -90,4 +57,3 @@ const ProductList = ({ products }) => {
 };
 
 export default ProductList;
-
