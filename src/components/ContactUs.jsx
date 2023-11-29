@@ -64,11 +64,9 @@ export default function ContactUs() {
             <form action="#" ref={form} className="mx-auto mt-8 max-w-xl sm:mt-20" onSubmit={sendEmail}>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
                     <div>
-                        <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
-                            First name {''}
-                            <h6  className="font-semibold text-red-600">
-                                *
-                            </h6>
+                        <label htmlFor="first-name" className=" flex text-sm font-semibold leading-6 text-gray-900">
+                            First name {''} 
+                            <h6  className="font-semibold text-red-600">*</h6>
                         </label>
                         <div className="mt-2.5">
                             <input 
@@ -82,7 +80,7 @@ export default function ContactUs() {
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
+                        <label htmlFor="last-name" className="flex text-sm font-semibold leading-6 text-gray-900">
                             Last name {''}
                             <h6  className="font-semibold text-red-600">
                                 *
@@ -100,7 +98,7 @@ export default function ContactUs() {
                         </div>
                     </div>
                     <div className="sm:col-span-2">
-                        <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
+                        <label htmlFor="email" className="flex text-sm font-semibold leading-6 text-gray-900">
                             Email {''}
                             <h6  className="font-semibold text-red-600">
                                 *
@@ -152,7 +150,7 @@ export default function ContactUs() {
                         </div>
                     </div>
                     <div className="sm:col-span-2">
-                        <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
+                        <label htmlFor="message" className="flex text-sm font-semibold leading-6 text-gray-900">
                             Message {''}
                             <h6  className="font-semibold text-red-600">
                                 *
