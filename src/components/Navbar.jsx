@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext'
 
+
 import { useShoppingCart } from '../context/ShoppingCartContext';
 import Logonavbar from '../assets/Logonabvar.png'
 
