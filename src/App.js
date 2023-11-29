@@ -17,13 +17,13 @@ import PaymentForm from './components/paymentsPage';
 import ProductPage from './components/Productlist/productPage';
 import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
-import ShoppingCartProvider from './context/ShoppingCartContext';
+// import ShoppingCartProvider from './context/ShoppingCartContext';
 
 
 export default function App() {
   return (
     <div className="App">
-   <ShoppingCartProvider>
+  {/* <ContactUs/> */}
         <Routes>
         <Route path="/card" element={<Card />}></Route>
         <Route path="/payement" element={<PaymentForm />}></Route>
@@ -42,7 +42,7 @@ export default function App() {
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
         </Routes>
-        </ShoppingCartProvider>
+     
    </div>
   );
 }

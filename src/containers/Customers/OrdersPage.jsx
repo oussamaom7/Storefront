@@ -1,6 +1,6 @@
 import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
-import Box from '@mui/material/Box';
+import Box from '@mui/material/Box'; 
 
 import ProfileSideBar from './ProfileSideBar';
 import {Link} from 'react-router-dom'

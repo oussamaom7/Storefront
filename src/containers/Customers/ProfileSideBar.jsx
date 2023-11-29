@@ -1,7 +1,7 @@
 import React, { useState,useContext } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { PiPackageBold } from "react-icons/pi";
-import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineUser} from "react-icons/ai";
 import PasswordIcon from '@mui/icons-material/Password';
 
 // import { TbLogout2 } from "react-icons/tb";
@@ -20,12 +20,9 @@ export default function ProfileSideBar () {
     { name :"Change password" , link: "/changePassword", icon:PasswordIcon },
     { name: "Orders", link: "/orders", icon: PiPackageBold },
 
-    { name: "Favorites", link: "/", icon: AiOutlineHeart },
     
-
-    // { name: "Log out", link: "/", icon: TbLogout2 , margin: true},
   ];
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <section className="flex gap-6">
       <div

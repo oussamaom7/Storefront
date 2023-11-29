@@ -15,6 +15,7 @@ export default function Login() {
   const checkAccountValidation = async (id) => {
     try {
       const response = await axios.get(`http://localhost:3000/v1/customers/validate/${id}`);
+      loginCustomer({ email, password });
       return response.data.valid_account;
     } catch (error) {
       console.error('Error checking account validation:', error);
@@ -38,7 +39,7 @@ export default function Login() {
       <form onSubmit={handleLogin}>
         <div className="w-full mb-4">
           <input
-            className="w-full px-4 py-2 border rounded-lg"
+            className="w-full px-4 py-2 border rounded-lg "
             placeholder='Email Address'
             type="email"
             value={email}

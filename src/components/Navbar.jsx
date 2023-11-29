@@ -1,6 +1,5 @@
 import React,{ Fragment,useContext, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { /* Bars3Icon, */ BellIcon, /* XMarkIcon */ } from '@heroicons/react/24/outline'
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext'
@@ -103,19 +102,6 @@ export default function Navbar() {
     >
       Your Profile
     </h6></Link>
-  )}
-</Menu.Item>
-<Menu.Item>
-  {({ active }) => (
-    <h6
-      href="#"
-      className={classNames(
-        active ? 'bg-color2' : '',
-        'block px-4 py-1 text-sm text-color1 cursor-pointer' // Added cursor-pointer class
-      )}
-    >
-      Settings
-    </h6>
   )}
 </Menu.Item>
 <Menu.Item>
