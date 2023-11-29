@@ -27,6 +27,11 @@ import ImageUpload from './components/imageUpdate';
 
 
 
+import ImageUpload from './components/imageUpdate';
+
+
+
+
 export default function App() {
   return (
     <div className="App">
