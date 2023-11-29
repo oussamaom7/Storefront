@@ -21,7 +21,9 @@ import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
 import ShoppingCartProvider from './context/ShoppingCartContext';
 
+
 import ImageUpload from './components/imageUpdate';
+
 
 
 
@@ -41,7 +43,6 @@ export default function App() {
           <Route path="/contact" element={<ContactUs />}></Route>
 
           <Route path="/shipping" element={<ShoppingPanel />}></Route>
-
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/CustomerProfile" element={<CustomerInfoPage />}></Route>
           <Route path="/orders" element={<OrdersPage />}></Route>
