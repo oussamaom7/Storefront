@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ProductList from '../../components/Productlist/ProductList';
+
+
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer'
 import { SimpleSlider } from '../../components/simpleSlider/banner';
+
 export default function CategoriePage() {
   const [subcategories, setSubcategories] = useState([]);
   const [subcategoryProducts, setSubcategoryProducts] = useState({});
@@ -41,6 +44,7 @@ export default function CategoriePage() {
   }, [id]);
 
   return (
+
 <>
   <Navbar />
   <Header />
@@ -48,6 +52,17 @@ export default function CategoriePage() {
         <div className="mb-8">
           <SimpleSlider />
         </div>
+
+    <div className="page-container">
+      {subcategories.map((subcategory) => (
+        <div key={subcategory._id} className="category-container">
+          <h2>{subcategory.subcategory_name}</h2>
+          <div className="grid-container">
+            <ProductList products={subcategoryProducts[subcategory._id] || []} />
+          </div>
+        </div>
+      ))}
+    </div>
         </div>
   <div className="flex flex-col flex-wrap justify-center gap-6 p-4">
     {subcategories.map((subcategory) => (
