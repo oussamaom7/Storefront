@@ -49,15 +49,29 @@ export const SimpleSlider = ({ initialSlide = 0 }) => {
     dots: true,
     infinite: false,
     speed: 500,
+<<<<<<< HEAD
     slidesToShow: 4,
     slidesToScroll: 4,
+=======
+
+    slidesToShow: 3,
+    slidesToScroll: 3,
+
+>>>>>>> main
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
+<<<<<<< HEAD
           slidesToShow: 4,
           slidesToScroll: 4,
+=======
+
+          slidesToShow: 3,
+          slidesToScroll: 3,
+
+>>>>>>> main
           infinite: true,
           dots: true,
         },
@@ -85,7 +99,13 @@ export const SimpleSlider = ({ initialSlide = 0 }) => {
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full bg-cover bg-center bg-color2"></div>
       </div>
+<<<<<<< HEAD
       <div className="relative z-10 py-8">
+=======
+
+      <div className="relative h-96 z-10 py-20">
+
+>>>>>>> main
         <div className="mx-auto max-w-full px-4">
           {isLoading ? (
             <div className="flex items-center justify-center ">

@@ -88,7 +88,6 @@ export default function CustomerInfoPage() {
     };
 
 
-
     return (
         <>
             <div className="flex justify-between">
