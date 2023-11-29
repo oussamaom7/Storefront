@@ -34,7 +34,7 @@ const columns = [
   {
     field: 'cart_total_price',
     headerName: 'Total Price',
-    type: 'number',
+    type: 'String',
     width: 150,
     headerAlign: 'start'   
   }

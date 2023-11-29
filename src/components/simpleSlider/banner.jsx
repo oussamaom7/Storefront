@@ -92,7 +92,7 @@ export const SimpleSlider = ({ initialSlide = 0 }) => {
 
       <div className="relative h-96 z-10 py-20">
 
-        <div className="mx-auto max-w-full px-4">
+        <div className="mx-auto max-w-full">
           {isLoading ? (
             <div className="flex items-center justify-center ">
               {/* Render your loading spinner here */}
