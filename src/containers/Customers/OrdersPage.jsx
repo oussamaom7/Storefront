@@ -46,7 +46,7 @@ export default function OrdersPage() {
   const { customer } = authContext;
   const [orders,setOrders] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [/* error */, setError] = useState(null);
   const fetchOrderData = useCallback(async () => {
     try {
       console.log(customer.id)

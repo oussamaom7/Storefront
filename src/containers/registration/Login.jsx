@@ -9,7 +9,6 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [errmsg,setErrmsg] =  useState('');
 
   const { loginCustomer, errMsg } = useContext(AuthContext);
   // const checkAccountValidation = async (id) => {
@@ -58,8 +57,6 @@ export default function Login() {
 
         <div className='text-sm mb-4'><h6 href="#" className="text-blue-500">Forgot Password?</h6></div>
         {errMsg && <div className='text-red-500 mb-4'>{errMsg}</div>}
-        {errmsg && <div className='text-red-500 mb-4'>{errmsg}</div>}
-
         <div>
           <button className="bg-black w-full text-white text-base py-3 px-16 rounded-lg">
             Log in

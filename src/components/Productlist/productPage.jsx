@@ -13,7 +13,7 @@ export default function ProductPage() {
   const {getItemsQuantity,increaseCarteQantity,decreaseCarteQantity}=useShoppingCart();
    const quantity=getItemsQuantity(id)
   const [productsData, setProductsData] = useState(null);
-  const [error, setError] = useState(null);
+  const [/* error */, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchProductsData = useCallback(async () => {
