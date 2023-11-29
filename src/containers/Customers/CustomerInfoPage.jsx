@@ -97,7 +97,7 @@ export default function CustomerInfoPage() {
                 <div>
                     <form className="container" onSubmit={handleSubmit}>
                         <div className="mx-auto my-8 max-w-2xl text-center">
-                            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">Personal information</h2>
+                            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">Personal informations</h2>
                         </div>
                         <div className="mx-auto max-w-xl">
                             <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">

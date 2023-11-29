@@ -113,19 +113,6 @@ export default function Navbar({id}) {
 <Menu.Item>
   {({ active }) => (
     <h6
-      href="#"
-      className={classNames(
-        active ? 'bg-color2' : '',
-        'block px-4 py-1 text-sm text-color1 cursor-pointer' // Added cursor-pointer class
-      )}
-    >
-      Settings
-    </h6>
-  )}
-</Menu.Item>
-<Menu.Item>
-  {({ active }) => (
-    <h6
       onClick={handleLogout}
       className={classNames(
 
