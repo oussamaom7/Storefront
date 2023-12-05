@@ -1,20 +1,97 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import QRCode from 'qrcode.react';
-
-import LogoTicket from '../../assets/LogoTicket.png'
-
+import LogoTicket from '../../assets/LogoTicket.png';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+// import html2canvas from 'html2canvas';
+// import jsPDF from 'jspdf';
+import ReactToPrint from 'react-to-print';
 
 function Ticket() {
-  return (
-<div class="px-4 py-2 text-gray-800">
-  <div class="hidden xl:flex flex-row justify-between shadow-md border rounded-md">
-    <div
+  const { id } = useParams();
+  const [qrData, setQRData] = useState(null);
+  const [ticketData, setTicketData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const pdfContainer = useRef();
+  const [loader, setLoader] = useState(false);
 
+  useEffect(() => {
+    const fetchTicketData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/v1/orders/${id}`);
+        console.log(response.data);
+        setTicketData(response.data);
+        const { _id, customer_id } = response.data;
+        const qrPayload = {
+          orderId: _id,
+          customerId: customer_id._id,
+          firstName: customer_id.firstName,
+          lastName: customer_id.lastName
+         
+        };
+        setQRData(JSON.stringify(qrPayload));
+
+        setIsLoading(false);
+      } catch (error) {
+        setError("Error fetching ticket data: " + error.message);
+        setIsLoading(false);
+      }
+    };
+
+    fetchTicketData();
+  }, [id]);
+
+  const downloadPDF = () => {
+    window.print();
+  }
+  
+  return (
+    <div className="px-40 py-2 text-gray-800">
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        ticketData && ticketData.order_items && ticketData.order_items.map((order, index) => (
+          <div>
+            <ReactToPrint
+              trigger={() => (
+                <button
+                  className="receipt-modal-download-button"
+                  onClick={downloadPDF}
+                  disabled={loader}
+                >
+                  {loader ? (
+                    <span>Downloading</span>
+                  ) : (
+                    <span>Download</span>
+                  )}
+                </button>
+              )}
+              content={() => pdfContainer.current}
+            />
+            <div key={index} ref={pdfContainer}  className=" flex  justify-between shadow-md border rounded-md mt-5">
+              
+    <div 
       class="flex flex-col items-center justify-between w-1/4 px-4 py-2 bg-color2 border-r-2 border-gray-500 border-dashed rounded-l-md"
     >
       <div class="flex-col">
       <div style={{ backgroundColor: "#ACA7CB", padding: "10px", borderRadius: "8px" }}>
-    <QRCode value="Your ticket information here" size={160} />
+      {qrData && (
+      // <QRCode value={`${qrData},itemId:${order.id}`} size={160} />
+      <QRCode
+      value={JSON.stringify({
+        orderId: ticketData._id,
+        customerId: ticketData.customer_id._id,
+        firstName: ticketData.customer_id.firstName,
+        lastName: ticketData.customer_id.lastName,
+        itemId: order.id
+      })}
+      size={160}
+    />
+    
+      )}
   </div>
 
         <p class="my-2 text-xs italic font-light text-gray-500">
@@ -37,17 +114,20 @@ function Ticket() {
         />
       </div>
     </div>
-    <div class="relative flex flex-col w-3/4 product-container" style={{height: "400px"}}>
-    <img
-  src="https://gcdn.imgix.net/events/wac-vs-sundowns.jpeg?w=900&h=600&fit=clip&auto=format,compress&q=80"
-  alt='h'
-  style={{
-    objectFit: "cover", 
-    width: "100%",      
-    height: "100%",    
-  }}
-/>
+  
+    <div  class="relative flex flex-col w-3/4 product-container" style={{height: "400px"}}>
 
+
+          
+            <img
+          src={order.product_image}
+          alt='h'
+          style={{
+            objectFit: "cover", 
+            width: "100%",      
+            height: "100%",    
+          }}
+        />
       <div class="absolute p-1 bottom-24">
         <div
           class="flex flex-row px-4 py-2 text-xs font-bold text-red-800 bg-white rounded-md "
@@ -60,8 +140,8 @@ function Ticket() {
         <p
           class="px-4 py-2 text-xs font-bold text-red-800 bg-white rounded-md "
         >
-          <span class="font-normal text-gray-500">Ticket Number :</span>
-          12
+          <span class="font-normal text-gray-500">Ticket Id :</span>
+          {order.id}
         </p>
       </div>
       <div class="absolute bottom-0 flex flex-col w-full h-24">
@@ -84,7 +164,7 @@ function Ticket() {
           <div class="flex flex-col ml-4">
             <div class="hidden md:flex flex-col">
               <p class="mb-1 text-xs text-gray-500">Type of event :</p>
-              <p class="text-xs font-semibold text-red-800">Seminar</p>
+              <p class="text-xs font-semibold text-red-800">{order.product_name}</p>
             </div>
             <div class="flex flex-col mt-1">
               <p class="mb-1 text-xs text-gray-500">Location :</p>
@@ -98,20 +178,29 @@ function Ticket() {
             <div class="flex flex-col">
               <p class="mb-1 text-xs text-gray-500">Ticket Owner :</p>
               <p class="text-xs font-semibold text-red-800">
-                Fajrian Aidil Pratama
+              {ticketData.customer_id.lastName}
               </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   </div>
-  <div class="xl:hidden flex flex-col bg-white border rounded-md shadow-md">
+ 
+
+  </div>
+ )))}
+ {/* <div>{isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        ticketData && ticketData.order_items && ticketData.order_items.map((order, index) => (
+  <div key={index} ref={pdfContainer}  class="xl:hidden flex flex-col bg-white border rounded-md shadow-md">
    <div class="py-2 px-4 flex-col flex text-center">
-      <img class="mx-auto"
-          src="https://store-images.s-microsoft.com/image/apps.33967.13510798887182917.246b0a3d-c3cc-46fc-9cea-021069d15c09.392bf5f5-ade4-4b36-aa63-bb15d5c3817a"
-        alt="h"
-        />
+   {qrData && (
+        <QRCode value={qrData} size={160} />
+      )}
         <p class="font-bold text-lg md:text-3xl">Scan here to check in!</p>
    </div>
    <hr class="border-dashed border-2 border-gray-400"/>
@@ -150,14 +239,18 @@ function Ticket() {
      <img
      class="mx-auto my-2"
 
-          src={LogoTicket}
+          src={order.product_image}
           alt=""
-
+          style={{height: "400px",
+                 width:"100%"}}
         />
    </div>
-  </div>
+  
+  </div>)))} */}
+{/* </div> */}
 </div>
   );
 }
 
 export default Ticket;
+

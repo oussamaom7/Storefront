@@ -53,28 +53,20 @@ export default function CategoriePage() {
           <SimpleSlider />
         </div>
 
-    <div className="page-container">
-      {subcategories.map((subcategory) => (
-        <div key={subcategory._id} className="category-container">
-          <h2>{subcategory.subcategory_name}</h2>
-          <div className="grid-container">
-            <ProductList products={subcategoryProducts[subcategory._id] || []} />
-          </div>
-        </div>
-      ))}
-    </div>
-        </div>
+       
   <div className="flex flex-col flex-wrap justify-center gap-6 p-4">
     {subcategories.map((subcategory) => (
       <div key={subcategory._id} className="w-full bg-color2 p-4 rounded-lg shadow-md">
-        <h2 className="text-lg font-semibold mb-4 text-color1">{subcategory.subcategory_name}</h2>
+        <h2 className="text-lg font-semibold mb-4 text-color0">{subcategory.subcategory_name}</h2>
         <div className="bg-white rounded-lg p-4">
           <ProductList products={subcategoryProducts[subcategory._id] || []} />
         </div>
       </div>
     ))}
   </div>
+ 
   <Footer/>
+  </div>
 </>
   );
 }

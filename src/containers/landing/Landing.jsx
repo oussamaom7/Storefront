@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../../components/Navbar';
-import { SimpleSlider } from '../../components/simpleSlider/banner';
-import ProductList from '../../components/Productlist/ProductList';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import Navbar from "../../components/Navbar";
+import { SimpleSlider } from "../../components/simpleSlider/banner";
+import ProductList from "../../components/Productlist/ProductList";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import axios from "axios";
 
 export default function Landing() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,9 +34,12 @@ export default function Landing() {
   return (
     <div className="bg-color0 min-h-screen">
       <Navbar />
+      <hr />
       <Header />
-      <div className="max-w-full"> {/* Change max-w-7xl to max-w-full */}
-        <div className="mb-16 mt-4">
+      <div className="max-w-full">
+        {" "}
+        {/* Change max-w-7xl to max-w-full */}
+        <div className="mb-16">
           <SimpleSlider />
         </div>
         {isLoading ? (

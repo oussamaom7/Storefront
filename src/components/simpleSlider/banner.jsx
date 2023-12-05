@@ -1,15 +1,15 @@
-import Slider from 'react-slick';
-import { useState, useEffect, useRef, useCallback } from 'react';
-import './slick.css';
-import './slick-theme.css';
-import MovieCard from '../MovieCards';
-import axios from 'axios';
+import Slider from "react-slick";
+import { useState, useEffect, useRef, useCallback } from "react";
+import "./slick.css";
+import "./slick-theme.css";
+import MovieCard from "../MovieCards";
+import axios from "axios";
 
 export const SimpleSlider = ({ initialSlide = 0 }) => {
   const [hasSetPosition, setHasSetPosition] = useState(false);
   const slider = useRef();
   const [productsData, setProductsData] = useState([]);
-  const [/* error */, setError] = useState(null);
+  const [, /* error */ setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchProductsData = useCallback(async () => {
@@ -41,9 +41,7 @@ export const SimpleSlider = ({ initialSlide = 0 }) => {
     if (!isLoading) {
       // Perform actions or logic based on productsData here
     }
-
   }, [isLoading, productsData]);
-
 
   var settings = {
     dots: true,
@@ -58,7 +56,6 @@ export const SimpleSlider = ({ initialSlide = 0 }) => {
       {
         breakpoint: 1024,
         settings: {
-
           slidesToShow: 3,
           slidesToScroll: 3,
 
@@ -83,15 +80,21 @@ export const SimpleSlider = ({ initialSlide = 0 }) => {
       },
     ],
   };
-
   return (
     <div className="relative overflow-hidden w-full">
-      <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-cover bg-center bg-color2"></div>
+      <div className="absolute inset-0 z-0  bg-color2 opacity-95">
+        <div
+          class="w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            objectFit: "cover",
+            opacity: 0.8, // Opacité ajustée à un nombre entre 0 et 1
+          }}
+        ></div>
       </div>
 
       <div className="relative h-96 z-10 py-20">
-
         <div className="mx-auto max-w-full">
           {isLoading ? (
             <div className="flex items-center justify-center ">

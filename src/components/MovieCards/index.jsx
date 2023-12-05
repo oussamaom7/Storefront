@@ -60,7 +60,7 @@ const MovieCard = ({ product }) => {
                     <Button
                         variant="contained"
                         sx={{
-                            backgroundColor: '#ACA7CB',
+                            backgroundColor: '#FF6C22',
                             '&:hover': {
                                 backgroundColor: '#474554',
                             },

@@ -48,7 +48,7 @@ export default function ProfileSideBar () {
               transition: "0.25s",
             }}
             alt="Rabie"
-            src="https://th.bing.com/th/id/R.7c84020e9c547342ae5caddaf20bb9a1?rik=T21i5xp7DTdJiA&riu=http%3A%2F%2Fbalic.fr%2Fwp-content%2Fuploads%2F2018%2F02%2Fphoto-enfant-Garçon-6.jpg&ehk=VzdkFRp4UqnClaEFWjTY2F9uWcWne56KamVjr0qxGUU%3D&risl=&pid=ImgRaw&r=0"
+            src={customer.customer_image}
           />
           <Typography
             align="center"
