@@ -68,9 +68,9 @@ export default function Header() {
                     <Link
                       to="/"
                       className={classNames(
-                        'text-color1 hover:text-color2',
+                        'text-color2 hover:text-black',
 
-                        'rounded-md px-3 py-2 text-sm font-medium'
+                        'rounded-md px-3 py-2 text-sm font-bold'
                       )}
                     >
                       Accueil
@@ -81,8 +81,8 @@ export default function Header() {
                         to={`/category/${category.id}`}
                         className={classNames(
 
-                          category.active ? 'text-color2' : 'text-color1 hover:text-color2',
-                          'rounded-md px-3 py-2 text-sm font-medium'
+                          category.active ? 'text-color2' : 'text-black hover:text-color2',
+                          'rounded-md px-3 py-2 text-sm font-bold'
                         )}
                         onClick={() => handleLinkClick(category.id)}
 
