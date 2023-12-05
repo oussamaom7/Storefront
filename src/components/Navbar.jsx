@@ -1,6 +1,7 @@
 import React,{ Fragment,useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import SearchIcon from '@mui/icons-material/Search';
+import { TbShoppingBag } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext'
 
@@ -60,19 +61,11 @@ export default function Navbar({id}) {
                 </div>
               </div>
               {authTokens? (<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              ({cartQuantity})
-                <button
-                  type="button"
-                  className="relative rounded-full bg-color0 p-1 text-c1 hover:text-color1 focus:outline-none"
+                <div className={`relative rounded-full grid place-items-center mx-auto my-1 cursor-pointer hover:scale-110 `}>
+                <TbShoppingBag className='w-8 h-8 ' />
+                <div className={`bg-gray-200 grid place-items-center px-1 w-auto h-auto  aspect-square rounded-full absolute right-0 top-0 text-xs`}>{cartQuantity}</div>
 
-                  onClick={openCard}
-
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  
-                </button> 
+                </div>
               
                 <Menu as="div" className="relative ml-3">
                   <div>
@@ -80,7 +73,7 @@ export default function Navbar({id}) {
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <img
-                        className="h-8 w-8 rounded-full"
+                        className="h-10 w-10 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                       />

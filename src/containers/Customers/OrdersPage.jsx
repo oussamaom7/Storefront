@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import React from 'react'
-import { DataGrid } from '@mui/x-data-grid';
-import Box from '@mui/material/Box'; 
-=======
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
->>>>>>> c88666192439a15415ab0b450185a34dbf80716b
 
 import ProfileSideBar from './ProfileSideBar';
 import {Link} from 'react-router-dom'
@@ -20,28 +14,28 @@ import AuthContext from '../../context/AuthContext';
 const columns = [
   { field: '_id', 
   headerName: 'Order Id',
-   width: 150,
+   width: 190,
    headerAlign: 'start' },
   {
     field: 'order_date',
     headerName: 'Order Date',
     type: 'Date',
-    width: 150,
+    width: 190,
     headerAlign: 'start' 
   },
   {
     field: 'status',
     headerName: 'Status',
     type: 'String',
-    width: 150,
+    width: 120,
     headerAlign: 'start' 
     
   },
   {
     field: 'cart_total_price',
     headerName: 'Total Price',
-    type: 'number',
-    width: 150,
+    type: 'string',
+    width: 100,
     headerAlign: 'start'   
   }
   
