@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import ProductList from '../../components/Productlist/ProductList';
-<<<<<<< HEAD
 
-=======
+
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer'
 import { SimpleSlider } from '../../components/simpleSlider/banner';
->>>>>>> 265ae4ff1f839d3533a8068eb770b1ae70ba8adb
+
 export default function CategoriePage() {
   const [subcategories, setSubcategories] = useState([]);
   const [subcategoryProducts, setSubcategoryProducts] = useState({});
@@ -45,7 +44,15 @@ export default function CategoriePage() {
   }, [id]);
 
   return (
-<<<<<<< HEAD
+
+<>
+  <Navbar />
+  <Header />
+  <div className="max-w-full">
+        <div className="mb-8">
+          <SimpleSlider />
+        </div>
+
     <div className="page-container">
       {subcategories.map((subcategory) => (
         <div key={subcategory._id} className="category-container">
@@ -56,14 +63,6 @@ export default function CategoriePage() {
         </div>
       ))}
     </div>
-=======
-<>
-  <Navbar />
-  <Header />
-  <div className="max-w-full">
-        <div className="mb-8">
-          <SimpleSlider />
-        </div>
         </div>
   <div className="flex flex-col flex-wrap justify-center gap-6 p-4">
     {subcategories.map((subcategory) => (
@@ -77,6 +76,5 @@ export default function CategoriePage() {
   </div>
   <Footer/>
 </>
->>>>>>> 265ae4ff1f839d3533a8068eb770b1ae70ba8adb
   );
 }

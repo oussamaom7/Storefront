@@ -15,27 +15,6 @@ const ProductList = ({ products }) => {
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {products.map((product) => (
-<<<<<<< HEAD
-          <div key={product.id} className="max-w-sm rounded overflow-hidden shadow-md">
-            <Card>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={product.product_image}
-                  alt={product.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {product.title}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    Release Date: {product.releaseDate}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-=======
 
 
 
@@ -70,7 +49,6 @@ const ProductList = ({ products }) => {
               </div>
             </div>
 
->>>>>>> 265ae4ff1f839d3533a8068eb770b1ae70ba8adb
           </div>
         ))}
       </div>
@@ -79,4 +57,3 @@ const ProductList = ({ products }) => {
 };
 
 export default ProductList;
-

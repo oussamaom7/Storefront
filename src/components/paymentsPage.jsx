@@ -1,55 +1,76 @@
-import React from 'react';
+import React, { useContext} from 'react';
+import { useShoppingCart } from "../context/ShoppingCartContext";
+import axios from 'axios';
+import AuthContext from '../context/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function PaymentForm() {
+  const {cartItems,subtotal}=useShoppingCart();
+  const authContext = useContext(AuthContext);
+  const { authTokens } = authContext;
+  const orderData = {
+    order_items: cartItems.map((item) => ({
+      product_name: item.product_name
+     
+    })),
+    cart_total_price: subtotal,
+  };
+  
+
+  const handleCreateOrder = async () => {
+    try {
+      await axios.post(`http://localhost:3000/v1/orders`, orderData, {
+        headers: {
+          Authorization: `Bearer ${authTokens?.access_token}`,
+        },
+      });
+      toast.success('Order placed successfully!');
+    } catch (error) {
+      toast.error('Failed to create order. Please try again.');
+    }
+  };
   return (
     <>
-<div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
 
-  <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
-    <div class="relative">
-      <ul class="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
-          
-       
-        <li class="flex items-center space-x-3 text-left sm:space-x-4">
-
-
-          <span class="font-semibold text-color1">Payment</span>
-
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-  <div class="px-4 pt-8">
-    <p class="text-xl font-medium">Order Summary</p>
-    <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-      <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-        <img class="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <div class="flex w-full flex-col px-4 py-4">
-          <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-
-          <span class="float-right text-color1">42EU - 8.5US</span>
-
-          <p class="text-lg font-bold">$138.99</p>
+      <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+        <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
+          <div class="relative">
+            <ul class="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
+              <li class="flex items-center space-x-3 text-left sm:space-x-4">
+                <span class="font-semibold text-color1">Payment</span>
+              </li>
+              {/* Additional items in the payment section if needed */}
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-        <img class="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <div class="flex w-full flex-col px-4 py-4">
-          <span class="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
 
-          <span class="float-right text-color1">42EU - 8.5US</span>
-
-          <p class="mt-auto text-lg font-bold">$238.99</p>
+      <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+        <div class="px-4 pt-8">
+          <p class="text-xl font-medium">Order Summary</p>
+          <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+            {cartItems.map((item) => (
+              <div key={item.id} class="flex flex-col rounded-lg bg-white sm:flex-row">
+                <img class="m-2 h-24 w-28 rounded-md border object-cover object-center" src={item.product_image} alt="" />
+                <div class="flex w-full flex-col px-4 py-4">
+                  <span class="font-semibold">{item.product_name}</span>
+                  <span class="float-right text-color1">{item.quantity}</span>
+                  <p class="text-lg font-bold">${item.price}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-    <p class="text-xl font-medium">Payment Details</p>
 
-    <p class="text-color1">Complete your order by providing your payment details.</p>
+        <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+          <p class="text-xl font-medium">Payment Details</p>
+          <p class="text-color1">Complete your order by providing your payment details.</p>
+      
+
+   
+
+    
 
     <div class="">
       <label for="email" class="mt-4 mb-2 block text-sm font-medium">Email</label>
@@ -94,14 +115,15 @@ function PaymentForm() {
       <div class="mt-6 flex items-center justify-between">
 
         <p class="text-sm font-medium text-color1">Total</p>
-        <p class="text-2xl font-semibold text-color1">$408.00</p>
+        <p class="text-2xl font-semibold text-color1">${subtotal}</p>
       </div>
     </div>
-    <button class="mt-4 mb-8 w-full rounded-md bg-color2 px-6 py-3 font-medium text-color1">Place Order</button>
+
+    <button class="mt-4 mb-8 w-full rounded-md bg-color2 px-6 py-3 font-medium text-color1" onClick={()=>handleCreateOrder()}>Place Order</button>
 
   </div>
 </div>
-
+<ToastContainer />
 </>
   );
 }
