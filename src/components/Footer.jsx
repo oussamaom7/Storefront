@@ -9,11 +9,11 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
-  const categories = ['Cat 1', 'Cat 2', 'Cat 3', 'Cat 4', 'Cat 5']
+
   return (
     <footer className='w-full' >
       {/* big part */}
-      <div className="w-full flex flex-col p-6 items-center bg-color2 text-center dark:bg-color0 lg:text-left">
+      <div className="w-full flex flex-col p-6 items-center bg-color4 text-center dark:bg-color0 lg:text-left">
         <div className="grid lg:grid-cols-3">
           {/* about div's */}
           <div className="mb-6 mx-6 flex flex-col  justify-center">

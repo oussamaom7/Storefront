@@ -37,8 +37,8 @@ const columns = [
   {
     field: 'cart_total_price',
     headerName: 'Total Price',
-    type: 'string',
-    width: 100,
+    type: 'String',
+    width: 150,
     headerAlign: 'start'   
   }
   
@@ -60,6 +60,7 @@ export default function OrdersPage() {
         ...order,
         id: order._id,
       }));
+    
       setOrders(orderWithId);
       console.log(response.data)
       setIsLoading(false); // Set loading state to false once data is fetched
@@ -104,7 +105,7 @@ export default function OrdersPage() {
             </div>
 
       <div className="" onClick={() => {}}>
-      <Link to="/tick"> 
+      <Link to={`/tick/${params.row._id}`}>
               <button className='bg-blue-500 text-white py-1 px-3 rounded-full'>Download ticket</button></Link> 
 
             </div>

@@ -1,32 +1,56 @@
-import React, { useContext} from 'react';
-import { useShoppingCart } from "../context/ShoppingCartContext";
+import React, { useContext } from 'react';
+import { useShoppingCart } from '../context/ShoppingCartContext';
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { v4 as uuidv4 } from 'uuid'; // Import uuidv4 from uuid package
 
 function PaymentForm() {
-  const {cartItems,subtotal}=useShoppingCart();
+  const { cartItems, subtotal } = useShoppingCart();
   const authContext = useContext(AuthContext);
   const { authTokens } = authContext;
+
   const orderData = {
-    order_items: cartItems.map((item) => ({
-      product_name: item.product_name
-     
-    })),
+    order_items: [],
     cart_total_price: subtotal,
   };
-  
+
+  // Loop through each item in the cart and handle quantity duplication
+  cartItems.forEach((item) => {
+    if (item.quantity > 1) {
+      for (let i = 0; i < item.quantity; i++) {
+        orderData.order_items.push({
+          id: uuidv4(), // Generate a unique ID for each duplicated item
+          product_name: item.product_name,
+          product_image: item.product_image,
+          price: item.price,
+          order: "open",
+          quantity: 1, // Set the quantity to 1 for each duplicated item
+        });
+      }
+    } else {
+      orderData.order_items.push({
+        id: uuidv4(), // Generate a unique ID for each item
+        product_name: item.product_name,
+        product_image: item.product_image,
+        price: item.price,
+        order: "open",
+        quantity: item.quantity,
+      });
+    }
+  });
 
   const handleCreateOrder = async () => {
     try {
-      await axios.post(`http://localhost:3000/v1/orders`, orderData, {
+      await axios.post('http://localhost:3000/v1/orders', orderData, {
         headers: {
           Authorization: `Bearer ${authTokens?.access_token}`,
         },
       });
       toast.success('Order placed successfully!');
     } catch (error) {
+      console.error('Error creating order:', error);
       toast.error('Failed to create order. Please try again.');
     }
   };

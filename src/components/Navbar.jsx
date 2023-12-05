@@ -4,6 +4,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { TbShoppingBag } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext'
+import { HiOutlineShoppingBag } from "react-icons/hi";
+
 
 
 import { useShoppingCart } from '../context/ShoppingCartContext';
@@ -17,7 +19,7 @@ function classNames(...classes) {
 
 export default function Navbar({id}) {
   const authContext = useContext(AuthContext);
-  const { authTokens,logoutCustomer } = authContext;
+  const { authTokens,logoutCustomer,customer } = authContext;
   const {openCard,cartQuantity}=useShoppingCart();
 
   const handleLogout = () => {
@@ -35,7 +37,7 @@ export default function Navbar({id}) {
               <div className="flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="h-auto w-44 pt-3"
+                    className="h-auto w-36 opacity mb-2"
                     src={Logonavbar}
                     alt="Your Company"
                   />
@@ -48,14 +50,14 @@ export default function Navbar({id}) {
                <div className="hidden sm:flex sm:ml-6 ">
                 <div className="relative mx-auto text-color1">
                   <input
-                    className="border-2 border-color2 bg-color0 h-10 w-96 px-5 pr-16 rounded-full text-c1 text-sm focus:outline-none"
+                    className="border-[1px] border-color2 bg-color0 h-9 w-96 px-5 pr-16 rounded-full text-c1 text-sm focus:outline-none"
                     type="search"
                     name="search"
                     placeholder="Search"
                   />
-                  <button type="submit" className="absolute right-2 mt-2 ">
+                  <button type="submit" className="absolute right-3 mt-1">
                     {/* You can use a search icon here */}
-                    <SearchIcon style={{ fill: '#ACA7CB' }}/>
+                    <SearchIcon style={{ fill: "#FF6C22" }}/>
                     
                   </button>
                 </div>
@@ -74,7 +76,7 @@ export default function Navbar({id}) {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-10 w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src={customer.customer_image}
                         alt=""
                       />
                     </Menu.Button>
