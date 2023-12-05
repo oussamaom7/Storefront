@@ -20,6 +20,9 @@ import ShoppingPanel from './components/shoppingPanel';
 import ShoppingCartProvider from './context/ShoppingCartContext';
 
 
+
+
+
 export default function App() {
   return (
     <div className="App">
