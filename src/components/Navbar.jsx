@@ -64,7 +64,7 @@ export default function Navbar({id}) {
               </div>
               {authTokens? (<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div className={`relative rounded-full grid place-items-center mx-auto my-1 cursor-pointer hover:scale-110 `}>
-                <TbShoppingBag className='w-8 h-8 ' />
+                <TbShoppingBag className='w-8 h-8 ' onClick={openCard}/>
                 <div className={`bg-gray-200 grid place-items-center px-1 w-auto h-auto  aspect-square rounded-full absolute right-0 top-0 text-xs`}>{cartQuantity}</div>
 
                 </div>

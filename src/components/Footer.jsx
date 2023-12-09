@@ -32,7 +32,7 @@ export default function Footer() {
         </p>
         <p class="mb-4 flex items-center justify-start md:justify-start w-60">
           <MdEmail className='h-5 w-5 mr-3' />
-          xticket@gmail.com
+          xticket.pro@gmail.com
         </p>
         <p class="mb-4 flex items-center justify-start md:justify-start w-60">
         <FaPhoneAlt className='h-5 w-5 mr-3' />

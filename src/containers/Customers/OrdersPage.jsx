@@ -17,20 +17,20 @@ import AuthContext from '../../context/AuthContext';
 const columns = [
   { field: '_id', 
   headerName: 'Order Id',
-   width: 190,
+   width: 150,
    headerAlign: 'start' },
   {
     field: 'order_date',
     headerName: 'Order Date',
     type: 'Date',
-    width: 190,
+    width: 150,
     headerAlign: 'start' 
   },
   {
     field: 'status',
     headerName: 'Status',
     type: 'String',
-    width: 120,
+    width: 150,
     headerAlign: 'start' 
     
   },

@@ -21,16 +21,8 @@
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dayjs": "^1.11.10",
-<<<<<<< HEAD
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "express-async-errors": "^3.1.1",
-    "handlebars": "^4.7.8",
-    "jsonwebtoken": "^9.0.2",
-=======
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
->>>>>>> 83bb585c019a452b6f63e35fdb4896fb8b5d04a0
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.0.2",
     "nodemailer": "^6.9.7",
@@ -47,6 +39,7 @@
     "react-router-dom": "^6.19.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
+    "react-spinners": "^0.13.8",
     "react-to-print": "^2.14.15",
     "react-toastify": "^9.1.3",
     "slick-carousel": "^1.8.1",

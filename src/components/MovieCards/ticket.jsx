@@ -77,7 +77,7 @@ function Ticket() {
       class="flex flex-col items-center justify-between w-1/4 px-4 py-2 bg-color2 border-r-2 border-gray-500 border-dashed rounded-l-md"
     >
       <div class="flex-col">
-      <div style={{ backgroundColor: "#ACA7CB", padding: "10px", borderRadius: "8px" }}>
+      <div style={{ padding: "10px", borderRadius: "8px" }}>
       {qrData && (
       // <QRCode value={`${qrData},itemId:${order.id}`} size={160} />
       <QRCode

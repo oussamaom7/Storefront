@@ -48,8 +48,7 @@ export default function ProfileSideBar() {
           <div className={`relative rounded-full grid place-items-center mx-auto my-1 border-2 border-solid border-gray-500 ${open ? 'h-[100px]' : 'h-[32px]'} ${open ? 'w-[100px]' : 'w-[32px]'}`}>
             {/* image */}
             <img
-              src={selectedImage || customer.customer_image}
-              alt='customer img'
+              src={selectedImage || customer.customer_image }
               className="rounded-full "
               style={{ width: '100%', height: '100%' }}
             />
