@@ -18,15 +18,14 @@ import ShoppingPanel from './components/shoppingPanel';
 import ShoppingCartProvider from './context/ShoppingCartContext';
 
 
-import ImageUpload from './components/imageUpdate';
-import Discount from './components/Productlist/Discount';
+import SectionPrincipale from './components/section/sectionPrincipale';
+
 
 export default function App() {
   return (
     <div className="App">
 <ShoppingCartProvider>
         <Routes>
-        <Route path="/image" element={<ImageUpload />}></Route>
         <Route path="/card" element={<Card />}></Route>
         <Route path="/payement" element={<PaymentForm />}></Route>
         <Route path="/v1/products/:id" element={<ProductPage />}></Route>
@@ -44,7 +43,7 @@ export default function App() {
           <Route path="/v1/customers/validate/:id" element={<Login />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
-          <Route path="/discount" element={<Discount />}></Route>
+          <Route path="/section" element={<SectionPrincipale />}></Route>
         </Routes>
         </ShoppingCartProvider>
    </div>

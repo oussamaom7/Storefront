@@ -1,3 +1,36 @@
-.principale{
-    background-image: ;
+.text {
+    position: relative;
+    font-size: 3vw;
+    color: #252839;
+    -webkit-text-stroke: 0.3vw #383d52;
+    text-transform: uppercase;
+    overflow: hidden; /* Ajout pour masquer le contenu avant l'animation */
 }
+
+.text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #01fe87;
+    -webkit-text-stroke: 0.1vw #383d52;
+    border-right: 2px solid #01fe87;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+}
+
+@keyframes animate {
+    0%, 10%, 100% {
+        width: 0;
+    }
+    70%, 90% {
+        width: 100%;
+    }
+}
+.bg-color5 {
+    background: rgb(255,119,0);
+    background: linear-gradient(90deg, rgba(255,119,0,1) 30%, rgba(193,145,225,1) 83%);
+  }
+  

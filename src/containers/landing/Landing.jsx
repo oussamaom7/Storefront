@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
-import { SimpleSlider } from "../../components/simpleSlider/banner";
-import ProductList from "../../components/Productlist/ProductList";
 import Header from "../../components/Header";
+import SectionPrincipale from "../../components/section/sectionPrincipale";
 import Footer from "../../components/Footer";
 import axios from "axios";
+import ProductList from "../../components/Productlist/ProductList";
+import { SimpleSlider } from "../../components/simpleSlider/banner";
 
 export default function Landing() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchActive, setSearchActive] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,26 +36,38 @@ export default function Landing() {
 
   return (
     <div className="bg-color0 min-h-screen">
-      <Navbar />
+      <Navbar setSearchActive={setSearchActive} setSearchResults={setSearchResults} />
       <hr />
       <Header />
-      <div className="max-w-full">
-        {" "}
-        {/* Change max-w-7xl to max-w-full */}
-        <div className="mb-16">
-          <SimpleSlider />
-        </div>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <p>Error: {error}</p>
-        ) : (
-          <div>
-            <ProductList products={products} />
+      {!searchActive && (
+        <>
+         
+          <div className="max-w-full ">
+            <div className="mb-16 bg-color5">
+            <SectionPrincipale />
+              <SimpleSlider />
+            </div>
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : error ? (
+              <p>Error: {error}</p>
+            ) : (
+              <div>
+                <ProductList products={products} />
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <Footer />
+          <Footer />
+        </>
+      )}
+
+      {searchActive && (
+        <div className="max-w-full">
+          <div className="mb-16">
+            <ProductList products={searchResults} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

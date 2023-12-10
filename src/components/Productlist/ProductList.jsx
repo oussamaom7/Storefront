@@ -28,7 +28,7 @@ const ProductList = ({ products }) => {
              
               {/* Ratings */}
               <div className="mt-2.5 mb-5 flex items-center">
-               <Discount/>
+               <Discount event_date={product.event_date}/>
               </div>
               {/* Price and Add to Cart */}
               <div className="flex items-center justify-between">
