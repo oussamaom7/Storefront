@@ -45,6 +45,7 @@ export default function ProfileSideBar() {
           />
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
+
           <div className={`relative rounded-full grid place-items-center mx-auto my-1 border-2 border-solid border-gray-500 ${open ? 'h-[100px]' : 'h-[32px]'} ${open ? 'w-[100px]' : 'w-[32px]'}`}>
             {/* image */}
             <img
@@ -58,6 +59,7 @@ export default function ProfileSideBar() {
             </label>
           </div>
           <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
+
           <Typography
             align="center"
             sx={{ fontSize: open ? 17 : 0, transition: "0.25s" }}

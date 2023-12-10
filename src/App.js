@@ -15,21 +15,39 @@ import PaymentForm from './components/paymentsPage';
 import ProductPage from './components/Productlist/productPage';
 import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
+
 import ShoppingCartProvider from './context/ShoppingCartContext';
-import Discount from './components/Productlist/Discount';
+
 import ResetPassword from './containers/registration/ResetPassword'
+
+// import ShoppingCartProvider from './context/ShoppingCartContext';
+
+
+import ImageUpload from './components/imageUpdate';
+
+
+
+
+import ImageUpload from './components/imageUpdate';
+import Discount from './components/Productlist/Discount';
+
 
 export default function App() {
   return (
     <div className="App">
+
+
 <ShoppingCartProvider>
+
         <Routes>
-        <Route path="/card" element={<Card />}/>
-        <Route path="/payement" element={<PaymentForm />}/>
-        <Route path="/v1/products/:id" element={<ProductPage />}/>
-        <Route path="/tick/:id" element={<Ticket />}/>
-          <Route path="/h" element={<Home />}/>
-          <Route path="/" element={<Landing />}/>
+        <Route path="/image" element={<ImageUpload />}></Route>
+        <Route path="/card" element={<Card />}></Route>
+        <Route path="/payement" element={<PaymentForm />}></Route>
+        <Route path="/v1/products/:id" element={<ProductPage />}></Route>
+        <Route path="/tick/:id" element={<Ticket />}></Route>
+          <Route path="/h" element={<Home />}></Route>
+          <Route path="/" element={<Landing />}></Route>
+
           <Route path="/login" element={<Registration />}></Route>
           <Route path="/contact" element={<ContactUs />}></Route>
           <Route path="/shipping" element={<ShoppingPanel />}></Route>
@@ -41,7 +59,9 @@ export default function App() {
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
           <Route path="/discount" element={<Discount />}></Route>
+
           <Route path="/resetpassword/:token" element={<ResetPassword />} />
+
         </Routes>
         </ShoppingCartProvider>
    </div>
