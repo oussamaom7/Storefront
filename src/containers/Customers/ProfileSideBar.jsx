@@ -1,28 +1,35 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { PiPackageBold } from "react-icons/pi";
-import { AiOutlineUser} from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import PasswordIcon from '@mui/icons-material/Password';
-
-// import { TbLogout2 } from "react-icons/tb";
-
+import { RiImageEditLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import Avatar from '@mui/material/Avatar';
 import { Typography } from "@mui/material";
 import AuthContext from "../../context/AuthContext";
 
-export default function ProfileSideBar () {
+export default function ProfileSideBar() {
   const authContext = useContext(AuthContext);
   const { customer } = authContext;
   const menus = [
-
-    { name: "Personal informations", link: "/CustomerProfile", icon: AiOutlineUser, current:true, margin: true },
-    { name :"Change password" , link: "/changePassword", icon:PasswordIcon },
-    { name: "Orders", link: "/orders", icon: PiPackageBold },
-
-    
+    { name: "Personal informations", link: "/CustomerProfile", icon: AiOutlineUser, current: true, margin: true },
+    { name: "Change password", link: "/changePassword", icon: PasswordIcon },
+    { name: "Orders", link: "/orders", icon: PiPackageBold }
   ];
   const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <section className="flex gap-6">
       <div
@@ -38,25 +45,27 @@ export default function ProfileSideBar () {
           />
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
-        <Avatar
-            sx={{
-              mx: "auto",
-              width: open ? 88 : 30,
-              height: open ? 88 : 30,
-              my: 1,
-              border: "2px solid grey",
-              transition: "0.25s",
-            }}
-            alt="Rabie"
-            src={customer.customer_image}
-          />
+
+          <div className={`relative rounded-full grid place-items-center mx-auto my-1 border-2 border-solid border-gray-500 ${open ? 'h-[100px]' : 'h-[32px]'} ${open ? 'w-[100px]' : 'w-[32px]'}`}>
+            {/* image */}
+            <img
+              src={selectedImage || customer.customer_image }
+              className="rounded-full "
+              style={{ width: '100%', height: '100%' }}
+            />
+            {/* mini badge */}
+            <label htmlFor="imageInput" className={`bg-gray-600  w-9 grid place-items-center hover:scale-110 transition-transform cursor-pointer ${!open && 'hidden'} aspect-square rounded-full absolute right-0 bottom-0`}>
+              <RiImageEditLine />
+            </label>
+          </div>
+          <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
+
           <Typography
             align="center"
             sx={{ fontSize: open ? 17 : 0, transition: "0.25s" }}
           >
-            {" "}
             {customer.firstName}
-          </Typography>{" "}
+          </Typography>
           {menus?.map((menu, i) => (
             <Link
               to={menu?.link}
@@ -87,8 +96,6 @@ export default function ProfileSideBar () {
           ))}
         </div>
       </div>
-     
     </section>
   );
-};
-
+}

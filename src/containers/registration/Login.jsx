@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../../context/AuthContext'; 
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -13,7 +16,6 @@ export default function Login() {
   const { loginCustomer, errMsg } = useContext(AuthContext);
 
 
-
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -22,6 +24,25 @@ export default function Login() {
     } catch (error) {
       // Handle login errors if needed
       console.error('Login error:', error);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/v1/customers/forgetpassword",
+        {
+          email: email,
+        }
+      );
+      toast.success(response.data.message );
+    } catch (error) {
+      if (error.response.status === 404) {
+        toast.error(error.response.data.message);
+      }else{
+        toast.error('Forgot password failed');
+      }
+
     }
   };
 
@@ -48,7 +69,7 @@ export default function Login() {
         </div>
 
 
-        <div className='text-sm mb-4'><h6 href="#" className="text-blue-500">Forgot Password?</h6></div>
+        <div className='text-sm mb-4'><h6 href="#" className="text-blue-500 hover:underline cursor-pointer" onClick={handleForgotPassword} >Forgot Password?</h6></div>
         {errMsg && <div className='text-red-500 mb-4'>{errMsg}</div>}
         <div>
           <button className="bg-black w-full text-white text-base py-3 px-16 rounded-lg">
@@ -58,6 +79,7 @@ export default function Login() {
         <div className='text-sm'>
           <p>By logging in, you agree to the Terms of Service and Privacy Policy</p>
         </div>
+        <ToastContainer />
       </form>
     </div>
   )

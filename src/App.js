@@ -15,6 +15,11 @@ import PaymentForm from './components/paymentsPage';
 import ProductPage from './components/Productlist/productPage';
 import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
+
+import ShoppingCartProvider from './context/ShoppingCartContext';
+
+import ResetPassword from './containers/registration/ResetPassword'
+
 // import ShoppingCartProvider from './context/ShoppingCartContext';
 
 
@@ -26,9 +31,11 @@ import ImageUpload from './components/imageUpdate';
 import ImageUpload from './components/imageUpdate';
 import Discount from './components/Productlist/Discount';
 
+
 export default function App() {
   return (
     <div className="App">
+
 
 <ShoppingCartProvider>
 
@@ -40,9 +47,9 @@ export default function App() {
         <Route path="/tick/:id" element={<Ticket />}></Route>
           <Route path="/h" element={<Home />}></Route>
           <Route path="/" element={<Landing />}></Route>
+
           <Route path="/login" element={<Registration />}></Route>
           <Route path="/contact" element={<ContactUs />}></Route>
-
           <Route path="/shipping" element={<ShoppingPanel />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/CustomerProfile" element={<CustomerInfoPage />}></Route>
@@ -52,9 +59,11 @@ export default function App() {
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
           <Route path="/discount" element={<Discount />}></Route>
+
+          <Route path="/resetpassword/:token" element={<ResetPassword />} />
+
         </Routes>
-     
+        </ShoppingCartProvider>
    </div>
   );
 }
-

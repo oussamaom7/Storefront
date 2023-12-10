@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState, useCallback } from 'react';
 import AuthContext from '../../context/AuthContext';
 import axios from 'axios';
 import ProfileSideBar from './ProfileSideBar';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 export default function CustomerInfoPage() {
     const authContext = useContext(AuthContext);
     const { authTokens } = authContext;
@@ -96,11 +96,13 @@ export default function CustomerInfoPage() {
                 </div>
                 <div>
                     <form className="container" onSubmit={handleSubmit}>
-                        <div className="mx-auto my-8 max-w-2xl text-center">
+                        {/* Title */}
+                        <div className="mx-auto my-10 max-w-2xl text-center">
                             <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">Personal informations</h2>
                         </div>
                         <div className="mx-auto max-w-xl">
                             <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
+                                {/* First name */}
                                 <div>
                                     <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
                                         First name
@@ -116,6 +118,7 @@ export default function CustomerInfoPage() {
                                         />
                                     </div>
                                 </div>
+                                {/* Last name */}
                                 <div>
                                     <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
                                         Last name
@@ -131,6 +134,7 @@ export default function CustomerInfoPage() {
                                         />
                                     </div>
                                 </div>
+
                                 <div  className="sm:col-span-2">
                                     <label htmlFor="address" className="block text-sm font-semibold leading-6 text-gray-900">
                                         address
@@ -146,6 +150,7 @@ export default function CustomerInfoPage() {
                                         />
                                     </div>
                                 </div>
+
                                 <div className="sm:col-span-2">
                                     <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
                                         Email
@@ -161,6 +166,24 @@ export default function CustomerInfoPage() {
                                         />
                                     </div>
                                 </div>
+                                {/* Address */}
+                                <div className="sm:col-span-2">
+                        <label htmlFor="message" className="flex text-sm font-semibold leading-6 text-gray-900">
+                            Address
+                        </label>
+                        <div className="mt-2.5">
+                            <textarea
+                                onChange={handleChange}
+                                value={details.address || ''}
+                                type="address"
+                                name="address"
+                                id="address"
+                                rows={3}
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                
+                            />
+                        </div>
+                    </div>
                             </div>
                             {error && <p className="text-red-500">{error}</p>}
                             <div className="my-10">
