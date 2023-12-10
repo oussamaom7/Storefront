@@ -15,16 +15,30 @@ import PaymentForm from './components/paymentsPage';
 import ProductPage from './components/Productlist/productPage';
 import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
+
 import ShoppingCartProvider from './context/ShoppingCartContext';
+
+import ResetPassword from './containers/registration/ResetPassword'
+
+// import ShoppingCartProvider from './context/ShoppingCartContext';
+
+
+import ImageUpload from './components/imageUpdate';
+
+
 
 
 import SectionPrincipale from './components/section/sectionPrincipale';
 
 
+
 export default function App() {
   return (
     <div className="App">
+
+
 <ShoppingCartProvider>
+
         <Routes>
         <Route path="/card" element={<Card />}></Route>
         <Route path="/payement" element={<PaymentForm />}></Route>
@@ -32,9 +46,9 @@ export default function App() {
         <Route path="/tick/:id" element={<Ticket />}></Route>
           <Route path="/h" element={<Home />}></Route>
           <Route path="/" element={<Landing />}></Route>
+
           <Route path="/login" element={<Registration />}></Route>
           <Route path="/contact" element={<ContactUs />}></Route>
-
           <Route path="/shipping" element={<ShoppingPanel />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/CustomerProfile" element={<CustomerInfoPage />}></Route>
@@ -43,10 +57,16 @@ export default function App() {
           <Route path="/v1/customers/validate/:id" element={<Login />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
+<<<<<<< HEAD
           <Route path="/section" element={<SectionPrincipale />}></Route>
+=======
+          <Route path="/discount" element={<Discount />}></Route>
+
+          <Route path="/resetpassword/:token" element={<ResetPassword />} />
+
+>>>>>>> 4fea277608a5561aa7ad7bea51992951b5476e07
         </Routes>
         </ShoppingCartProvider>
    </div>
   );
 }
-

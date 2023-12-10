@@ -93,7 +93,9 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <img
+
                         className="h-8 w-8 border-[1px] border-color2 rounded-full"
+
                         src={customer.customer_image}
                         alt=""
                       />

@@ -73,6 +73,7 @@ function Ticket() {
               )}
               content={() => pdfContainer.current}
             />
+<<<<<<< HEAD
             <div
               key={index}
               ref={pdfContainer}
@@ -186,6 +187,30 @@ function Ticket() {
             </div>
           </div>
         ))
+=======
+            <div key={index} ref={pdfContainer}  className=" flex  justify-between shadow-md border rounded-md mt-5">
+              
+    <div 
+      class="flex flex-col items-center justify-between w-1/4 px-4 py-2 bg-color2 border-r-2 border-gray-500 border-dashed rounded-l-md"
+    >
+      <div class="flex-col">
+
+      <div style={{ backgroundColor: "#ACA7CB", padding: "10px", borderRadius: "8px" }}>
+
+      {qrData && (
+      // <QRCode value={`${qrData},itemId:${order.id}`} size={160} />
+      <QRCode
+      value={JSON.stringify({
+        orderId: ticketData._id,
+        customerId: ticketData.customer_id._id,
+        firstName: ticketData.customer_id.firstName,
+        lastName: ticketData.customer_id.lastName,
+        itemId: order.id
+      })}
+      size={160}
+    />
+    
+>>>>>>> 4fea277608a5561aa7ad7bea51992951b5476e07
       )}
       {/* <div>{isLoading ? (
         <p>Loading...</p>
