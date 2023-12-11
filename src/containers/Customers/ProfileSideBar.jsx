@@ -10,16 +10,25 @@ import AuthContext from '../../context/AuthContext';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BiLogOut } from "react-icons/bi";
+import { HiOutlineHome } from "react-icons/hi";
+
 
 
 export default function ProfileSideBar({customerImage}) {
 
   const authContext = useContext(AuthContext);
-  const { authTokens, customer } = authContext; // Make sure 'customer' is available
+  const { authTokens, logoutCustomer, customer } = authContext; // Make sure 'customer' is available
+  const handleLogout = () => {
+    logoutCustomer(); // Call the logout function when "Sign out" is clicked
+  };
+
   const menus = [
-    { name: "Personal informations", link: "/CustomerProfile", icon: AiOutlineUser, current: true, margin: true },
+   {name: "Home", link: "/", icon: HiOutlineHome},
+    { name: "Personal informations", link: "/CustomerProfile", icon: AiOutlineUser },
     { name: "Change password", link: "/changePassword", icon: PasswordIcon },
-    { name: "Orders", link: "/orders", icon: PiPackageBold }
+    { name: "Orders", link: "/orders", icon: PiPackageBold },
+    {name: "Log out", logout: handleLogout, icon: BiLogOut}
   ];
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -57,6 +66,7 @@ export default function ProfileSideBar({customerImage}) {
 
     }
   };
+  
 
   return (
     
@@ -75,14 +85,10 @@ export default function ProfileSideBar({customerImage}) {
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
 
-          <span onClick={()=>{
-            console.log(customer)
-          }}>hello</span>
-          <div className={`relative rounded-full grid place-items-center mx-auto bg-gray-500 uppercase text-gray-50 my-1 border-2 border-solid border-gray-500 ${open ? 'h-[100px]' : 'h-[32px]'} ${open ? 'w-[100px]' : 'w-[32px]'}`}>
+          <div className={`relative rounded-full grid place-items-center mx-auto bg-gray-500 uppercase text-gray-50 my-1 border-2 border-solid border-gray-500 ${open ? 'h-[120px]' : 'h-[40px]'} ${open ? 'w-[120px]' : 'w-[40px]'}`}>
             {/* image */}
             {(customerImage || selectedImage) ? <img
               src={customerImage || selectedImage }  
-             // src={{uri:customer?.customer_image}}
               alt="Customer Profile"
               className="rounded-full aspect-square object-cover"
               style={{ width: '100%', height: '100%' }}
@@ -111,7 +117,7 @@ export default function ProfileSideBar({customerImage}) {
               to={menu?.link}
               key={i}
               className={` ${
-                menu?.margin && "mt-6"
+                menu?.margin && "mt-40"
               } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
@@ -119,6 +125,7 @@ export default function ProfileSideBar({customerImage}) {
                 style={{
                   transitionDelay: `${i + 3}00ms`,
                 }}
+                onClick={menu?.logout}
                 className={`whitespace-pre duration-500 ${
                   !open && "opacity-0 translate-x-28 overflow-hidden"
                 }`}
@@ -136,6 +143,7 @@ export default function ProfileSideBar({customerImage}) {
           ))}
         </div>
       </div>
+      <ToastContainer/>
     </section>
   );
 }
