@@ -97,7 +97,7 @@ export default function Signup() {
           At least 8 characters, 1 uppercase letter, 1 number & 1 symbol
         </div>
         <div>
-          <button style={{ background: 'black', color: 'white' }} className=" w-full py-3 px-16 rounded-lg" type="submit">
+          <button style={{color: 'white' }} className=" w-full py-3 px-16 rounded-lg bg-color2" type="submit">
             Submit
           </button>
         </div>

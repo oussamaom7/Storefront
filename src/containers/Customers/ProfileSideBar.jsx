@@ -31,9 +31,10 @@ export default function ProfileSideBar() {
   };
 
   return (
+    
     <section className="flex gap-6">
       <div
-        className={`bg-[#0e0e0e] min-h-screen ${
+        className={`bg-gray-900 min-h-screen ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
       >
@@ -48,7 +49,7 @@ export default function ProfileSideBar() {
 
           <div className={`relative rounded-full grid place-items-center mx-auto my-1 border-2 border-solid border-gray-500 ${open ? 'h-[100px]' : 'h-[32px]'} ${open ? 'w-[100px]' : 'w-[32px]'}`}>
             {/* image */}
-            <img
+            <img alt=""
               src={selectedImage || customer.customer_image }
               className="rounded-full "
               style={{ width: '100%', height: '100%' }}

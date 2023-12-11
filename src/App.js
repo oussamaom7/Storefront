@@ -23,12 +23,7 @@ import ResetPassword from './containers/registration/ResetPassword'
 // import ShoppingCartProvider from './context/ShoppingCartContext';
 
 
-import ImageUpload from './components/imageUpdate';
 
-
-
-
-import SectionPrincipale from './components/section/sectionPrincipale';
 
 
 
@@ -57,14 +52,8 @@ export default function App() {
           <Route path="/v1/customers/validate/:id" element={<Login />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
-<<<<<<< HEAD
-          <Route path="/section" element={<SectionPrincipale />}></Route>
-=======
-          <Route path="/discount" element={<Discount />}></Route>
-
           <Route path="/resetpassword/:token" element={<ResetPassword />} />
 
->>>>>>> 4fea277608a5561aa7ad7bea51992951b5476e07
         </Routes>
         </ShoppingCartProvider>
    </div>

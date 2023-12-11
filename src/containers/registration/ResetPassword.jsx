@@ -20,12 +20,12 @@ export default function ResetPassword() {
     try {
       const response = await axios.get(url);
       
-      if(response.data.status  == 'success') {
+      if(response.data.status  === 'success') {
         console.log(response.data.status)
         toast.success(response.data.message);
         setIsValidToken(true);
       } 
-      if(response.data.status  == 'error')  {
+      if(response.data.status  === 'error')  {
         toast.error(response.data.message);
       }
 
@@ -60,16 +60,17 @@ export default function ResetPassword() {
         confirmNewPassword:confirmPassword
       });
 
-      if(response.data.status  == 'success') {
+      if(response.data.status  === 'success') {
         toast.success(response.data.message);
+        setTimeout(() => {
+          navigate('/login');
+        }, 1500);
       } 
-      if(response.data.status  == 'error')  {
+      if(response.data.status  === 'error')  {
         toast.error(response.data.message);
       }
 
-    setTimeout(() => {
-      navigate('/login');
-    }, 1500);
+ 
     } catch (error) {
       toast.error(`Password reset failed: ${error.message}`);
     }

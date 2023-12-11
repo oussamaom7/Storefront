@@ -9,6 +9,7 @@ import ProfileSideBar from './ProfileSideBar';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
+import NavbarLogo from '../registration/NavbarLogo';
 
 
 
@@ -101,12 +102,12 @@ export default function OrdersPage() {
         return (
           <div className="flex gap-1 pl-8">
             <div className="" onClick={() => {}}>
-              <button className='bg-blue-500 text-white py-1 px-3 rounded-full'>Details</button>
+              <button className='bg-color2 text-white py-1 px-3 rounded-full'>Details</button>
             </div>
 
       <div className="" onClick={() => {}}>
       <Link to={`/tick/${params.row._id}`}>
-              <button className='bg-blue-500 text-white py-1 px-3 rounded-full'>Download ticket</button></Link> 
+              <button className='bg-color2 text-white py-1 px-3 rounded-full'>Download ticket</button></Link> 
 
             </div>
           </div>
@@ -117,6 +118,7 @@ export default function OrdersPage() {
   return (
 
     <>
+    <NavbarLogo/>
     <div className="flex justify-between">
     <div>
     <ProfileSideBar/>
@@ -124,7 +126,7 @@ export default function OrdersPage() {
    <div>
 
     <div className="flex flex-col justify-center items-center">
-       <div className="mx-auto my-8 max-w-2xl  text-center pt-20">
+       <div className="mx-auto my-8 max-w-2xl  text-center">
                 <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">My orders</h2>
             </div>
        <Box >
