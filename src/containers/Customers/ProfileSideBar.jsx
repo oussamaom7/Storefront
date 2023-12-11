@@ -15,6 +15,7 @@ import { HiOutlineHome } from "react-icons/hi";
 
 
 
+
 export default function ProfileSideBar({customerImage}) {
 
   const authContext = useContext(AuthContext);
@@ -85,7 +86,9 @@ export default function ProfileSideBar({customerImage}) {
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
 
+
           <div className={`relative rounded-full grid place-items-center mx-auto bg-gray-500 uppercase text-gray-50 my-1 border-2 border-solid border-gray-500 ${open ? 'h-[120px]' : 'h-[40px]'} ${open ? 'w-[120px]' : 'w-[40px]'}`}>
+
             {/* image */}
             {(customerImage || selectedImage) ? <img
               src={customerImage || selectedImage }  

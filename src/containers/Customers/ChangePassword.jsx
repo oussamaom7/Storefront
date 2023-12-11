@@ -175,7 +175,9 @@ export default function ChangePassword() {
                 <button
                   onClick={handleUpdatePassword}
 
+
                   className="block w-full rounded-md bg-color2 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-white hover:border-2 hover:text-color2 hover:border-color2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+
 
                 >
                   Change Password

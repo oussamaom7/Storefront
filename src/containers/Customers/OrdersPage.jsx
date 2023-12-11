@@ -7,6 +7,7 @@ import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
 import NavbarLogo from '../registration/NavbarLogo';
 
+
 const columns = [
   { field: '_id', headerName: 'Order Id', width: 150, headerAlign: 'start' },
   { field: 'order_date', headerName: 'Order Date', type: 'Date', width: 150, headerAlign: 'start' },
@@ -56,10 +57,12 @@ export default function OrdersPage() {
             <div className="" onClick={() => {}}>
               <button className='bg-color2 text-white py-1 px-3 rounded-full'>Details</button>
             </div>
+
             <div className="" onClick={() => {}}>
               <Link to={`/tick/${params.row._id}`}>
                 <button className='bg-color2 text-white py-1 px-3 rounded-full'>Download ticket</button>
               </Link>
+
             </div>
           </div>
         );
@@ -69,6 +72,7 @@ export default function OrdersPage() {
 
   return (
     <>
+
       <NavbarLogo />
       <div className="flex justify-between">
         <div>
@@ -78,6 +82,7 @@ export default function OrdersPage() {
           <div className="flex flex-col justify-center items-center">
             <div className="mx-auto my-8 max-w-2xl  text-center">
               <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">My orders</h2>
+
             </div>
             <Box>
               <DataGrid
