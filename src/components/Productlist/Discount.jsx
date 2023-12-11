@@ -1,59 +1,44 @@
 import React, { useState, useEffect } from "react";
 
-export default function Discount() {
-  const initialCountdownValues = {
-    days: 15,
-    hours: 10,
-    minutes: 24,
-    seconds: 59,
-  };
+const calculateTimeRemaining = (eventDate) => {
+  const difference = new Date(eventDate) - new Date();
+  if (difference > 0) {
+    // Calculate the countdown values
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-  const [countdownValues, setCountdownValues] = useState(
-    initialCountdownValues
-  );
+    return { days, hours, minutes, seconds };
+  } else {
+    // Event has passed, return all zeros or handle as needed
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+};
+
+const Discount = ({ event_date }) => {
+  const [countdownValues, setCountdownValues] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
-    const countdownInterval = setInterval(() => {
-      setCountdownValues((prevValues) => {
-        const newValues = { ...prevValues };
+    if (event_date) {
+      setCountdownValues(calculateTimeRemaining(event_date));
 
-        // Update each countdown value every second
-        if (newValues.seconds > 0) {
-          newValues.seconds -= 1;
-        } else {
-          newValues.seconds = 59;
+      const countdownInterval = setInterval(() => {
+        setCountdownValues(calculateTimeRemaining(event_date));
+      }, 1000);
 
-          if (newValues.minutes > 0) {
-            newValues.minutes -= 1;
-          } else {
-            newValues.minutes = 59;
-
-            if (newValues.hours > 0) {
-              newValues.hours -= 1;
-            } else {
-              newValues.hours = 23;
-
-              if (newValues.days > 0) {
-                newValues.days -= 1;
-              } else {
-                // Stop the countdown when all values are 0
-                clearInterval(countdownInterval);
-              }
-            }
-          }
-        }
-
-        return newValues;
-      });
-    }, 1000);
-
-    // Cleanup the interval when the component is unmounted
-    return () => clearInterval(countdownInterval);
-  }, []);
+      return () => clearInterval(countdownInterval);
+    }
+  }, [event_date]);
 
   return (
-    <div className="grid grid-flow-col  text-center auto-cols-max">
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content ">
+    <div className="grid grid-flow-col text-center auto-cols-max">
+      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -66,8 +51,7 @@ export default function Discount() {
           />
         </svg>
       </div>
-
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content ">
+      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
         <span className="countdown font-mono text-xl">
           <span style={{ "--value": countdownValues.days }}>
             {countdownValues.days}
@@ -98,4 +82,6 @@ export default function Discount() {
       </div>
     </div>
   );
-}
+};
+
+export default Discount;

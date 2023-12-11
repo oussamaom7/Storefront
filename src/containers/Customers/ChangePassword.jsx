@@ -6,6 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
+import NavbarLogo from '../registration/NavbarLogo';
+
+
 export default function ChangePassword() {
   const authContext = useContext(AuthContext);
   const { authTokens } = authContext;
@@ -53,6 +56,7 @@ export default function ChangePassword() {
 
   return (
     <>
+    <NavbarLogo/>
       <div className="flex justify-between">
         <div>
           <ProfileSideBar />
@@ -170,7 +174,9 @@ export default function ChangePassword() {
               <div className="mt-10">
                 <button
                   onClick={handleUpdatePassword}
-                  className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+
+                  className="block w-full rounded-md bg-color2 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+
                 >
                   Change Password
                 </button>

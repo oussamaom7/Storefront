@@ -16,6 +16,9 @@ import ProductPage from './components/Productlist/productPage';
 import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
 
+
+
+
 import ShoppingCartProvider from './context/ShoppingCartContext';
 
 import ResetPassword from './containers/registration/ResetPassword'
@@ -23,13 +26,9 @@ import ResetPassword from './containers/registration/ResetPassword'
 // import ShoppingCartProvider from './context/ShoppingCartContext';
 
 
-import ImageUpload from './components/imageUpdate';
 
 
 
-
-import ImageUpload from './components/imageUpdate';
-import Discount from './components/Productlist/Discount';
 
 
 export default function App() {
@@ -40,7 +39,6 @@ export default function App() {
 <ShoppingCartProvider>
 
         <Routes>
-        <Route path="/image" element={<ImageUpload />}></Route>
         <Route path="/card" element={<Card />}></Route>
         <Route path="/payement" element={<PaymentForm />}></Route>
         <Route path="/v1/products/:id" element={<ProductPage />}></Route>
@@ -58,7 +56,6 @@ export default function App() {
           <Route path="/v1/customers/validate/:id" element={<Login />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
-          <Route path="/discount" element={<Discount />}></Route>
 
           <Route path="/resetpassword/:token" element={<ResetPassword />} />
 

@@ -11,7 +11,9 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 export default function ProfileSideBar({customerImage}) {
+
   const authContext = useContext(AuthContext);
   const { authTokens, customer } = authContext; // Make sure 'customer' is available
   const menus = [
@@ -21,6 +23,7 @@ export default function ProfileSideBar({customerImage}) {
   ];
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -51,13 +54,15 @@ export default function ProfileSideBar({customerImage}) {
       } else {
         setError('Something went wrong. Please try again.');
       }
+
     }
   };
 
   return (
+    
     <section className="flex gap-6">
       <div
-        className={`bg-[#0e0e0e] min-h-screen ${
+        className={`bg-gray-900 min-h-screen ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
       >
@@ -69,6 +74,7 @@ export default function ProfileSideBar({customerImage}) {
           />
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
+
           <span onClick={()=>{
             console.log(customer)
           }}>hello</span>
@@ -84,6 +90,7 @@ export default function ProfileSideBar({customerImage}) {
           
           }
             
+
             {/* mini badge */}
             <label htmlFor="imageInput" className={`bg-gray-600  w-9 grid place-items-center hover:scale-110 transition-transform cursor-pointer ${!open && 'hidden'} aspect-square rounded-full absolute right-0 bottom-0`}>
               <RiImageEditLine />
@@ -95,7 +102,9 @@ export default function ProfileSideBar({customerImage}) {
             align="center"
             sx={{ fontSize: open ? 17 : 0, transition: "0.25s" }}
           >
+
             {customer?.firstName} {/* Make sure 'customer' is available */}
+
           </Typography>
           {menus?.map((menu, i) => (
             <Link

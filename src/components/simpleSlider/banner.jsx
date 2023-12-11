@@ -66,9 +66,9 @@ export const SimpleSlider = ({ initialSlide = 0 }) => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 1,
+          slidesToScroll:1,
+          initialSlide: 1,
         },
       },
       {
@@ -82,9 +82,9 @@ export const SimpleSlider = ({ initialSlide = 0 }) => {
   };
   return (
     <div className="relative overflow-hidden w-full">
-      <div className="absolute inset-0 z-0  bg-color2 opacity-95">
+      <div className="absolute inset-0 z-0  opacity-95 p-5">
         <div
-          class="w-full h-full bg-cover bg-center"
+          class="w-full h-full bg-cover bg-center rounded-3xl"
           style={{
             backgroundImage:
               "url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",

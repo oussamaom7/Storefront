@@ -5,6 +5,8 @@ import AuthContext from '../context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from 'uuid'; // Import uuidv4 from uuid package
+import Navbar from './Navbar';
+
 
 function PaymentForm() {
   const { cartItems, subtotal } = useShoppingCart();
@@ -56,7 +58,8 @@ function PaymentForm() {
   };
   return (
     <>
-
+      <Navbar/>
+      <hr />
       <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
         <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
           <div class="relative">
