@@ -44,7 +44,7 @@ export default function ChangePassword() {
       setConfirmNewPassword('');
     } catch (err) {
       if (err.response) {
-        setError(err.response.data.message);
+        toast.error(err.response.data.message);
       } else {
         setError('Something went wrong. Please try again.');
       }

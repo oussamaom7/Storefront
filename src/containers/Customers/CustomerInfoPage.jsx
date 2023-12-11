@@ -16,6 +16,8 @@ export default function CustomerInfoPage() {
         lastName: customerProfile?.lastName || '',
         email: customerProfile?.email || '',
         address: customerProfile?.address || '',
+        test:'test'
+
     });
 
     const [loading, setLoading] = useState(false);
@@ -27,6 +29,7 @@ export default function CustomerInfoPage() {
             lastName: customerProfile?.lastName || '',
             email: customerProfile?.email || '',
             address: customerProfile?.address || '',
+            test:'test'
         });
     }, [customerProfile]);
 
@@ -45,6 +48,7 @@ export default function CustomerInfoPage() {
                 },
             });
             if (response.status === 200) {
+                console.log('user data is fetched ',response.data)
                 setCustomerProfile(response.data);
             } else {
                 setError("Failed to fetch user data.");
@@ -92,7 +96,7 @@ export default function CustomerInfoPage() {
         <>
             <div className="flex justify-between">
                 <div>
-                    <ProfileSideBar />
+                    <ProfileSideBar customerImage={customerProfile.customer_image}/>
                 </div>
                 <div>
                     <form className="container" onSubmit={handleSubmit}>
