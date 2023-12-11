@@ -74,6 +74,7 @@ function Ticket() {
               )}
               content={() => pdfContainer.current}
             />
+
             <div
               key={index}
               ref={pdfContainer}

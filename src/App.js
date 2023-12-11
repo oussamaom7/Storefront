@@ -16,11 +16,15 @@ import ProductPage from './components/Productlist/productPage';
 import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
 
+
+
+
 import ShoppingCartProvider from './context/ShoppingCartContext';
 
 import ResetPassword from './containers/registration/ResetPassword'
 
 // import ShoppingCartProvider from './context/ShoppingCartContext';
+
 
 
 
@@ -52,6 +56,7 @@ export default function App() {
           <Route path="/v1/customers/validate/:id" element={<Login />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
+
           <Route path="/resetpassword/:token" element={<ResetPassword />} />
 
         </Routes>
