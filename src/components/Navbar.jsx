@@ -62,12 +62,22 @@ export default function Navbar({id}) {
                   </button>
                 </div>
               </div>
-              {authTokens? (<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <div className={`relative rounded-full grid place-items-center mx-auto my-1 cursor-pointer hover:scale-110 `}>
-                <TbShoppingBag className='w-8 h-8 ' onClick={openCard}/>
-                <div className={`bg-gray-200 grid place-items-center px-1 w-auto h-auto  aspect-square rounded-full absolute right-0 top-0 text-xs`}>{cartQuantity}</div>
 
-                </div>
+              {authTokens? (<div className="absolute inset-y-0 right-0 flex items-center gap-4 justify-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              
+                <button
+                  type="button"
+                  className="relative flex justify-center items-center border-[1px] rounded-full  border-color2 px-4 text-color2 p-1 text-c1 hover:text-color1 focus:outline-none"
+
+                  onClick={openCard}
+
+                >
+                  <HiOutlineShoppingBag className='text-xl'/>
+                  &nbsp;CART&nbsp;
+                   ({cartQuantity})
+                </button> 
+                
+
               
                 <Menu as="div" className="relative ml-3">
                   <div>
@@ -75,7 +85,9 @@ export default function Navbar({id}) {
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <img
-                        className="h-10 w-10 rounded-full"
+
+                        className="h-8 w-8 border-[1px] border-color2 rounded-full"
+
                         src={customer.customer_image}
                         alt=""
                       />

@@ -90,6 +90,7 @@ export default function ProfileSideBar({customerImage}) {
             </label>
           </div>
           <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
+
           <Typography
             align="center"
             sx={{ fontSize: open ? 17 : 0, transition: "0.25s" }}
