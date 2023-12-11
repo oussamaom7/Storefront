@@ -1,57 +1,96 @@
-import React from 'react'
-import { DataGrid } from '@mui/x-data-grid';
+
+
+import React, { useCallback, useContext, useEffect, useState } from 'react'
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
+
 
 import ProfileSideBar from './ProfileSideBar';
 import {Link} from 'react-router-dom'
+import axios from 'axios';
+import AuthContext from '../../context/AuthContext';
+import NavbarLogo from '../registration/NavbarLogo';
 
 
-const style = {
-  height: 400, width: '100%'
 
-}
+
 
 const columns = [
-  { field: 'id', headerName: 'Order Id', width: 150,headerAlign: 'center', },
+  { field: '_id', 
+  headerName: 'Order Id',
+   width: 150,
+   headerAlign: 'start' },
   {
-    field: 'orderDate',
+    field: 'order_date',
     headerName: 'Order Date',
-    type: 'date',
+    type: 'Date',
     width: 150,
-    headerAlign: 'center',
-    
+    headerAlign: 'start' 
   },
   {
     field: 'status',
     headerName: 'Status',
+    type: 'String',
     width: 150,
-    headerAlign: 'center',
+    headerAlign: 'start' 
     
   },
   {
-    field: 'totalPrice',
+    field: 'cart_total_price',
     headerName: 'Total Price',
-    type: 'number',
+    type: 'String',
     width: 150,
-    headerAlign: 'center',
-    
-  },
+    headerAlign: 'start'   
+  }
   
 ];
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+
 
 export default function OrdersPage() {
+  const authContext = useContext(AuthContext);
+  const { customer } = authContext;
+  const [orders,setOrders] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [/* error */, setError] = useState(null);
+  const fetchOrderData = useCallback(async () => {
+    try {
+      console.log(customer.id)
+      const response = await axios.get(`http://localhost:3000/v1/customers/${customer.id}/orders`);
+      const orderWithId = response.data.orders.map((order) => ({
+        ...order,
+        id: order._id,
+      }));
+    
+      setOrders(orderWithId);
+      console.log(response.data)
+      setIsLoading(false); // Set loading state to false once data is fetched
+    } catch (error) {
+      setError("Error fetching product data: " + error.message);
+      setIsLoading(false); // Set loading state to false if there's an error
+    }
+  }, [customer.id]);
+  useEffect(() => {
+    fetchOrderData();
+  }, [fetchOrderData]);
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div role="status">
+          <svg
+            aria-hidden="true"
+            className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            viewBox="0 0 100 101"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Your SVG path here */}
+          </svg>
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    );
+  }
   const actionColumn = [
     {
       field: "action",
@@ -63,12 +102,12 @@ export default function OrdersPage() {
         return (
           <div className="flex gap-1 pl-8">
             <div className="" onClick={() => {}}>
-              <button className='bg-blue-500 text-white py-1 px-3 rounded-full'>Details</button>
+              <button className='bg-color2 text-white py-1 px-3 rounded-full'>Details</button>
             </div>
 
       <div className="" onClick={() => {}}>
-      <Link to="/tick"> 
-              <button className='bg-blue-500 text-white py-1 px-3 rounded-full'>Download ticket</button></Link> 
+      <Link to={`/tick/${params.row._id}`}>
+              <button className='bg-color2 text-white py-1 px-3 rounded-full'>Download ticket</button></Link> 
 
             </div>
           </div>
@@ -79,6 +118,7 @@ export default function OrdersPage() {
   return (
 
     <>
+    <NavbarLogo/>
     <div className="flex justify-between">
     <div>
     <ProfileSideBar/>
@@ -86,12 +126,13 @@ export default function OrdersPage() {
    <div>
 
     <div className="flex flex-col justify-center items-center">
-       <div className="mx-auto my-8 max-w-2xl  text-center pt-20">
+       <div className="mx-auto my-8 max-w-2xl  text-center">
                 <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">My orders</h2>
             </div>
-       <Box sx={style}>
-      <DataGrid
-        rows={rows}
+       <Box >
+      <DataGrid  
+        rows={orders}
+        getRowId={(row) => row.id}
         columns={columns.concat(actionColumn)}
         initialState={{
           pagination: {
@@ -100,8 +141,20 @@ export default function OrdersPage() {
             },
           },
         }}
+        slots={{ toolbar: GridToolbar }}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 },
+            style: { padding: '15px 15px 0 15px' }
+
+          },
+        }}
         pageSizeOptions={[5]}
         disableRowSelectionOnClick
+        disableColumnFilter
+        disableDensitySelector
+        disableColumnSelector
       />
     </Box>
     </div>

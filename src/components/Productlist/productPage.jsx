@@ -4,11 +4,16 @@ import Header from '../Header';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../Footer';
+import {useShoppingCart} from '../../context/ShoppingCartContext'
+
 
 export default function ProductPage() {
+
   const { id } = useParams();
+  const {getItemsQuantity,increaseCarteQantity,decreaseCarteQantity}=useShoppingCart();
+   const quantity = getItemsQuantity(id)
   const [productsData, setProductsData] = useState(null);
-  const [error, setError] = useState(null);
+  const [/* error */, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchProductsData = useCallback(async () => {
@@ -21,12 +26,9 @@ export default function ProductPage() {
       setIsLoading(false); // Set loading state to false if there's an error
     }
   }, [id]);
-
   useEffect(() => {
     fetchProductsData();
   }, [fetchProductsData]);
-
-  // Check for loading state and render the spinner if data is still loading
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -94,32 +96,19 @@ export default function ProductPage() {
                   <div className="quantity-label text-center left-0 pt-2 right-0 absolute block text-xs uppercase text-gray-400 tracking-wide font-semibold">
                     Qty
                   </div>
-                  <select className="quantity-select cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-
-                  <svg
-                    className="quantity-icon w-5 h-5 text-gray-400 absolute right-0 bottom-0 mb-2 mr-2"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M8 9l4-4 4 4m0 6l-4 4-4-4"
-                    />
-                  </svg>
+                  <div class="flex flex-row h-10 w-full rounded-lg relative bg-color2 mt-1">
+    <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-color2 h-full w-10 rounded-l cursor-pointer outline-none">
+      <span class="m-auto text-2xl font-thin" onClick={()=>decreaseCarteQantity(id)}>−</span>
+    </button>
+    <input /* type="number" */ class=" focus:outline-none text-center w-10 bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value={quantity}></input>
+  <button  class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-color2 h-full w-10 rounded-r cursor-pointer">
+    <span class="text-2xl font-thin" onClick={()=>increaseCarteQantity(id)}>+</span>
+  </button>
+</div>
                 </div>
 
                 <button type="button" className="add-to-cart-btn h-14 px-6 py-2 font-semibold rounded-xl bg-color2 hover:bg-color1 text-color1 hover:text-color0">
-                  Add to Cart
+                  Add to Cart 
                 </button>
               </div>
             </div>

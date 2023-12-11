@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Disclosure } from '@headlessui/react';
+import { Disclosure } from "@headlessui/react";
+// import { MenuIcon } from '@heroicons/react/20/solid';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,17 +10,13 @@ export default function Header() {
  const [isLoading, setIsLoading] = useState(false);
  const [error, setError] = useState('');
  const [openError, setOpenError] = useState(false);
- const [authTokens, setAuthTokens] = useState(null);
+
 
  const fetchCategories = useCallback(async () => {
 
     setIsLoading(true);
     try {
-      const response = await axios.get("http://localhost:3000/v1/categories", {
-        headers: {
-          Authorization: `Bearer ${authTokens}`,
-        },
-      });
+      const response = await axios.get("http://localhost:3000/v1/categories");
       if (response.status === 200) {
         const categoryData = response.data.map(category => ({
           id: category._id,
@@ -36,11 +33,11 @@ export default function Header() {
       setIsLoading(false);
       setOpenError(true);
     }
- }, [authTokens]);
+ }, []);
 
  useEffect(() => {
     fetchCategories();
- }, [fetchCategories, authTokens]);
+ }, [fetchCategories]);
 
  function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -57,50 +54,43 @@ export default function Header() {
  };
 
  return (
-    <div className="min-h-full">
-      <Disclosure as="nav" className="bg-color0">
-        {({ open }) => (
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 items-center justify-between">
-              <div className="flex items-center">
-                <div className="hidden md:block">
-                 <div className="ml-10 flex items-baseline space-x-4">
+  <div className="min-h-full">
+    <Disclosure as="nav" className="bg-color0">
+      {({ open }) => (
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <div className="flex items-center">
+              <div className="hidden md:block">
+                <div className="ml-10 flex items-baseline space-x-4">
+                  <Link
+                    to="/"
+                    className={classNames(
+                      'text-color2 hover:text-black',
+                      'rounded-md px-3 py-2 text-sm font-bold'
+                    )}
+                  >
+                    Accueil
+                  </Link>
+                  {categories.map((category) => (
                     <Link
-                      to="/"
+                      key={category.id}
+                      to={`/category/${category.id}`}
                       className={classNames(
-                        'text-color1 hover:text-color2',
-
-                        'rounded-md px-3 py-2 text-sm font-medium'
+                        category.active ? 'text-color2' : 'text-black hover:text-color2',
+                        'rounded-md px-3 py-2 text-sm font-bold'
                       )}
+                      onClick={() => handleLinkClick(category.id)}
                     >
-                      Accueil
+                      {category.name}
                     </Link>
-                    {categories.map((category) => (
-                      <Link
-                        key={category.id}
-                        to={`/category/${category.id}`}
-                        className={classNames(
-
-                          category.active ? 'text-color2' : 'text-color1 hover:text-color2',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        onClick={() => handleLinkClick(category.id)}
-
-                      >
-                        {category.name}
-                      </Link>
-                    ))}
-
-                 </div>
+                  ))}
                 </div>
               </div>
-
             </div>
           </div>
-        )}
-      </Disclosure>
-    </div>
-
- );
+        </div>
+      )}
+    </Disclosure>
+  </div>
+);
 }
-
