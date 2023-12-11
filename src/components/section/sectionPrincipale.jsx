@@ -12,9 +12,9 @@ export default function SectionPrincipale() {
     <div className="flex justify-around items-center h-screen flex-wrap">
       <div class="flex-initial w-50">
         <span>
-          <h6 class="font-bold text-4xl leading-relaxed">Votre billetterie en ligne </h6>
-          <h6 class="font-bold text-4xl leading-relaxed">au Maroc pour</h6>
-          <span data-text="Creative..." className="text">
+          <h6 class="font-bold text-4xl text-color0 leading-relaxed font-serif">Votre billetterie en ligne </h6>
+          <h6 class="font-bold text-4xl text-color0 leading-relaxed font-serif">au Maroc pour</h6>
+          <span data-text="Creative..." className="text font-serif">
             Creative...
           </span>
         </span>
