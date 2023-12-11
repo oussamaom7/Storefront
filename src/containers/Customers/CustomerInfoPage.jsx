@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState, useCallback } from "react";
 import AuthContext from "../../context/AuthContext";
 import axios from "axios";
@@ -7,10 +8,18 @@ import "react-toastify/dist/ReactToastify.css";
 import NavbarLogo from "../registration/NavbarLogo";
 
 
+
+export default function CustomerInfoPage() {
+    const authContext = useContext(AuthContext);
+    const { authTokens } = authContext;
+    const [customerProfile, setCustomerProfile] = useState({});
+
+
 export default function CustomerInfoPage() {
   const authContext = useContext(AuthContext);
   const { authTokens } = authContext;
   const [customerProfile, setCustomerProfile] = useState({});
+
 
   const [details, setDetails] = useState({
     firstName: customerProfile?.firstName || "",
@@ -19,8 +28,10 @@ export default function CustomerInfoPage() {
     address: customerProfile?.address || "",
   });
 
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
 
   useEffect(() => {
     setDetails({
@@ -31,12 +42,14 @@ export default function CustomerInfoPage() {
     });
   }, [customerProfile]);
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDetails((prev) => {
       return { ...prev, [name]: value };
     });
   };
+
 
   const fetchData = useCallback(async () => {
     try {
@@ -46,6 +59,7 @@ export default function CustomerInfoPage() {
           headers: {
             Authorization: `Bearer ${authTokens?.access_token}`,
           },
+
         }
       );
       if (response.status === 200) {
@@ -112,6 +126,7 @@ export default function CustomerInfoPage() {
               <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
                 {/* First name */}
                 <div>
+
                   <label
                     htmlFor="first-name"
                     className="block text-sm font-semibold leading-6 text-gray-900"
@@ -128,9 +143,11 @@ export default function CustomerInfoPage() {
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
+
                 </div>
                 {/* Last name */}
                 <div>
+
                   <label
                     htmlFor="last-name"
                     className="block text-sm font-semibold leading-6 text-gray-900"
@@ -186,6 +203,7 @@ export default function CustomerInfoPage() {
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
+
                 </div>
               </div>
               {error && <p className="text-red-500">{error}</p>}

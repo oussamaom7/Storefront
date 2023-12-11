@@ -1,8 +1,11 @@
-import React, { Fragment, useContext, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import SearchIcon from "@mui/icons-material/Search";
-import { Link } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
+
+import React,{ Fragment,useContext } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import SearchIcon from '@mui/icons-material/Search';
+import { TbShoppingBag } from "react-icons/tb";
+import { Link } from 'react-router-dom';
+import AuthContext from '../context/AuthContext'
+
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
 import { useShoppingCart } from "../context/ShoppingCartContext";
@@ -75,17 +78,22 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                 </button>
                 </form>
               </div>
+
             </div>
             {authTokens ? (
               <div className="absolute inset-y-0 right-0 flex items-center gap-4 justify-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
                 <button
                   type="button"
                   className="relative flex justify-center items-center border-[1px] rounded-full  border-color2 px-4 text-color2 p-1 text-c1 hover:text-color1 focus:outline-none"
                   onClick={openCard}
                 >
-                  <HiOutlineShoppingBag className="text-xl" />
-                  &nbsp;CART&nbsp; ({cartQuantity})
-                </button>
+
+                  <HiOutlineShoppingBag className='text-xl'/>
+                  &nbsp;CART&nbsp;
+                   ({cartQuantity})
+                </button> 
+                
 
                 <Menu as="div" className="relative ml-3">
                   <div>
