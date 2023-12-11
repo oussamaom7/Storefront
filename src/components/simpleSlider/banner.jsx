@@ -9,7 +9,11 @@ export const SimpleSlider = ({ initialSlide = 0 }) => {
   const [hasSetPosition, setHasSetPosition] = useState(false);
   const slider = useRef();
   const [productsData, setProductsData] = useState([]);
+<<<<<<< HEAD
   const [, /* error */ setError] = useState(null);
+=======
+  const [/* error */, setError] = useState(null);
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchProductsData = useCallback(async () => {

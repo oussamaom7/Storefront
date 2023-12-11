@@ -4,14 +4,22 @@ import Header from '../Header';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../Footer';
+<<<<<<< HEAD
 import {useShoppingCart} from '../../context/ShoppingCartContext'
+=======
+import { useShoppingCart } from '../../context/ShoppingCartContext';
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
 
 
 export default function ProductPage() {
 
   const { id } = useParams();
   const {getItemsQuantity,increaseCarteQantity,decreaseCarteQantity}=useShoppingCart();
+<<<<<<< HEAD
    const quantity = getItemsQuantity(id)
+=======
+   const quantity=getItemsQuantity(id)
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
   const [productsData, setProductsData] = useState(null);
   const [/* error */, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -100,7 +108,11 @@ export default function ProductPage() {
     <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-color2 h-full w-10 rounded-l cursor-pointer outline-none">
       <span class="m-auto text-2xl font-thin" onClick={()=>decreaseCarteQantity(id)}>−</span>
     </button>
+<<<<<<< HEAD
     <input /* type="number" */ class=" focus:outline-none text-center w-10 bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value={quantity}></input>
+=======
+    <input /* type="number" */ class="outline-none focus:outline-none text-center w-10 bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value={quantity}></input>
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
   <button  class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-color2 h-full w-10 rounded-r cursor-pointer">
     <span class="text-2xl font-thin" onClick={()=>increaseCarteQantity(id)}>+</span>
   </button>

@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 import React, { useContext } from 'react';
 import { useShoppingCart } from '../context/ShoppingCartContext';
+=======
+import React, { useContext} from 'react';
+import { useShoppingCart } from "../context/ShoppingCartContext";
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
 import axios from 'axios';
 import AuthContext from '../context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+<<<<<<< HEAD
 import { v4 as uuidv4 } from 'uuid'; // Import uuidv4 from uuid package
 import Navbar from './Navbar';
 
@@ -46,20 +52,46 @@ function PaymentForm() {
   const handleCreateOrder = async () => {
     try {
       await axios.post('http://localhost:3000/v1/orders', orderData, {
+=======
+
+function PaymentForm() {
+  const {cartItems,subtotal}=useShoppingCart();
+  const authContext = useContext(AuthContext);
+  const { authTokens } = authContext;
+  const orderData = {
+    order_items: cartItems.map((item) => ({
+      product_name: item.product_name
+     
+    })),
+    cart_total_price: subtotal,
+  };
+  
+
+  const handleCreateOrder = async () => {
+    try {
+      await axios.post(`http://localhost:3000/v1/orders`, orderData, {
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
         headers: {
           Authorization: `Bearer ${authTokens?.access_token}`,
         },
       });
       toast.success('Order placed successfully!');
     } catch (error) {
+<<<<<<< HEAD
       console.error('Error creating order:', error);
+=======
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
       toast.error('Failed to create order. Please try again.');
     }
   };
   return (
     <>
+<<<<<<< HEAD
       <Navbar/>
       <hr />
+=======
+
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
       <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
         <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
           <div class="relative">

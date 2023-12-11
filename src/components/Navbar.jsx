@@ -1,9 +1,22 @@
+<<<<<<< HEAD
 import React, { Fragment, useContext, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+=======
+import React,{ Fragment,useContext } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import SearchIcon from '@mui/icons-material/Search';
+import { Link } from 'react-router-dom';
+import AuthContext from '../context/AuthContext'
+
+
+import { useShoppingCart } from '../context/ShoppingCartContext';
+import Logonavbar from '../assets/Logonabvar.png'
+
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
 
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import Logonavbar from "../assets/Logonabvar.png";
@@ -12,6 +25,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+<<<<<<< HEAD
 export default function Navbar({ setSearchActive,setSearchResults}) {
   const authContext = useContext(AuthContext);
   const { authTokens, logoutCustomer, customer } = authContext;
@@ -37,16 +51,29 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
       setSearchActive(false);
     }
   };
+=======
+export default function Navbar({id}) {
+  const authContext = useContext(AuthContext);
+  const { authTokens,logoutCustomer } = authContext;
+  const {openCard,cartQuantity}=useShoppingCart();
+
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
   const handleLogout = () => {
     logoutCustomer(); // Call the logout function when "Sign out" is clicked
   };
 
+<<<<<<< HEAD
+=======
+
+ 
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
   return (
     <Disclosure as="nav" className="bg-color0">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-6xl px-2 sm:px-6 lg:px-8 relative flex h-16 items-center justify-between">
             {/* {logo} */}
+<<<<<<< HEAD
             <div className="flex items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
                 <img
@@ -54,6 +81,19 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                   src={Logonavbar}
                   alt="Your Company"
                 />
+=======
+              <div className="flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex flex-shrink-0 items-center">
+                  <img
+                    className="h-auto w-44 pt-3"
+                    src={Logonavbar}
+                    alt="Your Company"
+                  />
+                </div>
+                <div className="hidden sm:ml-6 sm:block">
+        
+                </div>
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
               </div>
               <div className="hidden sm:ml-6 sm:block"></div>
             </div>
@@ -75,6 +115,7 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                 </button>
                 </form>
               </div>
+<<<<<<< HEAD
             </div>
             {authTokens ? (
               <div className="absolute inset-y-0 right-0 flex items-center gap-4 justify-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -87,6 +128,23 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                   &nbsp;CART&nbsp; ({cartQuantity})
                 </button>
 
+=======
+              {authTokens? (<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              ({cartQuantity})
+                <button
+                  type="button"
+                  className="relative rounded-full bg-color0 p-1 text-c1 hover:text-color1 focus:outline-none"
+
+                  onClick={openCard}
+
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  
+                </button> 
+              
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="relative flex rounded-full bg-color1 text-sm focus:outline-none">
@@ -111,6 +169,7 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-color0 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+<<<<<<< HEAD
                       <Menu.Item>
                         {({ active }) => (
                           <Link to="/CustomerProfile">
@@ -140,6 +199,37 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                           </h6>
                         )}
                       </Menu.Item>
+=======
+                    <Menu.Item>
+  {({ active }) => (
+ <Link to="/CustomerProfile">   <h6
+      href="#"
+      className={classNames(
+        active ? 'bg-color2' : '',
+        'block px-4 py-1 text-sm text-color1 cursor-pointer' // Added cursor-pointer class
+      )}
+    >
+      Your Profile
+    </h6></Link>
+  )}
+</Menu.Item>
+<Menu.Item>
+  {({ active }) => (
+    <h6
+      onClick={handleLogout}
+      className={classNames(
+
+        active ? 'bg-color2' : '',
+        'block px-4 py-1 text-sm text-color1 cursor-pointer' // Added cursor-pointer class
+
+      )}
+    >
+      Sign out
+    </h6>
+  )}
+</Menu.Item>
+
+>>>>>>> 8f577f3ba5ab56aa5df6137a12d867ef5e191584
                     </Menu.Items>
                   </Transition>
                 </Menu>
