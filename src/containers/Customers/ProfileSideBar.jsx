@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BiLogOut } from "react-icons/bi";
 import { HiOutlineHome } from "react-icons/hi";
 
+
 export default function ProfileSideBar({customerImage}) {
 
   const authContext = useContext(AuthContext);

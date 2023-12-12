@@ -15,8 +15,6 @@ import Footer from "../../components/Footer";
 
 
 
-
-
 export default function CustomerInfoPage() {
   const authContext = useContext(AuthContext);
   const { authTokens } = authContext;
