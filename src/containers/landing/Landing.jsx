@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Header from "../../components/Header";
+import Features from "../../components/Features";
 import SectionPrincipale from "../../components/section/sectionPrincipale";
 import Footer from "../../components/Footer";
 import axios from "axios";
@@ -57,6 +58,7 @@ export default function Landing() {
               </div>
             )}
           </div>
+          <Features/>
           <Footer />
         </>
       )}

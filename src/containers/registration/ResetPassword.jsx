@@ -3,6 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import NavbarLogo from "./NavbarLogo";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 export default function ResetPassword() {
   const { token } = useParams();
@@ -83,7 +86,12 @@ export default function ResetPassword() {
   };
 
   return (
+    <>
+    <NavbarLogo/>
+    <Header/>
+    <hr />
     <div className='flex flex-col mx-auto my-10 max-w-2xl w-'>
+   
      
       <div>
         <div className="mx-auto mb-8 max-w-2xl text-center">
@@ -160,7 +168,7 @@ export default function ResetPassword() {
         <div className="mt-10">
           <button
             onClick={handleResetPassword}
-            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="block w-full rounded-md bg-color2 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-white  hover:text-color2 hover:border-2 hover:border-color2"
           >
             Reset Password
           </button>
@@ -168,5 +176,7 @@ export default function ResetPassword() {
       </div>
       <ToastContainer />
     </div>
+    <Footer/>
+    </>
   );
 }

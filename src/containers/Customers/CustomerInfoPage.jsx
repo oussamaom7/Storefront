@@ -14,32 +14,6 @@ import Footer from "../../components/Footer";
 
 
 
-export default function CustomerInfoPage() {
-  const authContext = useContext(AuthContext);
-  const { authTokens } = authContext;
-  const [customerProfile, setCustomerProfile] = useState({});
-
-
-  const [details, setDetails] = useState({
-    firstName: customerProfile?.firstName || "",
-    lastName: customerProfile?.lastName || "",
-    email: customerProfile?.email || "",
-    address: customerProfile?.address || "",
-  });
-
-
-  const [error, setError] = useState(null);
-
-
-  useEffect(() => {
-    setDetails({
-      firstName: customerProfile?.firstName || "",
-      lastName: customerProfile?.lastName || "",
-      email: customerProfile?.email || "",
-      address: customerProfile?.address || "",
-    });
-  }, [customerProfile]);
-
 
 export default function CustomerInfoPage() {
   const authContext = useContext(AuthContext);
@@ -54,8 +28,6 @@ export default function CustomerInfoPage() {
     address: customerProfile?.address || "",
   });
 
-
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
 

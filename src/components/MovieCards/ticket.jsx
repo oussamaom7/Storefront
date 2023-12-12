@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import QRCode from "qrcode.react";
-import LogoTicket from "../../assets/LogoTicket.png";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 // import html2canvas from 'html2canvas';
 // import jsPDF from 'jspdf';
 import ReactToPrint from "react-to-print";
-import NavbarLogo from "../../containers/registration/NavbarLogo";
+import Navbar from "../Navbar";
+import Header from "../Header";
+import Footer from "../Footer";
+
+import Logonavbar from "../../assets/Logonabvar.png";
+
 
 function Ticket() {
   const { id } = useParams();
@@ -50,7 +54,10 @@ function Ticket() {
 
   return (
     <>
-    <NavbarLogo/>
+    <Navbar/>
+    <hr />
+    <Header/>
+    <hr />
     <div className="px-40 py-2 text-gray-800">
       {isLoading ? (
         <p>Loading...</p>
@@ -64,7 +71,7 @@ function Ticket() {
             <ReactToPrint
               trigger={() => (
                 <button
-                className="flex items-center rounded-md bg-color2 px-5 py-2.5 text-center text-sm font-medium text-color0 hover:bg-color0 hover:text-color2 hover:border focus:outline-none focus:ring-4 focus:ring-blue-300"
+                className="flex mt-4 items-center rounded-md bg-color2 px-5 py-2.5 text-center text-sm font-medium text-color0 hover:bg-color0 hover:text-color2 hover:border-2 hover:border-color2 focus:outline-none focus:ring-4 focus:ring-blue-300"
                   // className="receipt-modal-download-button"
                   onClick={downloadPDF}
                   disabled={loader}
@@ -98,18 +105,18 @@ function Ticket() {
                     )}
                   </div>
 
-                  <p class="my-2 text-xs italic font-light text-gray-500">
+                  <p class="my-2 text-s italic font-light text-white">
                     Scan here to check in!
                   </p>
-                  <div class="text-xs mb-2 text-gray-600">
-                    <span class="text-gray-500">Valid until :</span>
+                  <div class="text-s mb-2 text-white">
+                    <span class="text-white">Valid until :</span>
                     <br />
                     Monday, 28 September 2020 18:30:23
                   </div>
                 </div>
                 <div class="text-left">
-                  <p class="pb-2 text-xs italic">Powered By</p>
-                  <img src={LogoTicket} alt="" style={{ height: "100px" }} />
+                  <p class="pb-2 text-s text-white italic">Powered By</p>
+                  <img  src={Logonavbar} alt="" style={{ height: "50px" }} />
                 </div>
               </div>
 
@@ -186,6 +193,7 @@ function Ticket() {
                 </div>
               </div>
             </div>
+            
           </div>
         ))
       )}
@@ -248,6 +256,7 @@ function Ticket() {
   </div>)))} */}
       {/* </div> */}
     </div>
+    <Footer/>
     </>
   );
 }
