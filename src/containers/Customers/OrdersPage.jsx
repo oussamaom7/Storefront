@@ -1,6 +1,8 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 
+
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+
 
 import Box from '@mui/material/Box';
 import ProfileSideBar from './ProfileSideBar';
@@ -22,7 +24,7 @@ export default function OrdersPage() {
   const authContext = useContext(AuthContext);
   const { customer } = authContext;
   const [orders, setOrders] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [/*isLoading*/, setIsLoading] = useState(true);
   const [/* error */, setError] = useState(null);
 
   const fetchOrderData = useCallback(async () => {
