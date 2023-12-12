@@ -33,9 +33,9 @@ export default function ContactUs() {
           );
       };
 
-    return (
+    return (<>
        <div className='flex flex-col'>
-            <div className='z-20'><Navbar/></div>
+            <div className='z-50'><Navbar/></div>
             <hr />
             <div className='z-20'><Header/></div>
         <div className="isolate mt-16 bg-white px-6 py-4 sm:py-8 lg:px-8">
@@ -178,5 +178,6 @@ export default function ContactUs() {
         </div>
          <Footer/>
        </div>
+       </>
     )
 }

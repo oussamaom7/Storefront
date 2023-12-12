@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 import ProfileSideBar from './ProfileSideBar';
 import { Link } from 'react-router-dom';
@@ -7,11 +7,12 @@ import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
 import NavbarLogo from '../registration/NavbarLogo';
 
+
 const columns = [
-  { field: '_id', headerName: 'Order Id', width: 150, headerAlign: 'start' },
-  { field: 'order_date', headerName: 'Order Date', type: 'Date', width: 150, headerAlign: 'start' },
-  { field: 'status', headerName: 'Status', type: 'String', width: 150, headerAlign: 'start' },
-  { field: 'cart_total_price', headerName: 'Total Price', type: 'String', width: 150, headerAlign: 'start' }
+  { field: '_id', headerName: 'Order Id', width: 200, headerAlign: 'start' },
+  { field: 'order_date', headerName: 'Order Date', type: 'Date', width: 200, headerAlign: 'start' },
+  { field: 'status', headerName: 'Status', type: 'String', width: 170, headerAlign: 'start' },
+  { field: 'cart_total_price', headerName: 'Total Price', type: 'String', width: 170, headerAlign: 'start' }
 ];
 
 export default function OrdersPage() {
@@ -54,12 +55,10 @@ export default function OrdersPage() {
         return (
           <div className="flex gap-1 pl-8">
             <div className="" onClick={() => {}}>
-              <button className='bg-color2 text-white py-1 px-3 rounded-full'>Details</button>
-            </div>
-            <div className="" onClick={() => {}}>
               <Link to={`/tick/${params.row._id}`}>
-                <button className='bg-color2 text-white py-1 px-3 rounded-full'>Download ticket</button>
+                <button className='bg-color2 text-white py-1 px-3 rounded-full hover:bg-white hover:border-2 hover:text-color2 hover:border-color2'>Download ticket</button>
               </Link>
+
             </div>
           </div>
         );
@@ -69,15 +68,17 @@ export default function OrdersPage() {
 
   return (
     <>
+
       <NavbarLogo />
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         <div>
           <ProfileSideBar />
         </div>
         <div>
           <div className="flex flex-col justify-center items-center">
             <div className="mx-auto my-8 max-w-2xl  text-center">
-              <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">My orders</h2>
+              <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl ">My orders</h2>
+
             </div>
             <Box>
               <DataGrid

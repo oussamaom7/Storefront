@@ -1,10 +1,11 @@
 
+
 import React,{ Fragment,useContext,useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext'
-
+import { LuShoppingCart } from "react-icons/lu";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
 import { useShoppingCart } from "../context/ShoppingCartContext";
@@ -82,16 +83,11 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
             {authTokens ? (
               <div className="absolute inset-y-0 right-0 flex items-center gap-4 justify-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
-                <button
-                  type="button"
-                  className="relative flex justify-center items-center border-[1px] rounded-full  border-color2 px-4 text-color2 p-1 text-c1 hover:text-white hover:bg-color2 focus:outline-none"
-                  onClick={openCard}
-                >
-
-                  <HiOutlineShoppingBag className='text-xl'/>
-                  &nbsp;CART&nbsp;
-                   ({cartQuantity})
-                </button> 
+                <div className='relative text-white text-xs cursor-pointer ' onClick={openCard}> <LuShoppingCart className='w-11 h-8'/>
+                <label  className={`bg-color2 w-4 h-4 grid place-items-center  rounded-full absolute right-0 top-0`}>
+                {cartQuantity}
+            </label>
+                </div>
                 
 
                 <Menu as="div" className="relative ml-3">
@@ -100,14 +96,12 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <div className={`relative rounded-full h-11 w-11 grid place-items-center mx-auto bg-gray-500 uppercase text-gray-50  border-2 border-solid border-gray-500`}>
-            {(customer.customer_image ) ? <img
+              <img
               src={customer.customer_image }  
               alt="Customer Profile"
               className="rounded-full aspect-square object-cover"
               style={{ width: '100%', height: '100%' }}
-            /> : customer.firstName[0]
-          
-          }
+            />
           </div>
                     </Menu.Button>
                   </div>
@@ -128,7 +122,7 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                             <h6
                               href="#"
                               className={classNames(
-                                active ? "bg-color2" : "",
+                                active ? "bg-color2 text-white" : "",
                                 "block px-4 py-1 text-sm text-color1 cursor-pointer" // Added cursor-pointer class
                               )}
                             >
@@ -142,7 +136,7 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                           <h6
                             onClick={handleLogout}
                             className={classNames(
-                              active ? "bg-color2" : "",
+                              active ? "bg-color2 text-white" : "",
                               "block px-4 py-1 text-sm text-color1 cursor-pointer" // Added cursor-pointer class
                             )}
                           >

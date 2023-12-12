@@ -1,5 +1,7 @@
 import React from "react";
+
 import { TypeAnimation } from 'react-type-animation';
+
 import "./sectionPrincipale.css"; // Ensure correct file extension for CSS
 
 export default function SectionPrincipale() {
@@ -101,5 +103,6 @@ export default function SectionPrincipale() {
         </div>
       </div>
     </div>
+
   );
 }

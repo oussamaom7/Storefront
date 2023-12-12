@@ -65,9 +65,9 @@ export default function ProfileSideBar({customerImage}) {
 
   return (
     
-    <section className="flex gap-6">
+    <section className="flex gap-6 ">
       <div
-        className={`bg-gray-900 min-h-screen ${
+        className={`bg-gray-900 min-h-[90vh] ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
       >
@@ -80,7 +80,9 @@ export default function ProfileSideBar({customerImage}) {
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
 
+
           <div className={`relative rounded-full grid place-items-center mx-auto bg-gray-500 uppercase text-gray-50 my-1 border-2 border-solid border-gray-500 ${open ? 'h-[120px]' : 'h-[40px]'} ${open ? 'w-[120px]' : 'w-[40px]'}`}>
+
             {/* image */}
             {(customerImage || selectedImage) ? <img
               src={customerImage || selectedImage }  
