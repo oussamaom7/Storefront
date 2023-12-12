@@ -61,12 +61,14 @@ const MovieCard = ({ product }) => {
                         variant="contained"
                         sx={{
                             backgroundColor: '#FF6C22',
+                            color:'#ffffff',
                             '&:hover': {
-                                backgroundColor: '#474554',
+                                backgroundColor: '#000000',
+                                border:'2px solid #ffffff'
                             },
                         }}
                     >
-                        Acheter
+                        Buy
                     </Button>
                 </Box>
             </Box>

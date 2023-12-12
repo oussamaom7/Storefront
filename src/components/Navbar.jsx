@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 import React,{ Fragment,useContext,useState} from 'react'
+=======
+
+
+
+import React,{ Fragment,useContext,useState } from 'react'
+
+>>>>>>> d963857b4ce19bfa72b419d062a4dfe3b0faceeb
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext'
-
-import { HiOutlineShoppingBag } from "react-icons/hi";
+import { LuShoppingCart } from "react-icons/lu";
 
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import Logonavbar from "../assets/Logonabvar.png";
@@ -43,7 +50,7 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
   };
 
   return (
-    <Disclosure as="nav" className="bg-color0">
+    <Disclosure as="nav" className="bg-black">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-6xl px-2 sm:px-6 lg:px-8 relative flex h-16 items-center justify-between">
@@ -81,16 +88,11 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
             {authTokens ? (
               <div className="absolute inset-y-0 right-0 flex items-center gap-4 justify-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
-                <button
-                  type="button"
-                  className="relative flex justify-center items-center border-[1px] rounded-full  border-color2 px-4 text-color2 p-1 text-c1 hover:text-color1 focus:outline-none"
-                  onClick={openCard}
-                >
-
-                  <HiOutlineShoppingBag className='text-xl'/>
-                  &nbsp;CART&nbsp;
-                   ({cartQuantity})
-                </button> 
+                <div className='relative text-white text-xs cursor-pointer ' onClick={openCard}> <LuShoppingCart className='w-11 h-8'/>
+                <label  className={`bg-color2 w-4 h-4 grid place-items-center  rounded-full absolute right-0 top-0`}>
+                {cartQuantity}
+            </label>
+                </div>
                 
 
                 <Menu as="div" className="relative ml-3">
@@ -98,13 +100,14 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                     <Menu.Button className="relative flex rounded-full bg-color1 text-sm focus:outline-none">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <img
-
-                        className="h-8 w-8 border-[1px] border-color2 rounded-full"
-
-                        src={customer.customer_image}
-                        alt=""
-                      />
+                      <div className={`relative rounded-full h-11 w-11 grid place-items-center mx-auto bg-gray-500 uppercase text-gray-50  border-2 border-solid border-gray-500`}>
+              <img
+              src={customer.customer_image }  
+              alt="Customer Profile"
+              className="rounded-full aspect-square object-cover"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
                     </Menu.Button>
                   </div>
                   <Transition
@@ -124,7 +127,7 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                             <h6
                               href="#"
                               className={classNames(
-                                active ? "bg-color2" : "",
+                                active ? "bg-color2 text-white" : "",
                                 "block px-4 py-1 text-sm text-color1 cursor-pointer" // Added cursor-pointer class
                               )}
                             >
@@ -138,7 +141,7 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
                           <h6
                             onClick={handleLogout}
                             className={classNames(
-                              active ? "bg-color2" : "",
+                              active ? "bg-color2 text-white" : "",
                               "block px-4 py-1 text-sm text-color1 cursor-pointer" // Added cursor-pointer class
                             )}
                           >
@@ -154,13 +157,16 @@ export default function Navbar({ setSearchActive,setSearchResults}) {
               <div className="items-center justify-between ">
                 <Link to="/login">
                   {" "}
-                  <button className="text-color0 rounded-full px-5 py-2 mr-2 text-sm font-medium bg-color2 hover:text-white">
+                  <button className="text-color0 rounded-full px-5 py-2 mr-2 text-sm font-medium bg-color2  hover:bg-white hover:border-2 hover:text-color2 hover:border-color2">
                     LOG IN{" "}
                   </button>
                 </Link>
-                <button className="text-color0 rounded-full px-5 py-2 text-sm font-medium bg-color2 hover:text-white">
+                <Link to="/signup">
+                <button className=" rounded-full px-5 py-2 text-sm font-medium text-white bg-color2 hover:bg-white  hover:text-color2 hover:border-2 hover:border-color2">
                   SIGN UP{" "}
                 </button>
+                </Link>
+              
               </div>
             )}
           </div>

@@ -20,7 +20,6 @@ export default function CustomerInfoPage() {
     address: customerProfile?.address || "",
   });
 
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {

@@ -17,11 +17,9 @@ import ChangePassword from "./containers/Customers/ChangePassword";
 import ShoppingPanel from "./components/shoppingPanel";
 
 import ShoppingCartProvider from "./context/ShoppingCartContext";
-
+import JoinUs from "./containers/registration/JoinUs";
 import ResetPassword from "./containers/registration/ResetPassword";
 import PrivateRoutes from "./context/PrivateRoute";
-
-// import ShoppingCartProvider from './context/ShoppingCartContext';
 
 export default function App() {
   return (
@@ -34,6 +32,7 @@ export default function App() {
           <Route path="/h" element={<Home />}></Route>
           <Route path="/" element={<Landing />}></Route>
           <Route path="/login" element={<Registration />}></Route>
+          <Route path="/signup" element={<JoinUs />}></Route>
           <Route path="/contact" element={<ContactUs />}></Route>
           <Route path="/shipping" element={<ShoppingPanel />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
@@ -41,6 +40,7 @@ export default function App() {
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
           <Route path="/resetpassword/:token" element={<ResetPassword />} />
+
           <Route element={<PrivateRoutes />}>
             <Route
               path="/CustomerProfile"

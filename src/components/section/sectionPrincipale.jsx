@@ -11,16 +11,24 @@ export default function SectionPrincipale() {
     // Add any other background properties you need
   };
 
-  return (
-    <div className="flex justify-around items-center h-screen flex-wrap">
+  return ( 
+    <div className="flex justify-around items-center h-screen flex-wrap ">
       <div class="flex-initial w-50">
         <span>
+<<<<<<< HEAD
           <h6 class="font-bold text-3xl text-white leading-relaxed">YOU WANT BUY TICKETS FON AN EVENT </h6>
           <h6 class="font-bold text-3xl text-white leading-relaxed">Buy in 3 easy steps!!</h6>
     <div class="mt-20 italic text-[#Y503066] text-4xl">
+=======
+
+          <h6 class="font-bold text-4xl text-white leading-relaxed">YOU WANT BUY TICKETS FOR AN EVENT </h6>
+          <h6 class="font-bold text-4xl text-white leading-relaxed">Buy in 3 easy steps!!</h6>
+    <div class="mt-20 italic text-[#503066] text-5xl">
+>>>>>>> d963857b4ce19bfa72b419d062a4dfe3b0faceeb
     <TypeAnimation 
   sequence={[
-    'Find de event',
+    'Find the event',
+
     300,
     'Buy your tickets',
     300,
