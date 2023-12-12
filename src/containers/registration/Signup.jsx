@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 export default function Signup() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -97,7 +96,7 @@ export default function Signup() {
           At least 8 characters, 1 uppercase letter, 1 number & 1 symbol
         </div>
         <div>
-          <button style={{color: 'white' }} className=" w-full py-3 px-16 rounded-lg bg-color2" type="submit">
+          <button  className=" w-full text-white py-3 px-16 rounded-lg bg-color2 hover:bg-white  hover:text-color2 hover:border-2 hover:border-color2" type="submit">
             Submit
           </button>
         </div>

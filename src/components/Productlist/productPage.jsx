@@ -107,8 +107,8 @@ export default function ProductPage() {
 </div>
                 </div>
 
-                <button type="button" className="add-to-cart-btn h-14 px-6 py-2 font-semibold rounded-xl bg-color2 hover:bg-color1 text-color1 hover:text-color0">
-                  Add to Cart 
+                <button type="button" className="add-to-cart-btn h-12 px-6 py-2 font-semibold rounded-xl bg-color2 text-white hover:bg-white hover:border-2 hover:text-color2 hover:bg-white hover:border-2 hover:text-color2 hover:border-color2">
+                  Buy now
                 </button>
               </div>
             </div>

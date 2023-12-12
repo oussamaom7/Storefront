@@ -1,21 +1,15 @@
 
-import React, { /* useState */ useRef } from 'react'
+import React, {useRef } from 'react'
 import emailjs from '@emailjs/browser';
-// import { ChevronDownIcon } from '@heroicons/react/20/solid'
-// import { Switch } from '@headlessui/react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import Header from './Header';
 
-// function classNames(...classes) {
-//     return classes.filter(Boolean).join(' ')
-// }
 
 export default function ContactUs() {
     
-    // const [agreed, setAgreed] = useState(false)
-    // const handleToggle = () => {
-    //     setAgreed(!agreed);
-    //   };
 
       const form = useRef();
 
@@ -40,7 +34,11 @@ export default function ContactUs() {
       };
 
     return (
-        <div className="isolate bg-white px-6 py-4 sm:py-8 lg:px-8">
+       <div className='flex flex-col'>
+            <div className='z-20'><Navbar/></div>
+            <hr />
+            <div className='z-20'><Header/></div>
+        <div className="isolate mt-16 bg-white px-6 py-4 sm:py-8 lg:px-8">
             <div
                 className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
                 aria-hidden="true"
@@ -75,7 +73,7 @@ export default function ContactUs() {
                                 name="first-name"
                                 id="first-name"
                                 autoComplete="given-name"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
@@ -93,7 +91,7 @@ export default function ContactUs() {
                                 name="last-name"
                                 id="last-name"
                                 autoComplete="family-name"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
@@ -111,7 +109,7 @@ export default function ContactUs() {
                                 name="email"
                                 id="email"
                                 autoComplete="email"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
 
                             />
                         </div>
@@ -128,24 +126,20 @@ export default function ContactUs() {
                                 <select
                                     id="country"
                                     name="country"
-                                    className=" h-full rounded-md border-0  bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                                    className=" h-full rounded-md border-0  bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm"
                                 >
                                     <option>MA</option>
                                     <option>US</option>
                                     <option>CA</option>
                                     <option>EU</option>
                                 </select>
-                                {/* <ChevronDownIcon
-                  className="pointer-events-none absolute right-3 top-0 h-full w-5 text-gray-400"
-                  aria-hidden="true"
-                /> */}
                             </div>
                             <input
                                 type="tel"
                                 name="phone-number"
                                 id="phone-number"
                                 autoComplete="tel"
-                                className="block w-full rounded-md border-0 px-3.5 py-2 pl-28 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 pl-28 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
@@ -162,46 +156,18 @@ export default function ContactUs() {
                                 name="message"
                                 id="message"
                                 rows={4}
-                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
                                 defaultValue={''}
                             />
                         </div>
                     </div>
-                    {/* <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
-                        <div className="flex h-6 items-center">
-                            <Switch
-                                checked={agreed}
-                                onChange={handleToggle}
-                                className={classNames(
-                                    agreed ? 'bg-indigo-600' : 'bg-gray-200',
-                                    'flex w-8 flex-none cursor-pointer rounded-full p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-                                )}
-                            >
-                                <span className="sr-only">Agree to policies</span>
-                                <span
-                                    aria-hidden="true"
-                                    className={classNames(
-                                        agreed ? 'translate-x-3.5' : 'translate-x-0',
-                                        'h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out'
-                                    )}
-                                />
-                            </Switch>
-                        </div>
-                        <Switch.Label className="text-sm leading-6 text-gray-600">
-                            By selecting this, you agree to our{' '}
-                            <a href="#" className="font-semibold text-indigo-600">
-                                privacy&nbsp;policy
-                            </a>
-                            .
-                        </Switch.Label>
-                    </Switch.Group> */}
                     
                 </div>
                 <div className="mt-10">
                     <button
                  
                     value="send"
-                        className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="block w-full rounded-md px-3.5 py-2.5 text-center text-sm font-semibold  text-white bg-color2 hover:bg-white  hover:text-color2 hover:border-2 hover:border-color2"
                     >
                         Let's talk
                     </button>
@@ -210,5 +176,7 @@ export default function ContactUs() {
             </form>
            
         </div>
+         <Footer/>
+       </div>
     )
 }

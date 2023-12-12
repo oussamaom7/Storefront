@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -72,7 +71,7 @@ export default function Login() {
         <div className='text-sm mb-4'><h6 href="#" className="text-blue-500 hover:underline cursor-pointer" onClick={handleForgotPassword} >Forgot Password?</h6></div>
         {errMsg && <div className='text-red-500 mb-4'>{errMsg}</div>}
         <div>
-          <button className="bg-color2 w-full text-white text-base py-3 px-16 rounded-lg">
+          <button className="bg-color2 w-full text-white text-base py-3 px-16 rounded-lg hover:bg-white  hover:text-color2 hover:border-2 hover:border-color2">
             Log in
           </button>
         </div>

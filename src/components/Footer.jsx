@@ -7,20 +7,30 @@ import { IoLogoGithub } from "react-icons/io";
 import { BsFacebook } from "react-icons/bs";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import { useState } from 'react';
 
 export default function Footer() {
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
 
   return (
-    <footer className='w-full' >
+    <footer className='w-full bg-black text-white' >
       {/* big part */}
-      <div className="w-full flex flex-col p-6 items-center bg-color4 text-center dark:bg-color0 lg:text-left">
+      <div className="w-full flex flex-col p-6 items-center  text-center ">
         <div className="grid lg:grid-cols-3">
           {/* about div's */}
           <div className="mb-6 mx-6 flex flex-col  justify-center">
-            <h5 className="mb-2 font-medium uppercase text-color1">
+            <h5 className="mb-2 font-medium uppercase">
               <strong>About Us</strong></h5>
 
-            <p className="mb-4 text-color1">
+            <p className="mb-4">
             Welcome to <strong><u>XTicket</u></strong>, your ultimate gateway to unforgettable experiences! Dive into a world of seamless ticketing for films, matches, festivals, concerts, and more. Elevate your entertainment journey with XTicket – where every ticket unlocks a new adventure!
             </p>
           </div>
@@ -40,39 +50,39 @@ export default function Footer() {
         </p>
       </div>
           {/* subscribe div's */}
-          <div className='flex flex-col items-center justify-center mx-auto text-color1'>
+          <div className='flex flex-col items-center justify-center mx-auto'>
             <div class="p-auto overflow-auto">
               <form action="">
                 <div
                   class=" gap-4">
-                  <div class="mb-5 flex  items-center justify-center text-color1">
-                    <p class="text-color1 dark:text-color1">
+                  <div class="mb-5 flex  items-center justify-center ">
+                    <p>
                       <strong>Sign up for our newsletter</strong>
                     </p>
                   </div>
                   {/* email/button */}
                   <div className='flex justify-center'>
-                    <div className="relative mr-2" data-te-input-wrapper-init>
-                      <input
-                        type="text"
-                        className="peer block min-h-[auto] w-70 border-2 rounded border-gray-300 bg-white h-10 pr-16  px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-secondary-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 focus:placeholder:text-lg	"
-                        id="exampleFormControlInput1"
-                        placeholder="Email address"
-                      />
-                      <label
-                        htmlFor="exampleFormControlInput1"
-
-                        className="pointer-events-none absolute text-color1 left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] focus:text-lg text-secondary-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-secondary-200 dark:peer-focus:text-secondary-200"
-
-                      >
-                        Email address
-                      </label>
-                    </div>
+                  <div className="relative mr-2" data-te-input-wrapper-init>
+        <input
+          type="text"
+          className="peer block min-h-[auto] w-70 border-2 rounded border-gray-300 bg-white h-10 pr-16  px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-secondary-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 focus:placeholder:text-lg	"
+          id="exampleFormControlInput1"
+          placeholder="Email address"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
+        <label
+          htmlFor="exampleFormControlInput1"
+          className={`pointer-events-none absolute left-3 text-${isFocused ? 'blue' : 'gray-700'} top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] focus:text-white transition-all duration-200 ease-out peer-focus:-translate-y-[1.6rem] peer-focus:scale-[0.8]  peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none`}
+        >
+          Email address
+        </label>
+      </div>
 
                     <div className="mb-6">
                       <button
                         type="button"
-                        className="bg-transparent hover:bg-color1 text-color1 h-10 font-semibold hover:text-white py-2 px-4 border border-color1 hover:border-transparent rounded"
+                        className="h-10 font-semibold py-2 px-4 border-2 hover:scale-110 border-white bg-transparent rounded"
                         data-te-ripple-init
                         data-te-ripple-color="light"
                       >
@@ -97,7 +107,7 @@ export default function Footer() {
 
 
       {/* second part */}
-      <div className="flex flex-col justify-around bg-c2 text-center dark:bg-neutral-950 lg:text-left">
+      <div className="flex flex-col justify-around bg-c2 text-center bg-gray-900">
         <div className="grid lg:grid-cols-3 j">
            {/* social media */}
            <div className="flex flex-col justify-center sm:mt-4 lg:mt-1">
@@ -119,11 +129,14 @@ export default function Footer() {
 
          {/* copyrights */}
          <div className=" p-4 w-full text-center text-c1 dark:bg-neutral-600 dark:text-neutral-200">
-    © 2023 Copyright: Team Yahya
+    © 2023 Copyright: Xticket
   </div>
   {/* conditions */}
   <div className="my-3  flex justify-center items-center mx-9 ">
-   <Link to="/contact">
+  <Link to="/contact" onClick={window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })}>
     <div className=" text-c1 hover:underline hover:cursor-pointer mx-4">Contact us</div></Link>
     <div className=" text-c1 hover:underline hover:cursor-pointer mx-4">Privacy Policy</div>
 </div>

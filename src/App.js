@@ -15,28 +15,15 @@ import PaymentForm from './components/paymentsPage';
 import ProductPage from './components/Productlist/productPage';
 import ChangePassword from './containers/Customers/ChangePassword';
 import ShoppingPanel from './components/shoppingPanel';
-
-
-
-
 import ShoppingCartProvider from './context/ShoppingCartContext';
-
-import ResetPassword from './containers/registration/ResetPassword'
-
-// import ShoppingCartProvider from './context/ShoppingCartContext';
-
-
-
-
-
+import ResetPassword from './containers/registration/ResetPassword';
+import JoinUs from './containers/registration/JoinUs';
 
 
 export default function App() {
   return (
     <div className="App">
-
-
-<ShoppingCartProvider>
+     <ShoppingCartProvider>
 
         <Routes>
         <Route path="/card" element={<Card />}></Route>
@@ -45,8 +32,8 @@ export default function App() {
         <Route path="/tick/:id" element={<Ticket />}></Route>
           <Route path="/h" element={<Home />}></Route>
           <Route path="/" element={<Landing />}></Route>
-
           <Route path="/login" element={<Registration />}></Route>
+          <Route path="/signup" element={<JoinUs/>}></Route>
           <Route path="/contact" element={<ContactUs />}></Route>
           <Route path="/shipping" element={<ShoppingPanel />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
@@ -56,11 +43,9 @@ export default function App() {
           <Route path="/v1/customers/validate/:id" element={<Login />}></Route>
           <Route path="/category/:id" element={<CategoriePage />}></Route>
           <Route path="/product" element={<ProductPage />}></Route>
-
           <Route path="/resetpassword/:token" element={<ResetPassword />} />
-
         </Routes>
-        </ShoppingCartProvider>
+        </ShoppingCartProvider> 
    </div>
   );
 }

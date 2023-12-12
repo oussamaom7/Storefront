@@ -13,8 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BiLogOut } from "react-icons/bi";
 import { HiOutlineHome } from "react-icons/hi";
 
-
-
 export default function ProfileSideBar({customerImage}) {
 
   const authContext = useContext(AuthContext);
@@ -32,9 +30,6 @@ export default function ProfileSideBar({customerImage}) {
   ];
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-
-  const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState('');
 
   const handleImageChange = async (event) => {
     try {
@@ -61,7 +56,7 @@ export default function ProfileSideBar({customerImage}) {
       if (error.response) {
         toast.error(error.response.data.message);
       } else {
-        setError('Something went wrong. Please try again.');
+        toast.error('Something went wrong. Please try again.');
       }
 
     }
@@ -92,7 +87,9 @@ export default function ProfileSideBar({customerImage}) {
               alt="Customer Profile"
               className="rounded-full aspect-square object-cover"
               style={{ width: '100%', height: '100%' }}
-            /> : customer.firstName[0]
+            /> :  (
+              `${customer.firstName[0]}${customer.lastName[0]}`
+            )
           
           }
             
@@ -108,9 +105,7 @@ export default function ProfileSideBar({customerImage}) {
             align="center"
             sx={{ fontSize: open ? 17 : 0, transition: "0.25s" }}
           >
-
-            {customer?.firstName} {/* Make sure 'customer' is available */}
-
+             {customer?.firstName} {/* Make sure 'customer' is available */}
           </Typography>
           {menus?.map((menu, i) => (
             <Link

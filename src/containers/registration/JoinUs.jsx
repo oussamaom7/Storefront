@@ -5,9 +5,9 @@ import NavbarLogo from "./NavbarLogo";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-export default function Registration() {
-  const [showSignup, setShowSignup] = useState(false);
-  const [showLogin, setShowLogin] = useState(true);
+export default function JoinUs() {
+    const [showSignup, setShowSignup] = useState(true);
+    const [showLogin, setShowLogin] = useState(false);
 
   const handleSignupClick = () => {
     setShowSignup(true);

@@ -55,7 +55,7 @@ const ShoppingPanel = ({ isOpen }) => {
                                 <p className="text-gray-500">Qty {item.quantity}</p>
 
                                 <div className="flex">
-                                  <button type="button" className="font-medium text-color2 hover:text-indigo-500" onClick={() => handleRemoveItem(item.id)}>Remove</button>
+                                  <button type="button" className="font-medium text-color2 hover:underline" onClick={() => handleRemoveItem(item.id)}>Remove</button>
                                 </div>
                               </div>
                             </div>
@@ -73,13 +73,15 @@ const ShoppingPanel = ({ isOpen }) => {
                   </div>
                   <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                   <div className="mt-6">
-                <Link to="/payement">  <h6  className="flex items-center justify-center rounded-md border border-transparent bg-color2 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700" onClick={closeCard}>Checkout</h6></Link>  
+                <Link to="/payement">  <h6  className="flex items-center justify-center rounded-md border border-transparent bg-color2 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-white hover:border-2 hover:text-color2 hover:border-color2" onClick={closeCard}>Checkout</h6></Link>  
                   </div>
                   <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                     <p>
                       or
-                      <button type="button" className="font-medium text-color2 hover:text-indigo-500">
-                        Continue Shopping
+                      <br/>
+                      <br/>
+                      <button type="button" className="font-medium text-color2 hover:underline">
+                          Continue Shopping
                         <span aria-hidden="true"> &rarr;</span>
                       </button>
                     </p>
