@@ -1,9 +1,6 @@
-
-
-import React,{ Fragment,useContext } from 'react'
+import React,{ Fragment,useContext,useState} from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import SearchIcon from '@mui/icons-material/Search';
-import { TbShoppingBag } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/AuthContext'
 

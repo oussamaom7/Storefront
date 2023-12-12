@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState, useCallback } from "react";
 import AuthContext from "../../context/AuthContext";
 import axios from "axios";
@@ -7,11 +6,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NavbarLogo from "../registration/NavbarLogo";
 
-import Footer from "../../components/Footer";
-
-
-
-
 
 
 export default function CustomerInfoPage() {
@@ -19,46 +13,16 @@ export default function CustomerInfoPage() {
   const { authTokens } = authContext;
   const [customerProfile, setCustomerProfile] = useState({});
 
-
   const [details, setDetails] = useState({
     firstName: customerProfile?.firstName || "",
     lastName: customerProfile?.lastName || "",
     email: customerProfile?.email || "",
     address: customerProfile?.address || "",
   });
-
-
-  const [error, setError] = useState(null);
-
-
-  useEffect(() => {
-    setDetails({
-      firstName: customerProfile?.firstName || "",
-      lastName: customerProfile?.lastName || "",
-      email: customerProfile?.email || "",
-      address: customerProfile?.address || "",
-    });
-  }, [customerProfile]);
-
-
-export default function CustomerInfoPage() {
-  const authContext = useContext(AuthContext);
-  const { authTokens } = authContext;
-  const [customerProfile, setCustomerProfile] = useState({});
-
-
-  const [details, setDetails] = useState({
-    firstName: customerProfile?.firstName || "",
-    lastName: customerProfile?.lastName || "",
-    email: customerProfile?.email || "",
-    address: customerProfile?.address || "",
-  });
-
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-
   useEffect(() => {
     setDetails({
       firstName: customerProfile?.firstName || "",
@@ -67,8 +31,6 @@ export default function CustomerInfoPage() {
       address: customerProfile?.address || "",
     });
   }, [customerProfile]);
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -76,7 +38,6 @@ export default function CustomerInfoPage() {
       return { ...prev, [name]: value };
     });
   };
-
 
   const fetchData = useCallback(async () => {
     try {
@@ -86,7 +47,6 @@ export default function CustomerInfoPage() {
           headers: {
             Authorization: `Bearer ${authTokens?.access_token}`,
           },
-
         }
       );
       if (response.status === 200) {
@@ -106,7 +66,6 @@ export default function CustomerInfoPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-
       const changedFields = {};
       Object.keys(details).forEach((field) => {
         if (details[field] !== customerProfile[field]) {
@@ -129,20 +88,18 @@ export default function CustomerInfoPage() {
     } catch (error) {
       console.log(error);
       toast.error("Error: " + error.response.data.message);
-
     }
-    }
- 
-
+  };
 
   return (
     <>
-    <NavbarLogo/>
+      <NavbarLogo />
       <div className="flex justify-between">
         <div>
-
-          <ProfileSideBar  customerImage={customerProfile.customer_image} className="h-1/4"/>
-
+          <ProfileSideBar
+            customerImage={customerProfile.customer_image}
+            className="h-1/4"
+          />
         </div>
         <div>
           <form className="container" onSubmit={handleSubmit}>
@@ -156,7 +113,6 @@ export default function CustomerInfoPage() {
               <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
                 {/* First name */}
                 <div>
-
                   <label
                     htmlFor="first-name"
                     className="block text-sm font-semibold leading-6 text-gray-900"
@@ -170,16 +126,12 @@ export default function CustomerInfoPage() {
                       type="text"
                       name="firstName"
                       id="first-name"
-
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
-
                     />
                   </div>
-
                 </div>
                 {/* Last name */}
                 <div>
-
                   <label
                     htmlFor="last-name"
                     className="block text-sm font-semibold leading-6 text-gray-900"
@@ -193,9 +145,7 @@ export default function CustomerInfoPage() {
                       type="text"
                       name="lastName"
                       id="last-name"
-
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-
                     />
                   </div>
                 </div>
@@ -214,9 +164,7 @@ export default function CustomerInfoPage() {
                       type="email"
                       name="email"
                       id="email"
-
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:leading-6"
-
                     />
                   </div>
                 </div>
@@ -236,22 +184,15 @@ export default function CustomerInfoPage() {
                       name="address"
                       id="address"
                       rows={3}
-
                       className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-
                     />
                   </div>
-
                 </div>
               </div>
               {error && <p className="text-red-500">{error}</p>}
               <div className="my-10">
-                <button
-
-                  className="block w-full rounded-md bg-color2 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-white hover:border-2 hover:text-color2 hover:border-color2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-                >
-                    Update
-
+                <button className="block w-full rounded-md bg-color2 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-white hover:border-2 hover:text-color2 hover:border-color2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                  Update
                 </button>
               </div>
             </div>
@@ -261,8 +202,6 @@ export default function CustomerInfoPage() {
       </div>
       <ToastContainer />
 
-      <Footer/>
     </>
   );
-};
-
+}

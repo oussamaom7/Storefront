@@ -2,7 +2,7 @@ import React from "react";
 
 import { TypeAnimation } from 'react-type-animation';
 
-import "./sectionPrincipale.css"; // Ensure correct file extension for CSS
+// import "./sectionPrincipale.css"; // Ensure correct file extension for CSS
 
 export default function SectionPrincipale() {
   const divStyle = {
@@ -15,10 +15,9 @@ export default function SectionPrincipale() {
     <div className="flex justify-around items-center h-screen flex-wrap">
       <div class="flex-initial w-50">
         <span>
-
-          <h6 class="font-bold text-4xl text-white leading-relaxed">YOU WANT BUY TICKETS FON AN EVENT </h6>
-          <h6 class="font-bold text-4xl text-white leading-relaxed">Buy in 3 easy steps!!</h6>
-    <div class="mt-20 italic text-[#y503066] text-5xl">
+          <h6 class="font-bold text-3xl text-white leading-relaxed">YOU WANT BUY TICKETS FON AN EVENT </h6>
+          <h6 class="font-bold text-3xl text-white leading-relaxed">Buy in 3 easy steps!!</h6>
+    <div class="mt-20 italic text-[#Y503066] text-4xl">
     <TypeAnimation 
   sequence={[
     'Find de event',

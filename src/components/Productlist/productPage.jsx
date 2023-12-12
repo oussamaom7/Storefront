@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import Header from '../Header';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../Footer';
 import {useShoppingCart} from '../../context/ShoppingCartContext'
@@ -106,10 +106,10 @@ export default function ProductPage() {
   </button>
 </div>
                 </div>
-
-                <button type="button" className="add-to-cart-btn h-14 px-6 py-2 font-semibold rounded-xl bg-color2 hover:bg-color1 text-color1 hover:text-color0">
-                  Add to Cart 
-                </button>
+ <Link to="/payement">
+                <button type="button" className="flex items-center rounded-md bg-color2 px-5 py-3 text-center text-sm font-medium text-color0 hover:bg-color0 hover:text-color2 hover:border focus:outline-none focus:ring-4 focus:ring-blue-300">
+                  Buy Now 
+                </button></Link>
               </div>
             </div>
           </div>
