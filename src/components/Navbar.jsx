@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-import React,{ Fragment,useContext,useState} from 'react'
-=======
 
 
 
 import React,{ Fragment,useContext,useState } from 'react'
 
->>>>>>> d963857b4ce19bfa72b419d062a4dfe3b0faceeb
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TypeAnimation } from 'react-type-animation';
+import { TypeAnimation } from "react-type-animation";
 
 // import "./sectionPrincipale.css"; // Ensure correct file extension for CSS
 
@@ -11,35 +11,33 @@ export default function SectionPrincipale() {
     // Add any other background properties you need
   };
 
-  return ( 
+  return (
     <div className="flex justify-around items-center h-screen flex-wrap ">
       <div class="flex-initial w-50">
         <span>
-<<<<<<< HEAD
-          <h6 class="font-bold text-3xl text-white leading-relaxed">YOU WANT BUY TICKETS FON AN EVENT </h6>
-          <h6 class="font-bold text-3xl text-white leading-relaxed">Buy in 3 easy steps!!</h6>
-    <div class="mt-20 italic text-[#Y503066] text-4xl">
-=======
+          <h6 class="font-bold sm:text-9xl lg:text-4xl text-white leading-relaxed">
+            YOU WANT BUY TICKETS FOR AN EVENT
+          </h6>
 
-          <h6 class="font-bold text-4xl text-white leading-relaxed">YOU WANT BUY TICKETS FOR AN EVENT </h6>
-          <h6 class="font-bold text-4xl text-white leading-relaxed">Buy in 3 easy steps!!</h6>
-    <div class="mt-20 italic text-[#503066] text-5xl">
->>>>>>> d963857b4ce19bfa72b419d062a4dfe3b0faceeb
-    <TypeAnimation 
-  sequence={[
-    'Find the event',
+          <h6 class="font-bold sm:text-9xl  lg:text-4xl text-white leading-relaxed">
+            Buy in 3 easy steps!!
+          </h6>
+          <div class="mt-20 italic text-[#503066] sm:text-9xl  lg:text-4xl">
+            <TypeAnimation
+              sequence={[
+                "Find the event",
 
-    300,
-    'Buy your tickets',
-    300,
-    'Enjoy !!!',
-    300,
-  ]}
-  speed={50}
-  style={{ fontSize: '2em' }}
-  repeat={Infinity}
-/>
-    </div>
+                300,
+                "Buy your tickets",
+                300,
+                "Enjoy !!!",
+                300,
+              ]}
+              speed={50}
+              style={{ fontSize: "2em" }}
+              repeat={Infinity}
+            />
+          </div>
         </span>
       </div>
 
@@ -111,6 +109,5 @@ export default function SectionPrincipale() {
         </div>
       </div>
     </div>
-
   );
 }

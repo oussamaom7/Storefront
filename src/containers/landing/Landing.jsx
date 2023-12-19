@@ -37,28 +37,38 @@ export default function Landing() {
 
   return (
     <div className="bg-color0 min-h-screen">
-      <Navbar setSearchActive={setSearchActive} setSearchResults={setSearchResults} />
+      <Navbar
+        setSearchActive={setSearchActive}
+        setSearchResults={setSearchResults}
+      />
       <hr />
       <Header />
       {!searchActive && (
         <>
-         
           <div className="max-w-full ">
-            <div className="mb-16 bg-color5">
-            <SectionPrincipale />
-              <SimpleSlider />
+            <div className="max-w-full">
+              <div className="mb-16 bg-color5">
+                <div>
+                  <SectionPrincipale />
+                </div>
+                {/* Show SimpleSlider component when screen is smaller than sm */}
+                <div className="hidden sm:block ">
+                  <SimpleSlider />
+                </div>
+              </div>
             </div>
+
             {isLoading ? (
               <p>Loading...</p>
             ) : error ? (
               <p>Error: {error}</p>
             ) : (
-              <div>
-                <ProductList products={products} />
-              </div>
+              <div className="px-16"> 
+              <ProductList products={products} />
+            </div>            
             )}
           </div>
-          <Features/>
+          <Features />
           <Footer />
         </>
       )}
